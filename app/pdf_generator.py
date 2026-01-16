@@ -2,6 +2,8 @@
 PDF Generator - Create polished, print-ready PDFs from curriculum JSON.
 Matches the "Scholarly Modern" frontend design aesthetic.
 """
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -111,6 +113,7 @@ LEVEL_COLORS = {
 # ============================================================================
 # STYLES
 # ============================================================================
+@lru_cache(maxsize=8)
 def get_styles(level_key: str = None):
     """Create custom paragraph styles with optional level-specific colors."""
     styles = getSampleStyleSheet()
@@ -964,22 +967,15 @@ def generate_all_pdfs(
     output_dir: str,
     include_udl_docs: bool = False
 ) -> list[dict[str, str]]:
-    """Generate all PDFs from curriculum data."""
+    """Generate all PDFs from curriculum data using parallel execution."""
     output_path = Path(output_dir)
     files = []
 
-    # Teacher Guide
+    # Prepare all PDF tasks
     teacher_data = curriculum.get("teacher_guide", {})
     teacher_filename = f"{session_id}_teacher_guide.pdf"
     teacher_path = str(output_path / teacher_filename)
-    create_teacher_guide(teacher_data, teacher_path, include_udl_docs)
-    files.append({
-        "name": "Teacher Guide",
-        "filename": teacher_filename,
-        "download_url": f"/download/{teacher_filename}"
-    })
 
-    # Student Handouts - each with level-specific styling
     student_materials = curriculum.get("student_materials", {})
     level_names = {
         "below_level": "Below Level",
@@ -988,16 +984,46 @@ def generate_all_pdfs(
         "above_level": "Above Level",
     }
 
-    for level_key, level_name in level_names.items():
-        level_data = student_materials.get(level_key, {})
-        if level_data:
-            filename = f"{session_id}_student_{level_key}.pdf"
-            filepath = str(output_path / filename)
-            create_student_handout(level_data, level_key, filepath)
-            files.append({
-                "name": f"Student Handout - {level_name}",
-                "filename": filename,
-                "download_url": f"/download/{filename}"
-            })
+    # Generate all PDFs in parallel using ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {}
+
+        # Submit teacher guide task
+        future = executor.submit(
+            create_teacher_guide, teacher_data, teacher_path, include_udl_docs
+        )
+        futures[future] = {
+            "name": "Teacher Guide",
+            "filename": teacher_filename,
+            "download_url": f"/download/{teacher_filename}",
+            "order": 0
+        }
+
+        # Submit student handout tasks
+        for i, (level_key, level_name) in enumerate(level_names.items(), 1):
+            level_data = student_materials.get(level_key, {})
+            if level_data:
+                filename = f"{session_id}_student_{level_key}.pdf"
+                filepath = str(output_path / filename)
+                future = executor.submit(
+                    create_student_handout, level_data, level_key, filepath
+                )
+                futures[future] = {
+                    "name": f"Student Handout - {level_name}",
+                    "filename": filename,
+                    "download_url": f"/download/{filename}",
+                    "order": i
+                }
+
+        # Collect results as they complete
+        results = []
+        for future in as_completed(futures):
+            file_info = futures[future]
+            future.result()  # Raise any exceptions
+            results.append(file_info)
+
+        # Sort by original order
+        results.sort(key=lambda x: x["order"])
+        files = [{k: v for k, v in r.items() if k != "order"} for r in results]
 
     return files

@@ -1,15 +1,16 @@
 """
 Curriculum Generator - FastAPI Application
 """
+import json
 import uuid
 from pathlib import Path
 
 from fastapi import FastAPI, Form, HTTPException, Request
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from .curriculum_agent import generate_curriculum
+from .curriculum_agent import generate_curriculum, generate_curriculum_streaming
 from .pdf_generator import generate_all_pdfs
 
 app = FastAPI(
@@ -82,6 +83,78 @@ async def generate(
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/generate-stream")
+async def generate_stream(
+    grade: int = Form(...),
+    subject: str = Form(...),
+    topic: str = Form(...),
+    session_length: int = Form(15),
+    learning_goal_type: str = Form("practice"),
+    group_format: str = Form("small_group"),
+    pedagogical_approach: str = Form(None),
+    include_udl_docs: bool = Form(False),
+    model: str = Form(None),
+):
+    """Generate curriculum with streaming progress updates via SSE."""
+
+    # Build the input structure
+    teacher_input = {
+        "grade": grade,
+        "subject": subject,
+        "topic": topic,
+        "session_length_minutes": session_length,
+        "learning_goal_type": learning_goal_type,
+        "group_format": group_format,
+    }
+
+    if pedagogical_approach:
+        teacher_input["pedagogical_approach"] = pedagogical_approach
+
+    session_id = str(uuid.uuid4())[:8]
+
+    async def event_generator():
+        try:
+            curriculum = None
+
+            # Stream curriculum generation progress
+            for update in generate_curriculum_streaming(teacher_input, model_key=model):
+                if update["type"] == "curriculum":
+                    curriculum = update["data"]
+                    yield f"data: {json.dumps({'type': 'progress', 'stage': 'curriculum_complete', 'message': 'Curriculum generated!'})}\n\n"
+                else:
+                    yield f"data: {json.dumps(update)}\n\n"
+
+            if curriculum:
+                # Generate PDFs
+                yield f"data: {json.dumps({'type': 'progress', 'stage': 'pdf', 'message': 'Generating PDFs...'})}\n\n"
+
+                pdf_files = generate_all_pdfs(curriculum, session_id, str(outputs_dir), include_udl_docs)
+
+                yield f"data: {json.dumps({'type': 'progress', 'stage': 'complete', 'message': 'Complete!'})}\n\n"
+
+                # Send final result
+                result = {
+                    "type": "result",
+                    "success": True,
+                    "session_id": session_id,
+                    "files": pdf_files,
+                    "curriculum": curriculum,
+                }
+                yield f"data: {json.dumps(result)}\n\n"
+
+        except Exception as e:
+            yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+        }
+    )
 
 
 @app.get("/download/{filename}")

@@ -900,6 +900,36 @@ button[type="submit"]:disabled {
     flex-shrink: 0;
 }
 
+/* ===== PROGRESS DISPLAY ===== */
+#progress-display {
+    background: linear-gradient(135deg, var(--navy-100) 0%, var(--gold-100) 100%);
+    border: 1.5px solid var(--navy-500);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-content {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    color: var(--navy-700);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+#progress-message {
+    animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
     .container {
