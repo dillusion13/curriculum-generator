@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: curriculum-generator
+    runtime: docker
+    plan: starter  # $7/mo, always on
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false  # You'll set this manually
+      - key: GEMINI_API_KEY
+        sync: false  # You'll set this manually
