@@ -1,0 +1,1410 @@
+{
+  "pedagogical_approaches": [
+    {
+      "id": "project_based_learning",
+      "name": "Project-Based Learning",
+      "abbreviation": "PBL",
+      "category": "student-centered",
+      "description": "Students learn by actively engaging in real-world, meaningful projects over extended periods, solving authentic problems and creating public products.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Launch/Driving Question",
+            "description": "Present authentic problem or driving question that hooks students",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Investigation & Research",
+            "description": "Students gather information, explore resources, build knowledge",
+            "percentage_of_time": 30
+          },
+          {
+            "name": "Create & Develop",
+            "description": "Students work on project artifacts, prototypes, or products",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Critique & Revise",
+            "description": "Peer feedback and iteration on work",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Present & Reflect",
+            "description": "Share with authentic audience, reflect on learning",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Driving question connected to real-world problem",
+          "Student voice and choice in process",
+          "Sustained inquiry over multiple sessions",
+          "Collaboration and teamwork",
+          "Public product or presentation"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Provide structured project templates, break into smaller milestones, assign specific roles",
+        "approaching_level": "Offer choice within constraints, provide resource lists, checkpoint conferences",
+        "at_level": "Full choice in approach, self-directed with teacher guidance",
+        "above_level": "Extended scope, mentor role for peers, connect to community experts"
+      },
+      "el_adaptations": {
+        "emerging": "Visual project planners, partner with bilingual peer, allow multimedia products",
+        "expanding": "Sentence frames for presentations, vocabulary word wall, graphic organizers",
+        "bridging": "Academic language expectations, peer editing for language"
+      },
+      "assessment_strategies": [
+        "Project rubric with content and process criteria",
+        "Checkpoint reflections",
+        "Peer and self-assessment",
+        "Final presentation evaluation"
+      ]
+    },
+    {
+      "id": "place_based_learning",
+      "name": "Place-Based Learning",
+      "abbreviation": "PBL-Place",
+      "category": "experiential",
+      "description": "Learning connected to local environment, culture, and community. Uses local heritage, landscapes, and experiences as foundations for studying core subjects.",
+      "best_for": {
+        "subjects": ["Science", "History", "ELA", "Art"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Connect to Place",
+            "description": "Introduce local context, environment, or community connection",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Explore the Place",
+            "description": "Direct experience with local environment (virtual or physical)",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Study the Place",
+            "description": "Investigate local phenomena, history, or issues",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Act for the Place",
+            "description": "Apply learning to benefit local community",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Reflect",
+            "description": "Connect personal meaning and broader concepts",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Local environment as primary learning resource",
+          "Community partnerships",
+          "Service-learning components",
+          "Cross-curricular connections",
+          "Student action for community benefit"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Guided observation sheets, partner exploration, concrete local examples",
+        "approaching_level": "Structured inquiry questions, local mentor pairing",
+        "at_level": "Independent investigation of local issues",
+        "above_level": "Design community action project, present to local officials"
+      },
+      "el_adaptations": {
+        "emerging": "Visual documentation, familiar neighborhood contexts, home language connections",
+        "expanding": "Local vocabulary development, community interviews with support",
+        "bridging": "Academic writing about local issues, presentation to community"
+      },
+      "assessment_strategies": [
+        "Field observation journals",
+        "Community action project evaluation",
+        "Local expert feedback",
+        "Reflection on place connection"
+      ]
+    },
+    {
+      "id": "passion_based_learning",
+      "name": "Passion-Based Learning",
+      "abbreviation": "Passion",
+      "category": "student-centered",
+      "description": "Students explore topics they are genuinely passionate about. Teacher acts as facilitator helping students connect personal interests to learning objectives.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["individual", "small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Passion Discovery",
+            "description": "Students identify or share their interests and passions",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Connection Building",
+            "description": "Link passion to learning objectives and standards",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Deep Dive",
+            "description": "Student-directed exploration of passion topic",
+            "percentage_of_time": 40
+          },
+          {
+            "name": "Create & Share",
+            "description": "Produce artifact demonstrating learning through passion lens",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Reflect & Connect",
+            "description": "Reflect on learning and broader applications",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Student identification of genuine interests",
+          "Teacher as facilitator and connector",
+          "Student autonomy in learning path",
+          "Connection to curriculum standards",
+          "Authentic product creation"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Provide passion topic options, structured exploration guides, mentor pairing",
+        "approaching_level": "Choice within framework, checkpoint supports",
+        "at_level": "Full autonomy with teacher conference support",
+        "above_level": "Expert mentorship, community presentation opportunities"
+      },
+      "el_adaptations": {
+        "emerging": "Visual passion inventory, home culture connections, multimedia products",
+        "expanding": "Bilingual research options, vocabulary support for passion area",
+        "bridging": "Academic presentation of passion learning"
+      },
+      "assessment_strategies": [
+        "Passion project rubric",
+        "Learning connection documentation",
+        "Self-assessment of growth",
+        "Peer feedback on products"
+      ]
+    },
+    {
+      "id": "5e_lessons",
+      "name": "5E Lesson Model",
+      "abbreviation": "5E",
+      "category": "inquiry-based",
+      "description": "Research-based instructional model with five phases: Engage, Explore, Explain, Elaborate, and Evaluate. Student-centered with teacher as facilitator.",
+      "best_for": {
+        "subjects": ["Science", "Math"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Engage",
+            "description": "Capture interest, assess prior knowledge, surface misconceptions",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Explore",
+            "description": "Hands-on investigation, guided discovery, data collection",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Explain",
+            "description": "Make sense of exploration, develop vocabulary, teacher guides understanding",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Elaborate",
+            "description": "Apply understanding to new contexts, extend learning",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Evaluate",
+            "description": "Assess understanding, student self-reflection",
+            "percentage_of_time": 15
+          }
+        ],
+        "key_elements": [
+          "Prior knowledge activation",
+          "Hands-on exploration before explanation",
+          "Student-generated questions",
+          "Vocabulary development in context",
+          "Application to new situations"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Structured exploration protocols, vocabulary pre-teaching, guided discovery sheets",
+        "approaching_level": "Partial exploration guides, tiered explain questions",
+        "at_level": "Open exploration with guiding questions",
+        "above_level": "Design own exploration, elaborate to advanced applications"
+      },
+      "el_adaptations": {
+        "emerging": "Visual exploration guides, partner work, labeled diagrams",
+        "expanding": "Sentence frames for explain phase, vocabulary cards",
+        "bridging": "Academic explanation expectations, peer teaching opportunities"
+      },
+      "assessment_strategies": [
+        "Formative checks at each phase",
+        "Exploration journals",
+        "Explain phase discussions",
+        "Evaluate phase performance tasks"
+      ]
+    },
+    {
+      "id": "3_act_math",
+      "name": "3 Act Math Tasks",
+      "abbreviation": "3-Act",
+      "category": "problem-based",
+      "description": "Problem-solving structure using storytelling: Act 1 introduces conflict visually, Act 2 gathers information, Act 3 reveals resolution. Low floor, high ceiling.",
+      "best_for": {
+        "subjects": ["Math"],
+        "grade_levels": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20"],
+        "group_formats": ["individual", "small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Act 1: The Hook",
+            "description": "Present compelling visual/video with minimal words, students notice and wonder",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Estimation",
+            "description": "Students make estimates (too high, too low, just right)",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Act 2: Information Gathering",
+            "description": "Students request information needed, teacher reveals data",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Problem Solving",
+            "description": "Students work to solve using gathered information",
+            "percentage_of_time": 30
+          },
+          {
+            "name": "Act 3: The Reveal",
+            "description": "Show actual answer, compare to estimates and solutions",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Sequel (Optional)",
+            "description": "Extend with related question or variation",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Visual/video hook with minimal text",
+          "Student-generated questions",
+          "Estimation before calculation",
+          "Information revealed on request",
+          "Real-world answer verification"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Estimation support, information organizer, calculation scaffolds",
+        "approaching_level": "Guiding questions, strategy hints available",
+        "at_level": "Full problem-solving independence",
+        "above_level": "Create sequel problems, multiple solution methods"
+      },
+      "el_adaptations": {
+        "emerging": "Visual-heavy acts, partner discussion, labeled diagrams",
+        "expanding": "Notice/wonder sentence frames, math vocabulary support",
+        "bridging": "Explanation of mathematical reasoning"
+      },
+      "assessment_strategies": [
+        "Estimation accuracy growth",
+        "Problem-solving process observation",
+        "Mathematical reasoning explanations",
+        "Solution comparison discussions"
+      ]
+    },
+    {
+      "id": "design_thinking",
+      "name": "Design-Based Thinking Lessons",
+      "abbreviation": "Design",
+      "category": "problem-based",
+      "description": "Five-step creative problem-solving: Empathize, Define, Ideate, Prototype, and Test. Develops innovation skills through iterative design.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["20", "extended"],
+        "group_formats": ["small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Empathize",
+            "description": "Understand user needs through observation, interviews, research",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Define",
+            "description": "Clearly articulate the problem based on empathy research",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Ideate",
+            "description": "Brainstorm multiple solutions without judgment",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Prototype",
+            "description": "Create quick, testable models of best ideas",
+            "percentage_of_time": 30
+          },
+          {
+            "name": "Test",
+            "description": "Get feedback, iterate, refine solutions",
+            "percentage_of_time": 25
+          }
+        ],
+        "key_elements": [
+          "User-centered problem definition",
+          "Divergent thinking in ideation",
+          "Rapid prototyping with simple materials",
+          "Feedback and iteration cycles",
+          "Failure as learning opportunity"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Empathy map templates, structured ideation prompts, prototype kits",
+        "approaching_level": "Guiding questions for each phase, checkpoint feedback",
+        "at_level": "Full design cycle independence",
+        "above_level": "Complex user scenarios, multiple iterations, peer mentoring"
+      },
+      "el_adaptations": {
+        "emerging": "Visual empathy maps, sketch-based ideation, hands-on prototyping",
+        "expanding": "Sentence frames for user interviews, design vocabulary",
+        "bridging": "Design presentation with academic language"
+      },
+      "assessment_strategies": [
+        "Design process portfolio",
+        "Prototype evaluation rubric",
+        "Iteration documentation",
+        "User feedback integration"
+      ]
+    },
+    {
+      "id": "peer_teaching",
+      "name": "Peer Teaching",
+      "abbreviation": "Peer",
+      "category": "collaborative",
+      "description": "Students teach and learn from each other using strategies like Jigsaw, Think-Pair-Share, and peer explanation. Teaching deepens understanding.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["practice", "assess"],
+        "session_lengths": ["10", "15", "20"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Expert Development",
+            "description": "Students master their portion of content individually or in expert groups",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Preparation to Teach",
+            "description": "Students plan how to explain concept to peers",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Peer Teaching",
+            "description": "Students teach their content to peers in mixed groups",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Clarification",
+            "description": "Address questions, teacher clarifies misconceptions",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Integration",
+            "description": "Apply combined knowledge from all peer teachers",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Individual accountability for expert content",
+          "Teaching preparation with planning",
+          "Structured peer interaction",
+          "Mixed ability groupings",
+          "Teacher monitoring and support"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Simpler content section, teaching template, partner support",
+        "approaching_level": "Teaching prompts, visual aids provided",
+        "at_level": "Full responsibility for content section",
+        "above_level": "Complex content, support struggling peers, synthesize connections"
+      },
+      "el_adaptations": {
+        "emerging": "Visual teaching aids, bilingual partner, simplified content",
+        "expanding": "Sentence frames for teaching, vocabulary cards to share",
+        "bridging": "Academic explanation expectations, note-taking responsibility"
+      },
+      "assessment_strategies": [
+        "Individual expert quiz",
+        "Peer teaching observation",
+        "Combined knowledge assessment",
+        "Peer feedback forms"
+      ]
+    },
+    {
+      "id": "cross_age_peer_teaching",
+      "name": "Cross-Age Peer Teaching",
+      "abbreviation": "Cross-Age",
+      "category": "collaborative",
+      "description": "Older students (2-3 years older) tutor younger students. Benefits both through social constructivist learning and mentorship.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["practice", "remediate"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["individual", "small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Tutor Preparation",
+            "description": "Older students learn content and teaching strategies",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Relationship Building",
+            "description": "Tutors and tutees establish rapport",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Tutoring Session",
+            "description": "Structured teaching with older student leading",
+            "percentage_of_time": 45
+          },
+          {
+            "name": "Progress Check",
+            "description": "Assess tutee understanding, tutor adjusts",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Reflection",
+            "description": "Both students reflect on learning and teaching",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Optimal 2-3 year age gap",
+          "Tutor training on content and strategies",
+          "Consistent pairings over time",
+          "Structured session protocols",
+          "Teacher monitoring and support"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Most struggling tutees paired with patient tutors, extra structure",
+        "approaching_level": "Matched ability pairings, clear session guides",
+        "at_level": "Standard tutoring protocols",
+        "above_level": "Tutors for complex content, leadership development"
+      },
+      "el_adaptations": {
+        "emerging": "Bilingual tutors when possible, visual materials, patient pacing",
+        "expanding": "Language-supported tutoring materials, vocabulary focus",
+        "bridging": "Academic language modeling by tutor"
+      },
+      "assessment_strategies": [
+        "Tutee pre/post assessments",
+        "Tutor self-reflection logs",
+        "Session observation rubrics",
+        "Growth tracking for both students"
+      ]
+    },
+    {
+      "id": "inquiry_based_learning",
+      "name": "Inquiry-Based Learning",
+      "abbreviation": "Inquiry",
+      "category": "inquiry-based",
+      "description": "Active learning starting with questions, problems, or scenarios. Students direct their learning through investigation. Four types: confirmation, structured, guided, open.",
+      "best_for": {
+        "subjects": ["Science", "Math", "History"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["individual", "small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Question/Problem Posing",
+            "description": "Present or generate driving question for investigation",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Hypothesis/Prediction",
+            "description": "Students make predictions based on prior knowledge",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Investigation Design",
+            "description": "Plan approach to answering question (teacher-guided or student-led)",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Investigation",
+            "description": "Conduct research, experiments, or exploration",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Analysis & Conclusion",
+            "description": "Analyze findings, draw conclusions, connect to question",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "New Questions",
+            "description": "Generate new questions from investigation",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Student-generated or authentic questions",
+          "Hypothesis and prediction making",
+          "Student-directed investigation",
+          "Evidence-based conclusions",
+          "Cyclical questioning"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Confirmation inquiry (known answer), structured protocols, guided questions",
+        "approaching_level": "Structured inquiry with some choice in method",
+        "at_level": "Guided inquiry with student method selection",
+        "above_level": "Open inquiry with student-generated questions and methods"
+      },
+      "el_adaptations": {
+        "emerging": "Visual investigation guides, partner investigations, labeled diagrams",
+        "expanding": "Sentence frames for hypotheses and conclusions, vocabulary support",
+        "bridging": "Academic writing of investigation reports"
+      },
+      "assessment_strategies": [
+        "Investigation process rubric",
+        "Conclusion quality evaluation",
+        "Question generation assessment",
+        "Scientific reasoning documentation"
+      ]
+    },
+    {
+      "id": "flipped_learning",
+      "name": "Flipped Learning",
+      "abbreviation": "Flipped",
+      "category": "blended",
+      "description": "Direct instruction moves to individual space (videos, readings) before class. Class time used for active learning, problem-solving, and deeper discussion.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20"],
+        "group_formats": ["individual", "small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Pre-Class Content",
+            "description": "Students engage with video/reading before class (homework)",
+            "percentage_of_time": 0
+          },
+          {
+            "name": "Quick Check",
+            "description": "Verify pre-class learning, address immediate questions",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Clarification",
+            "description": "Address misconceptions from pre-class content",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Active Application",
+            "description": "Apply learning through problems, projects, discussions",
+            "percentage_of_time": 50
+          },
+          {
+            "name": "Extension & Synthesis",
+            "description": "Deepen understanding, connect concepts",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Prep for Next",
+            "description": "Preview next pre-class content, assign",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Quality pre-class content (10-15 min videos)",
+          "Accountability for pre-class work",
+          "Higher-order thinking in class",
+          "Personalized support during class",
+          "Active rather than passive class time"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Simplified pre-class content, guided notes, extra in-class support",
+        "approaching_level": "Standard content with pause points, tiered application activities",
+        "at_level": "Full flipped model with independent application",
+        "above_level": "Extended pre-class content, leadership in class activities"
+      },
+      "el_adaptations": {
+        "emerging": "Captioned videos, visual-heavy content, partner application",
+        "expanding": "Vocabulary pre-teaching in videos, sentence frames for discussion",
+        "bridging": "Academic discussion expectations, note-taking from videos"
+      },
+      "assessment_strategies": [
+        "Pre-class completion checks",
+        "Quick formative assessments",
+        "Application activity evaluation",
+        "Synthesis demonstrations"
+      ]
+    },
+    {
+      "id": "genius_hour",
+      "name": "Genius Hour",
+      "abbreviation": "Genius",
+      "category": "student-centered",
+      "description": "Dedicated time (typically 20%) for student-chosen passion projects. Based on Google's 20% time. Students pursue self-directed learning with teacher facilitation.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["extended"],
+        "group_formats": ["individual"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Topic Selection",
+            "description": "Students identify passion topic and driving question",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Proposal & Planning",
+            "description": "Create project proposal with goals and timeline",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Research & Creation",
+            "description": "Self-directed work on passion project",
+            "percentage_of_time": 50
+          },
+          {
+            "name": "Check-ins & Reflection",
+            "description": "Regular conferences with teacher, progress updates",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Presentation",
+            "description": "Share project with class or community",
+            "percentage_of_time": 15
+          }
+        ],
+        "key_elements": [
+          "Student choice of topic",
+          "Driving question to guide inquiry",
+          "Project proposal with timeline",
+          "Regular reflection and check-ins",
+          "Culminating presentation"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Topic suggestions, structured timelines, frequent check-ins, mentor pairing",
+        "approaching_level": "Proposal templates, checkpoint conferences",
+        "at_level": "Full autonomy with teacher support as needed",
+        "above_level": "Community mentor connections, extended scope projects"
+      },
+      "el_adaptations": {
+        "emerging": "Visual project planners, home language research allowed, multimedia products",
+        "expanding": "Bilingual research options, presentation sentence frames",
+        "bridging": "Academic presentation expectations"
+      },
+      "assessment_strategies": [
+        "Proposal quality rubric",
+        "Process documentation",
+        "Final presentation evaluation",
+        "Self-reflection on learning"
+      ]
+    },
+    {
+      "id": "makerspace",
+      "name": "Makerspace",
+      "abbreviation": "Maker",
+      "category": "hands-on",
+      "description": "Collaborative spaces for hands-on creating, tinkering, and inventing. Based on constructionism - learning through building tangible artifacts.",
+      "best_for": {
+        "subjects": ["Science", "Math", "Art"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["20", "extended"],
+        "group_formats": ["individual", "small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Challenge Introduction",
+            "description": "Present design challenge or open exploration prompt",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Material Exploration",
+            "description": "Explore available materials and tools",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Design & Plan",
+            "description": "Sketch ideas, plan approach",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Build & Iterate",
+            "description": "Create, test, revise, improve",
+            "percentage_of_time": 45
+          },
+          {
+            "name": "Share & Reflect",
+            "description": "Demonstrate creations, discuss process and learning",
+            "percentage_of_time": 20
+          }
+        ],
+        "key_elements": [
+          "Hands-on creation with diverse materials",
+          "Student-driven design process",
+          "Iteration and improvement cycles",
+          "Failure as learning opportunity",
+          "Cross-curricular connections"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Simplified challenges, material kits, step-by-step guides available",
+        "approaching_level": "Choice of challenge difficulty, mentor pairing",
+        "at_level": "Open-ended challenges with material access",
+        "above_level": "Complex constraints, peer mentoring, advanced tools"
+      },
+      "el_adaptations": {
+        "emerging": "Visual instructions, hands-on focus over verbal, partner building",
+        "expanding": "Vocabulary for materials and processes, labeled workspace",
+        "bridging": "Engineering design vocabulary, technical presentations"
+      },
+      "assessment_strategies": [
+        "Design process documentation",
+        "Creation evaluation rubric",
+        "Iteration evidence",
+        "Reflection on problem-solving"
+      ]
+    },
+    {
+      "id": "gamification",
+      "name": "Gamification-Based Learning",
+      "abbreviation": "Gamify",
+      "category": "engagement",
+      "description": "Application of game elements (points, badges, leaderboards, challenges) to learning activities. Harnesses engagement principles from games without creating full games.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["practice", "assess"],
+        "session_lengths": ["5", "10", "15", "20"],
+        "group_formats": ["individual", "small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Challenge Setup",
+            "description": "Introduce learning challenge with game mechanics (points, badges, levels)",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Gameplay/Learning",
+            "description": "Students engage with content through gamified activities",
+            "percentage_of_time": 55
+          },
+          {
+            "name": "Progress Tracking",
+            "description": "Check scores, levels, achievements; provide feedback",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Reflection",
+            "description": "Connect game progress to learning goals",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Level Up Preview",
+            "description": "Preview next challenge or level",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Clear goals and challenges",
+          "Immediate feedback",
+          "Progress visualization",
+          "Achievement recognition",
+          "Balanced competition and collaboration"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Lower entry level, scaffolded challenges, more frequent rewards",
+        "approaching_level": "Standard progression with hints available",
+        "at_level": "Full game mechanics with appropriate challenge",
+        "above_level": "Bonus levels, leaderboard challenges, game design opportunities"
+      },
+      "el_adaptations": {
+        "emerging": "Visual game interfaces, picture-based challenges, partner play",
+        "expanding": "Clear vocabulary in game, sentence frames for responses",
+        "bridging": "Full participation in all game elements"
+      },
+      "assessment_strategies": [
+        "Point/level tracking as formative data",
+        "Challenge completion rates",
+        "Learning gain correlations",
+        "Engagement observation"
+      ]
+    },
+    {
+      "id": "action_civics",
+      "name": "Action Civics",
+      "abbreviation": "Civics",
+      "category": "experiential",
+      "description": "Students learn civics by doing civics. Identify personally relevant community issues, research, plan, and take collective action for change.",
+      "best_for": {
+        "subjects": ["History", "ELA"],
+        "grade_levels": ["5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Issue Identification",
+            "description": "Students identify personally relevant community issues",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Research & Analysis",
+            "description": "Investigate issue, gather data, understand stakeholders",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Action Planning",
+            "description": "Develop strategy for civic action",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Take Action",
+            "description": "Implement civic action (advocacy, service, engagement)",
+            "percentage_of_time": 30
+          },
+          {
+            "name": "Reflect & Report",
+            "description": "Evaluate impact, reflect on civic participation",
+            "percentage_of_time": 15
+          }
+        ],
+        "key_elements": [
+          "Student-identified issues",
+          "Research and data collection",
+          "Civic action (not just learning about)",
+          "Community engagement",
+          "Reflection on democratic participation"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Issue options provided, structured research guides, supported action",
+        "approaching_level": "Guided issue selection, research templates",
+        "at_level": "Independent issue identification and action planning",
+        "above_level": "Lead action initiatives, engage with officials, mentor peers"
+      },
+      "el_adaptations": {
+        "emerging": "Visual issue mapping, home community connections, partner participation",
+        "expanding": "Civic vocabulary development, sentence frames for advocacy",
+        "bridging": "Academic writing for civic purposes, public speaking"
+      },
+      "assessment_strategies": [
+        "Issue research quality",
+        "Action plan evaluation",
+        "Civic action documentation",
+        "Reflection on democratic participation"
+      ]
+    },
+    {
+      "id": "role_play",
+      "name": "Role Play Scenarios/Lessons",
+      "abbreviation": "Role Play",
+      "category": "experiential",
+      "description": "Students assume different characters and act out scenarios without scripts. Develops empathy, critical thinking, and communication through immersive experience.",
+      "best_for": {
+        "subjects": ["History", "ELA", "Science"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Context Setting",
+            "description": "Introduce scenario, characters, and situation",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Role Assignment",
+            "description": "Assign or choose roles, provide character information",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Preparation",
+            "description": "Students prepare character perspective and responses",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Role Play",
+            "description": "Enact scenario, respond in character",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Debrief",
+            "description": "Reflect on experience, connect to learning objectives",
+            "percentage_of_time": 25
+          }
+        ],
+        "key_elements": [
+          "Clear scenario and character parameters",
+          "Student improvisation within structure",
+          "Perspective-taking emphasis",
+          "Safe environment for experimentation",
+          "Structured debriefing"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Simpler roles, character cards with prompts, partner support",
+        "approaching_level": "Role choice with preparation guides",
+        "at_level": "Full character development responsibility",
+        "above_level": "Complex roles, scenario design, facilitate debriefs"
+      },
+      "el_adaptations": {
+        "emerging": "Visual character cards, simple role language, partner roles",
+        "expanding": "Sentence frames for in-character responses, vocabulary support",
+        "bridging": "Complex character analysis, academic debriefing"
+      },
+      "assessment_strategies": [
+        "Character authenticity observation",
+        "Participation rubric",
+        "Debrief discussion quality",
+        "Written reflection on perspective"
+      ]
+    },
+    {
+      "id": "socratic_seminar",
+      "name": "Socratic Seminar",
+      "abbreviation": "Socratic",
+      "category": "discussion-based",
+      "description": "Formal discussion based on text with open-ended questions. Students lead discussion through questioning and critical dialogue. Teacher facilitates rather than directs.",
+      "best_for": {
+        "subjects": ["ELA", "History", "Science"],
+        "grade_levels": ["4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["practice", "assess"],
+        "session_lengths": ["20", "extended"],
+        "group_formats": ["whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Text Preparation",
+            "description": "Students read and annotate anchor text before seminar",
+            "percentage_of_time": 0
+          },
+          {
+            "name": "Opening",
+            "description": "Establish norms, pose opening question",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Inner Circle Discussion",
+            "description": "Core group discusses with open-ended questions",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Outer Circle Observation",
+            "description": "Observers track discussion, prepare questions",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Circle Switch (if time)",
+            "description": "Switch roles, new discussion round",
+            "percentage_of_time": 0
+          },
+          {
+            "name": "Closing & Reflection",
+            "description": "Synthesize insights, reflect on discussion process",
+            "percentage_of_time": 20
+          }
+        ],
+        "key_elements": [
+          "Anchor text (primary source, article, literature)",
+          "Open-ended questions without single answers",
+          "Student-led discussion",
+          "Inner/outer circle structure",
+          "Active listening and evidence-based responses"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Annotated text support, discussion stems, outer circle first",
+        "approaching_level": "Question starters provided, partner pre-discussion",
+        "at_level": "Full seminar participation expectations",
+        "above_level": "Generate opening questions, facilitate sections"
+      },
+      "el_adaptations": {
+        "emerging": "Pre-taught vocabulary, discussion sentence frames, partner preparation",
+        "expanding": "Academic discussion stems, vocabulary reference cards",
+        "bridging": "Full participation expectations, note-taking role option"
+      },
+      "assessment_strategies": [
+        "Discussion participation rubric",
+        "Evidence use tracking",
+        "Question quality evaluation",
+        "Written synthesis reflection"
+      ]
+    },
+    {
+      "id": "4c_lessons",
+      "name": "4C Lessons",
+      "abbreviation": "4Cs",
+      "category": "skills-focused",
+      "description": "Framework for 21st century skills: Critical Thinking, Creativity, Collaboration, and Communication. Explicitly teaches and integrates these four skills across content.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "C-Focus Introduction",
+            "description": "Introduce which C(s) are emphasized, connect to content",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "Critical Thinking",
+            "description": "Analyze, evaluate, or synthesize information",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Creativity",
+            "description": "Generate novel ideas or solutions",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Collaboration",
+            "description": "Work together toward shared goal",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Communication",
+            "description": "Share ideas clearly and effectively",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Reflection",
+            "description": "Self-assess use of 4Cs",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Explicit naming of skills",
+          "Activities designed for specific Cs",
+          "Integration across content areas",
+          "Self and peer assessment of skills",
+          "Transfer to new contexts"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Focus on 1-2 Cs per lesson, structured collaboration, communication scaffolds",
+        "approaching_level": "Skill rubrics provided, guided practice of Cs",
+        "at_level": "Full integration of all 4Cs",
+        "above_level": "Leadership in collaboration, complex critical thinking tasks"
+      },
+      "el_adaptations": {
+        "emerging": "Visual 4C icons, partner collaboration, multimodal communication",
+        "expanding": "Sentence frames for each C, vocabulary for metacognition",
+        "bridging": "Academic language for skill discussion"
+      },
+      "assessment_strategies": [
+        "4C skill rubrics",
+        "Self-assessment checklists",
+        "Peer feedback on specific Cs",
+        "Transfer demonstration"
+      ]
+    },
+    {
+      "id": "readers_theatre",
+      "name": "Readers Theatre",
+      "abbreviation": "RT",
+      "category": "performance-based",
+      "description": "Interpretive performance of dramatic text without costumes, props, or memorization. Students read aloud from scripts focusing on expression and fluency.",
+      "best_for": {
+        "subjects": ["ELA"],
+        "grade_levels": ["1", "2", "3", "4", "5", "6", "7", "8"],
+        "learning_goal_types": ["practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Script Introduction",
+            "description": "Introduce script, assign or choose roles",
+            "percentage_of_time": 10
+          },
+          {
+            "name": "First Read",
+            "description": "Cold read for comprehension and role familiarity",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Expression Coaching",
+            "description": "Teacher models, students practice expressive reading",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Rehearsal",
+            "description": "Repeated practice readings with feedback",
+            "percentage_of_time": 35
+          },
+          {
+            "name": "Performance",
+            "description": "Final read-through for audience",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Reflection",
+            "description": "Discuss fluency growth and comprehension",
+            "percentage_of_time": 5
+          }
+        ],
+        "key_elements": [
+          "Script reading (no memorization)",
+          "Focus on prosody and expression",
+          "Repeated reading for fluency",
+          "Performance as authentic purpose",
+          "Comprehension through character"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Simpler roles, fewer lines, highlighted text, partner reading",
+        "approaching_level": "Moderate roles, fluency coaching, cue cards",
+        "at_level": "Standard roles with expression expectations",
+        "above_level": "Narrator or complex roles, peer coaching, script adaptation"
+      },
+      "el_adaptations": {
+        "emerging": "Shorter roles, picture cues, choral parts, modeling",
+        "expanding": "Expression sentence frames, vocabulary pre-teaching",
+        "bridging": "Full role participation, expression coaching for others"
+      },
+      "assessment_strategies": [
+        "Fluency rubric (rate, accuracy, prosody)",
+        "Expression observation",
+        "Comprehension questions",
+        "Self-assessment of growth"
+      ]
+    },
+    {
+      "id": "culturally_responsive_literacy",
+      "name": "Culturally and Historically Responsive Literacy",
+      "abbreviation": "CHRL",
+      "category": "equity-focused",
+      "description": "Four-part equity framework by Dr. Gholdy Muhammad: Identity, Skills, Intellect, and Criticality. Centers student identities and develops critical consciousness.",
+      "best_for": {
+        "subjects": ["ELA", "History"],
+        "grade_levels": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["introduce", "practice"],
+        "session_lengths": ["15", "20", "extended"],
+        "group_formats": ["small_group", "whole_class"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Identity",
+            "description": "Connect content to student identities and experiences",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Skills",
+            "description": "Develop academic skills through culturally relevant content",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Intellect",
+            "description": "Build knowledge and critical thinking",
+            "percentage_of_time": 25
+          },
+          {
+            "name": "Criticality",
+            "description": "Analyze power, equity, and anti-oppression in texts/contexts",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Action & Reflection",
+            "description": "Connect learning to action for change",
+            "percentage_of_time": 10
+          }
+        ],
+        "key_elements": [
+          "Culturally affirming texts",
+          "Student identity as asset",
+          "Explicit skill instruction",
+          "Critical analysis of power",
+          "Connection to community knowledge"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Accessible texts reflecting identities, scaffolded critical questions",
+        "approaching_level": "Tiered texts, guided criticality discussions",
+        "at_level": "Full framework engagement with grade-level texts",
+        "above_level": "Text selection leadership, action project design"
+      },
+      "el_adaptations": {
+        "emerging": "Home language connections, visual identity activities, partner criticality",
+        "expanding": "Bilingual texts when possible, academic vocabulary for framework",
+        "bridging": "Full academic participation across all four pursuits"
+      },
+      "assessment_strategies": [
+        "Identity reflection quality",
+        "Skills demonstration",
+        "Critical analysis depth",
+        "Action orientation evidence"
+      ]
+    },
+    {
+      "id": "unboxing_video",
+      "name": "Unboxing Video",
+      "abbreviation": "Unbox",
+      "category": "multimedia",
+      "description": "Students create videos revealing items representing concepts, stories, or learning. Leverages familiar YouTube format for engaging demonstrations of understanding.",
+      "best_for": {
+        "subjects": ["all"],
+        "grade_levels": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        "learning_goal_types": ["practice", "assess"],
+        "session_lengths": ["20", "extended"],
+        "group_formats": ["individual", "small_group"]
+      },
+      "lesson_structure": {
+        "phases": [
+          {
+            "name": "Concept Connection",
+            "description": "Identify concepts/content to represent through unboxing",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Item Selection",
+            "description": "Choose items that represent key concepts/elements",
+            "percentage_of_time": 20
+          },
+          {
+            "name": "Script Planning",
+            "description": "Plan reveal order and explanations",
+            "percentage_of_time": 15
+          },
+          {
+            "name": "Recording",
+            "description": "Create unboxing video with explanations",
+            "percentage_of_time": 30
+          },
+          {
+            "name": "Sharing & Feedback",
+            "description": "Share videos, provide peer feedback",
+            "percentage_of_time": 20
+          }
+        ],
+        "key_elements": [
+          "Items representing abstract concepts",
+          "Reveal and explanation format",
+          "Connection to learning objectives",
+          "Multimedia production skills",
+          "Peer sharing and feedback"
+        ]
+      },
+      "differentiation_strategies": {
+        "below_level": "Item suggestions provided, script templates, partner production",
+        "approaching_level": "Item choice with connection guidance",
+        "at_level": "Independent item selection and production",
+        "above_level": "Complex concept representation, professional production quality"
+      },
+      "el_adaptations": {
+        "emerging": "Visual-heavy production, partner scripting, simple explanations",
+        "expanding": "Script sentence frames, vocabulary practice through explanation",
+        "bridging": "Academic explanations, full production responsibility"
+      },
+      "assessment_strategies": [
+        "Concept representation accuracy",
+        "Explanation quality rubric",
+        "Production quality (optional)",
+        "Peer feedback integration"
+      ]
+    }
+  ],
+  "category_descriptions": {
+    "student-centered": "Approaches that prioritize student choice, voice, and direction in learning",
+    "inquiry-based": "Approaches built around student questioning and investigation",
+    "problem-based": "Approaches organized around authentic problems to solve",
+    "collaborative": "Approaches emphasizing peer interaction and group learning",
+    "experiential": "Approaches centered on real-world experience and action",
+    "hands-on": "Approaches focused on physical creation and manipulation",
+    "blended": "Approaches combining in-person and digital/independent learning",
+    "discussion-based": "Approaches centered on structured academic discourse",
+    "performance-based": "Approaches culminating in student performances",
+    "skills-focused": "Approaches explicitly developing transferable skills",
+    "equity-focused": "Approaches centering identity, culture, and critical consciousness",
+    "multimedia": "Approaches leveraging digital creation and production",
+    "engagement": "Approaches designed to maximize student motivation"
+  },
+  "selection_guidance": {
+    "by_session_length": {
+      "5": ["gamification"],
+      "10": ["peer_teaching", "gamification"],
+      "15": ["5e_lessons", "3_act_math", "role_play", "readers_theatre", "flipped_learning", "peer_teaching", "gamification", "4c_lessons", "culturally_responsive_literacy"],
+      "20": ["5e_lessons", "3_act_math", "design_thinking", "role_play", "socratic_seminar", "readers_theatre", "flipped_learning", "makerspace", "peer_teaching", "gamification", "inquiry_based_learning", "4c_lessons", "culturally_responsive_literacy", "unboxing_video"],
+      "extended": ["project_based_learning", "place_based_learning", "passion_based_learning", "genius_hour", "action_civics", "cross_age_peer_teaching", "design_thinking", "makerspace", "inquiry_based_learning", "socratic_seminar", "readers_theatre", "4c_lessons", "culturally_responsive_literacy", "unboxing_video"]
+    },
+    "by_subject": {
+      "Math": ["3_act_math", "5e_lessons", "peer_teaching", "gamification", "makerspace", "inquiry_based_learning", "flipped_learning", "project_based_learning"],
+      "ELA": ["readers_theatre", "socratic_seminar", "culturally_responsive_literacy", "role_play", "peer_teaching", "project_based_learning", "action_civics"],
+      "Science": ["5e_lessons", "inquiry_based_learning", "design_thinking", "makerspace", "project_based_learning", "place_based_learning"],
+      "History": ["socratic_seminar", "role_play", "action_civics", "culturally_responsive_literacy", "place_based_learning", "project_based_learning"]
+    },
+    "by_learning_goal": {
+      "introduce": ["5e_lessons", "flipped_learning", "inquiry_based_learning", "role_play", "3_act_math"],
+      "practice": ["peer_teaching", "gamification", "readers_theatre", "3_act_math", "makerspace"],
+      "assess": ["socratic_seminar", "unboxing_video", "peer_teaching", "gamification"],
+      "remediate": ["cross_age_peer_teaching", "peer_teaching", "gamification"]
+    }
+  }
+}

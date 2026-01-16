@@ -1,0 +1,1585 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "purpose": "Topic-to-standards mapping for curriculum generation agent - Math and ELA grades 6-8",
+    "last_updated": "2026-01-15",
+    "notes": "Focused on at-promise student intervention with detailed prerequisites and misconceptions"
+  },
+
+  "math_6_8": {
+    "grade_6": {
+      "domains": {
+        "ratios_proportional_relationships": {
+          "code": "6.RP",
+          "standards": {
+            "6.RP.A.1": {
+              "description": "Understand the concept of a ratio and use ratio language to describe a ratio relationship between two quantities",
+              "topics": ["ratio basics", "ratio language", "part-to-part", "part-to-whole"],
+              "prerequisites": ["multiplication fluency", "division fluency", "fraction concepts from grade 5"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing ratio order - thinking 2:3 is the same as 3:2",
+                  "diagnosis": "Ask student to describe ratio of boys to girls when there are 2 boys and 3 girls",
+                  "intervention": "Use concrete manipulatives, emphasize 'for every' language"
+                },
+                {
+                  "misconception": "Adding instead of multiplying to find equivalent ratios",
+                  "diagnosis": "Given 2:3, student says 4:5 is equivalent (added 2 to each)",
+                  "intervention": "Use ratio tables, show multiplicative relationship visually"
+                }
+              ],
+              "key_vocabulary": ["ratio", "equivalent ratio", "for every", "to", "per"]
+            },
+            "6.RP.A.2": {
+              "description": "Understand the concept of a unit rate a/b associated with a ratio a:b",
+              "topics": ["unit rate", "rate language", "per unit"],
+              "prerequisites": ["6.RP.A.1", "division of fractions (grade 5)"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Dividing in wrong order to find unit rate",
+                  "diagnosis": "$15 for 3 items - student divides 3÷15 instead of 15÷3",
+                  "intervention": "Emphasize 'per ONE' - what do we want one of?"
+                }
+              ],
+              "key_vocabulary": ["unit rate", "per", "each", "rate"]
+            },
+            "6.RP.A.3": {
+              "description": "Use ratio and rate reasoning to solve real-world problems",
+              "sub_standards": {
+                "6.RP.A.3a": "Make tables of equivalent ratios, find missing values, plot on coordinate plane",
+                "6.RP.A.3b": "Solve unit rate problems (unit pricing, constant speed)",
+                "6.RP.A.3c": "Find percent of a quantity as rate per 100; find whole given part and percent",
+                "6.RP.A.3d": "Use ratio reasoning to convert measurement units"
+              },
+              "topics": ["equivalent ratios", "ratio tables", "percent", "unit conversion", "unit pricing"],
+              "prerequisites": ["6.RP.A.1", "6.RP.A.2", "coordinate plane basics (grade 5)"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Percent means 'out of 100' only - can't apply to other quantities",
+                  "diagnosis": "Student can't find 30% of 50 because 50 isn't 100",
+                  "intervention": "Use double number lines, show percent as rate per 100"
+                },
+                {
+                  "misconception": "Cross-multiply without understanding why",
+                  "diagnosis": "Student can execute procedure but can't explain or check reasonableness",
+                  "intervention": "Build conceptual foundation with tape diagrams first"
+                }
+              ],
+              "key_vocabulary": ["percent", "equivalent", "proportion", "convert"]
+            }
+          }
+        },
+        "number_system": {
+          "code": "6.NS",
+          "standards": {
+            "6.NS.A.1": {
+              "description": "Interpret and compute quotients of fractions, solve word problems with division of fractions",
+              "topics": ["dividing fractions", "fraction division word problems"],
+              "prerequisites": ["fraction multiplication (grade 5)", "understanding fractions as division"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Dividing fractions same as whole numbers - larger ÷ smaller",
+                  "diagnosis": "Student thinks 1/2 ÷ 1/4 = 1/2 because 'you can't divide small by big'",
+                  "intervention": "Use visual models - 'how many 1/4s fit in 1/2?'"
+                },
+                {
+                  "misconception": "Flip the wrong fraction when using 'keep-change-flip'",
+                  "diagnosis": "Student flips the dividend instead of divisor",
+                  "intervention": "Connect to meaning - we're finding 'how many groups of [divisor]'"
+                },
+                {
+                  "misconception": "Whole number bias - thinking 1/4 ÷ 1/2 should be bigger than 1/4",
+                  "diagnosis": "Student expects quotient to be larger because division 'makes things smaller'",
+                  "intervention": "Explore patterns: 6÷2=3, 6÷1=6, 6÷(1/2)=12"
+                }
+              ],
+              "key_vocabulary": ["quotient", "dividend", "divisor", "reciprocal"]
+            },
+            "6.NS.B.2": {
+              "description": "Fluently divide multi-digit numbers using standard algorithm",
+              "topics": ["long division", "multi-digit division"],
+              "prerequisites": ["multiplication facts", "place value understanding", "estimation"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Forgetting to include zeros as placeholders",
+                  "diagnosis": "Student gets 12 instead of 102 for 306÷3",
+                  "intervention": "Emphasize place value columns, use graph paper"
+                }
+              ],
+              "key_vocabulary": ["quotient", "remainder", "divisor", "dividend"]
+            },
+            "6.NS.B.3": {
+              "description": "Fluently add, subtract, multiply, divide multi-digit decimals",
+              "topics": ["decimal operations", "decimal computation"],
+              "prerequisites": ["place value to thousandths", "whole number operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Lining up numbers by last digit instead of decimal point",
+                  "diagnosis": "Student aligns 3.5 + 2.75 as if they were whole numbers",
+                  "intervention": "Use place value charts, emphasize decimal alignment"
+                },
+                {
+                  "misconception": "Thinking 1.45 > 1.5 because 45 > 5",
+                  "diagnosis": "Student orders decimals by comparing digits after decimal as whole numbers",
+                  "intervention": "Use money contexts, number lines, equivalent decimals (1.5 = 1.50)"
+                }
+              ],
+              "key_vocabulary": ["decimal point", "tenths", "hundredths", "thousandths"]
+            },
+            "6.NS.B.4": {
+              "description": "Find GCF of two numbers ≤100, LCM of two numbers ≤12, use distributive property",
+              "topics": ["greatest common factor", "least common multiple", "distributive property"],
+              "prerequisites": ["factors and multiples (grade 4)", "multiplication facts"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing GCF and LCM",
+                  "diagnosis": "Student finds LCM when asked for GCF",
+                  "intervention": "Use Venn diagrams of factors, emphasize 'greatest' vs 'least'"
+                }
+              ],
+              "key_vocabulary": ["factor", "multiple", "greatest common factor", "least common multiple", "prime"]
+            },
+            "6.NS.C.5": {
+              "description": "Understand positive and negative numbers describe opposite directions/values",
+              "topics": ["integers", "negative numbers", "opposites", "real-world contexts"],
+              "prerequisites": ["number line understanding", "understanding of zero"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking negative numbers don't exist or are 'imaginary'",
+                  "diagnosis": "Student says you can't have less than zero",
+                  "intervention": "Use temperature, elevation, money (debt) contexts"
+                }
+              ],
+              "key_vocabulary": ["positive", "negative", "opposite", "integer"]
+            },
+            "6.NS.C.6": {
+              "description": "Understand rational numbers as points on number line, extend to coordinate plane",
+              "topics": ["number line", "coordinate plane", "ordered pairs", "quadrants"],
+              "prerequisites": ["positive coordinate graphing (grade 5)", "understanding of fractions on number line"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Reversing x and y coordinates",
+                  "diagnosis": "Student plots (3,5) by going up 3 and right 5",
+                  "intervention": "Use 'x comes before y alphabetically - x first (horizontal), then y (vertical)'"
+                }
+              ],
+              "key_vocabulary": ["ordered pair", "x-coordinate", "y-coordinate", "quadrant", "origin"]
+            },
+            "6.NS.C.7": {
+              "description": "Understand ordering and absolute value of rational numbers",
+              "topics": ["comparing integers", "absolute value", "ordering rational numbers"],
+              "prerequisites": ["number line understanding", "integer concepts"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking -7 > -3 because 7 > 3",
+                  "diagnosis": "Student orders negative numbers as if they were positive",
+                  "intervention": "Use number line, temperature contexts consistently"
+                },
+                {
+                  "misconception": "Confusing absolute value with 'making positive'",
+                  "diagnosis": "Student thinks |-5| = 5 means -5 'becomes' positive",
+                  "intervention": "Emphasize distance from zero - 'how far from zero?'"
+                }
+              ],
+              "key_vocabulary": ["absolute value", "inequality", "greater than", "less than"]
+            },
+            "6.NS.C.8": {
+              "description": "Solve problems by graphing in all four quadrants",
+              "topics": ["coordinate plane problems", "distance on coordinate plane"],
+              "prerequisites": ["6.NS.C.6", "absolute value understanding"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Can't find distance between points with same x or y coordinate",
+                  "diagnosis": "Student doesn't connect absolute value to distance",
+                  "intervention": "Count on number line first, then connect to absolute value"
+                }
+              ],
+              "key_vocabulary": ["distance", "horizontal", "vertical", "coordinate plane"]
+            }
+          }
+        },
+        "expressions_equations": {
+          "code": "6.EE",
+          "standards": {
+            "6.EE.A.1": {
+              "description": "Write and evaluate numerical expressions with whole-number exponents",
+              "topics": ["exponents", "powers", "numerical expressions"],
+              "prerequisites": ["multiplication fluency", "order of operations basics"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking 3² means 3×2=6 instead of 3×3=9",
+                  "diagnosis": "Student multiplies base by exponent",
+                  "intervention": "Expand notation: 3² = 3×3, use repeated multiplication language"
+                }
+              ],
+              "key_vocabulary": ["exponent", "base", "power", "squared", "cubed"]
+            },
+            "6.EE.A.2": {
+              "description": "Write, read, and evaluate expressions with variables",
+              "topics": ["algebraic expressions", "variables", "evaluating expressions"],
+              "prerequisites": ["numerical expressions", "understanding of operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking 5x + 4 = 9x (combining unlike terms)",
+                  "diagnosis": "Student adds coefficient and constant",
+                  "intervention": "Use algebra tiles, emphasize 'x's and numbers are different types'"
+                },
+                {
+                  "misconception": "Variable always equals specific value",
+                  "diagnosis": "Student thinks x always equals same number",
+                  "intervention": "Substitute multiple values, show expression gives different results"
+                },
+                {
+                  "misconception": "Interpreting 3x as '3 and x' or '3+x' instead of '3 times x'",
+                  "diagnosis": "Student doesn't recognize implied multiplication",
+                  "intervention": "Explicit instruction on algebraic notation conventions"
+                }
+              ],
+              "key_vocabulary": ["variable", "expression", "term", "coefficient", "constant"]
+            },
+            "6.EE.A.3": {
+              "description": "Apply properties of operations to generate equivalent expressions",
+              "topics": ["equivalent expressions", "distributive property", "combining like terms"],
+              "prerequisites": ["properties of operations", "6.EE.A.2"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Distributing only to first term: 3(x+2) = 3x+2",
+                  "diagnosis": "Student multiplies only first term inside parentheses",
+                  "intervention": "Use area model, emphasize 'multiply EACH term'"
+                }
+              ],
+              "key_vocabulary": ["distribute", "equivalent", "like terms", "simplify"]
+            },
+            "6.EE.A.4": {
+              "description": "Identify when two expressions are equivalent",
+              "topics": ["equivalent expressions", "substitution"],
+              "prerequisites": ["6.EE.A.2", "6.EE.A.3"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Expressions that look different can't be equivalent",
+                  "diagnosis": "Student says y+y+y ≠ 3y because they look different",
+                  "intervention": "Substitute values to verify, build conceptual understanding"
+                }
+              ],
+              "key_vocabulary": ["equivalent", "substitute", "verify"]
+            },
+            "6.EE.B.5": {
+              "description": "Understand solving equation/inequality as finding values that make it true",
+              "topics": ["solutions to equations", "substitution", "truth value"],
+              "prerequisites": ["6.EE.A.2", "equality concept"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Equal sign means 'calculate' not 'balance'",
+                  "diagnosis": "Student writes 8 for 5+3=__+2",
+                  "intervention": "Use balance scale model, emphasize 'same value on both sides'"
+                }
+              ],
+              "key_vocabulary": ["solution", "solve", "true", "equation"]
+            },
+            "6.EE.B.6": {
+              "description": "Use variables to represent numbers in expressions",
+              "topics": ["writing expressions", "translating words to algebra"],
+              "prerequisites": ["6.EE.A.2", "operation vocabulary"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Order doesn't matter: 'n less than 5' written as n-5 instead of 5-n",
+                  "diagnosis": "Student doesn't attend to order in subtraction/division",
+                  "intervention": "Test with numbers, emphasize subtraction/division aren't commutative"
+                }
+              ],
+              "key_vocabulary": ["variable", "unknown", "represent"]
+            },
+            "6.EE.B.7": {
+              "description": "Solve equations of form x+p=q and px=q",
+              "topics": ["one-step equations", "solving equations"],
+              "prerequisites": ["6.EE.B.5", "inverse operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Operating on only one side of equation",
+                  "diagnosis": "Student subtracts from left side but not right",
+                  "intervention": "Balance scale model, emphasize 'what you do to one side, do to other'"
+                },
+                {
+                  "misconception": "Using wrong inverse operation",
+                  "diagnosis": "Student divides to undo addition",
+                  "intervention": "Practice identifying operations first, then finding inverse"
+                }
+              ],
+              "key_vocabulary": ["solve", "inverse operation", "isolate"]
+            },
+            "6.EE.B.8": {
+              "description": "Write and represent inequalities, recognize infinite solutions",
+              "topics": ["inequalities", "number line graphs", "solution sets"],
+              "prerequisites": ["comparing numbers", "number line"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking inequality has one solution",
+                  "diagnosis": "For x>3, student says 'x=4' only",
+                  "intervention": "Graph on number line, list multiple solutions, discuss 'infinitely many'"
+                }
+              ],
+              "key_vocabulary": ["inequality", "greater than", "less than", "solution set"]
+            },
+            "6.EE.C.9": {
+              "description": "Use variables to represent quantities that change in relationship",
+              "topics": ["dependent/independent variables", "equations from relationships", "tables and graphs"],
+              "prerequisites": ["6.EE.B.6", "6.RP concepts", "coordinate graphing"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing independent and dependent variables",
+                  "diagnosis": "Student switches which variable depends on other",
+                  "intervention": "Use cause-effect language, 'what do you control vs what happens'"
+                }
+              ],
+              "key_vocabulary": ["independent variable", "dependent variable", "relationship"]
+            }
+          }
+        },
+        "geometry": {
+          "code": "6.G",
+          "standards": {
+            "6.G.A.1": {
+              "description": "Find area of polygons by composing/decomposing",
+              "topics": ["area of triangles", "area of quadrilaterals", "area of polygons"],
+              "prerequisites": ["area of rectangles", "understanding of height/base"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Using slant height instead of perpendicular height for triangles",
+                  "diagnosis": "Student uses side length instead of height in triangle area",
+                  "intervention": "Emphasize 'height must be perpendicular to base'"
+                },
+                {
+                  "misconception": "Confusing area and perimeter",
+                  "diagnosis": "Student adds sides when asked for area",
+                  "intervention": "Connect to real contexts - 'covering' vs 'going around'"
+                }
+              ],
+              "key_vocabulary": ["area", "base", "height", "perpendicular", "compose", "decompose"]
+            },
+            "6.G.A.2": {
+              "description": "Find volume of right rectangular prisms with fractional edge lengths",
+              "topics": ["volume", "rectangular prisms", "packing with unit cubes"],
+              "prerequisites": ["volume with whole numbers (grade 5)", "fraction multiplication"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking fractional dimensions don't work for volume",
+                  "diagnosis": "Student can't conceptualize fractional unit cubes",
+                  "intervention": "Use fraction cubes, connect to fraction multiplication"
+                }
+              ],
+              "key_vocabulary": ["volume", "rectangular prism", "unit cube", "edge length"]
+            },
+            "6.G.A.3": {
+              "description": "Draw polygons on coordinate plane given coordinates",
+              "topics": ["coordinate geometry", "plotting polygons"],
+              "prerequisites": ["coordinate plane (6.NS.C.6)", "polygon properties"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Not connecting plotted points in correct order",
+                  "diagnosis": "Student plots points but connects randomly",
+                  "intervention": "Practice sequencing, label vertices in order"
+                }
+              ],
+              "key_vocabulary": ["coordinate", "vertex", "polygon"]
+            },
+            "6.G.A.4": {
+              "description": "Represent 3D figures using nets, find surface area",
+              "topics": ["nets", "surface area", "3D figures"],
+              "prerequisites": ["area of polygons", "understanding of 3D shapes"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing surface area with volume",
+                  "diagnosis": "Student multiplies all dimensions for surface area",
+                  "intervention": "Emphasize 'covering outside' vs 'filling inside'"
+                },
+                {
+                  "misconception": "Missing faces when calculating surface area",
+                  "diagnosis": "Student forgets top/bottom or some sides",
+                  "intervention": "Use nets to identify all faces, systematic counting"
+                }
+              ],
+              "key_vocabulary": ["net", "surface area", "face", "edge", "prism", "pyramid"]
+            }
+          }
+        },
+        "statistics_probability": {
+          "code": "6.SP",
+          "standards": {
+            "6.SP.A.1": {
+              "description": "Recognize statistical questions anticipate variability",
+              "topics": ["statistical questions", "variability"],
+              "prerequisites": ["understanding of data collection"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking any question about numbers is statistical",
+                  "diagnosis": "Student identifies 'How old is the president?' as statistical",
+                  "intervention": "Emphasize variability - 'will we get different answers from different sources?'"
+                }
+              ],
+              "key_vocabulary": ["statistical question", "variability", "data"]
+            },
+            "6.SP.A.2": {
+              "description": "Understand data distribution by center, spread, shape",
+              "topics": ["data distribution", "center", "spread", "shape"],
+              "prerequisites": ["6.SP.A.1", "number line"],
+              "key_vocabulary": ["distribution", "center", "spread", "cluster", "gap", "outlier"]
+            },
+            "6.SP.A.3": {
+              "description": "Recognize measures of center and variability summarize data",
+              "topics": ["measures of center", "measures of variability"],
+              "prerequisites": ["6.SP.A.2"],
+              "key_vocabulary": ["mean", "median", "mode", "range"]
+            },
+            "6.SP.B.4": {
+              "description": "Display numerical data in plots on number line (dot plots, histograms, box plots)",
+              "topics": ["dot plots", "histograms", "box plots"],
+              "prerequisites": ["number line", "data organization"],
+              "key_vocabulary": ["dot plot", "histogram", "box plot", "frequency"]
+            },
+            "6.SP.B.5": {
+              "description": "Summarize numerical data sets in relation to context",
+              "topics": ["data summary", "median", "mean", "quartiles", "interquartile range", "mean absolute deviation"],
+              "prerequisites": ["6.SP.A.3", "6.SP.B.4"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Thinking mean is always 'in the middle' of data",
+                  "diagnosis": "Student expects mean to be a data value",
+                  "intervention": "Calculate means that aren't data values, discuss 'balance point'"
+                }
+              ],
+              "key_vocabulary": ["mean", "median", "quartile", "interquartile range", "outlier"]
+            }
+          }
+        }
+      }
+    },
+
+    "grade_7": {
+      "domains": {
+        "ratios_proportional_relationships": {
+          "code": "7.RP",
+          "standards": {
+            "7.RP.A.1": {
+              "description": "Compute unit rates with ratios of fractions",
+              "topics": ["complex unit rates", "fractional rates"],
+              "prerequisites": ["6.RP all standards", "fraction division"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Can't conceptualize 'per' with fractions",
+                  "diagnosis": "Student struggles with '1/2 mile per 1/4 hour'",
+                  "intervention": "Use double number lines, break into simpler rates first"
+                }
+              ],
+              "key_vocabulary": ["unit rate", "complex fraction", "per"]
+            },
+            "7.RP.A.2": {
+              "description": "Recognize and represent proportional relationships",
+              "sub_standards": {
+                "7.RP.A.2a": "Test for proportionality in tables or by graphing",
+                "7.RP.A.2b": "Identify constant of proportionality (unit rate) in various representations",
+                "7.RP.A.2c": "Represent proportional relationships by equations (y=kx)",
+                "7.RP.A.2d": "Explain meaning of point (x,y) on graph, especially (0,0) and (1,r)"
+              },
+              "topics": ["proportional relationships", "constant of proportionality", "y=kx", "graphs of proportions"],
+              "prerequisites": ["6.RP all standards", "coordinate graphing"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Any linear relationship is proportional",
+                  "diagnosis": "Student says y=2x+3 is proportional",
+                  "intervention": "Emphasize graph must pass through origin, test (0,0)"
+                },
+                {
+                  "misconception": "Confusing additive and multiplicative relationships",
+                  "diagnosis": "Student uses addition pattern instead of multiplication",
+                  "intervention": "Explore both types, emphasize proportional = 'times as much'"
+                }
+              ],
+              "key_vocabulary": ["proportional", "constant of proportionality", "origin"]
+            },
+            "7.RP.A.3": {
+              "description": "Use proportional relationships for multistep ratio and percent problems",
+              "topics": ["simple interest", "tax", "markup", "markdown", "tip", "commission", "percent increase", "percent decrease", "percent error"],
+              "prerequisites": ["7.RP.A.1", "7.RP.A.2", "6.RP.A.3c (percent)"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing percent increase with new value",
+                  "diagnosis": "For 20% increase on $50, student says $20 instead of $60",
+                  "intervention": "Emphasize 'increase' means original + increase"
+                },
+                {
+                  "misconception": "Calculating successive percents incorrectly",
+                  "diagnosis": "For 10% off then 10% off, student says 20% off",
+                  "intervention": "Work through each step separately, show base changes"
+                }
+              ],
+              "key_vocabulary": ["percent increase", "percent decrease", "markup", "markdown", "simple interest", "principal"]
+            }
+          }
+        },
+        "number_system": {
+          "code": "7.NS",
+          "standards": {
+            "7.NS.A.1": {
+              "description": "Apply properties to add and subtract rational numbers",
+              "sub_standards": {
+                "7.NS.A.1a": "Adding rational numbers with same/different signs",
+                "7.NS.A.1b": "p + q as distance |q| from p",
+                "7.NS.A.1c": "Subtraction as adding additive inverse",
+                "7.NS.A.1d": "Apply properties as strategies"
+              },
+              "topics": ["adding integers", "subtracting integers", "adding rational numbers", "subtracting rational numbers"],
+              "prerequisites": ["6.NS.C.5-7 (integer concepts)", "fraction operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Two negatives always make positive (applies to multiplication, not addition)",
+                  "diagnosis": "Student says -3 + (-5) = 8",
+                  "intervention": "Use number line, debt/credit contexts"
+                },
+                {
+                  "misconception": "Subtracting a negative is same as subtracting positive",
+                  "diagnosis": "Student says 5 - (-3) = 2",
+                  "intervention": "'Subtracting negative = adding positive' with number line"
+                }
+              ],
+              "key_vocabulary": ["additive inverse", "opposite", "absolute value"]
+            },
+            "7.NS.A.2": {
+              "description": "Apply properties to multiply and divide rational numbers",
+              "sub_standards": {
+                "7.NS.A.2a": "Understand that negative × positive = negative, negative × negative = positive",
+                "7.NS.A.2b": "Understand integers can be divided if divisor not zero",
+                "7.NS.A.2c": "Apply properties as strategies",
+                "7.NS.A.2d": "Convert rational numbers to decimals, know decimals expand/repeat"
+              },
+              "topics": ["multiplying integers", "dividing integers", "rational number operations", "terminating decimals", "repeating decimals"],
+              "prerequisites": ["7.NS.A.1", "fraction operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Sign rules apply wrong direction",
+                  "diagnosis": "Student says negative × negative = negative",
+                  "intervention": "Pattern exploration: 3×-2=-6, 2×-2=-4, 1×-2=-2, 0×-2=0, -1×-2=?"
+                }
+              ],
+              "key_vocabulary": ["terminating decimal", "repeating decimal", "multiplicative inverse"]
+            },
+            "7.NS.A.3": {
+              "description": "Solve real-world problems with rational number operations",
+              "topics": ["rational number word problems", "multi-step problems"],
+              "prerequisites": ["7.NS.A.1", "7.NS.A.2"],
+              "key_vocabulary": ["rational number", "operation"]
+            }
+          }
+        },
+        "expressions_equations": {
+          "code": "7.EE",
+          "standards": {
+            "7.EE.A.1": {
+              "description": "Apply properties to add, subtract, factor, expand linear expressions",
+              "topics": ["combining like terms", "factoring expressions", "expanding expressions", "linear expressions"],
+              "prerequisites": ["6.EE.A.3", "6.EE.A.4"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Factoring errors - not identifying common factor",
+                  "diagnosis": "Student can't factor 6x + 12 as 6(x+2)",
+                  "intervention": "Use area model, identify what each term has in common"
+                }
+              ],
+              "key_vocabulary": ["factor", "expand", "linear expression", "coefficient"]
+            },
+            "7.EE.A.2": {
+              "description": "Understand rewriting expressions shows how quantities are related",
+              "topics": ["equivalent expressions in context", "a + 0.05a = 1.05a"],
+              "prerequisites": ["7.EE.A.1"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Not seeing why rewriting helps solve problems",
+                  "diagnosis": "Student can simplify but doesn't see why it matters",
+                  "intervention": "Use percent context - 'increase by 5%' = 'multiply by 1.05'"
+                }
+              ],
+              "key_vocabulary": ["equivalent", "rewrite", "represent"]
+            },
+            "7.EE.B.3": {
+              "description": "Solve multi-step real-world problems with rational numbers",
+              "topics": ["multi-step problems", "estimation", "reasonableness"],
+              "prerequisites": ["7.NS.A.3", "7.EE.A.1"],
+              "key_vocabulary": ["estimate", "reasonable", "convert"]
+            },
+            "7.EE.B.4": {
+              "description": "Use variables in equations and inequalities",
+              "sub_standards": {
+                "7.EE.B.4a": "Solve equations px + q = r and p(x + q) = r",
+                "7.EE.B.4b": "Solve inequalities px + q > r or px + q < r, graph solutions"
+              },
+              "topics": ["two-step equations", "two-step inequalities", "solving equations"],
+              "prerequisites": ["6.EE.B.7", "6.EE.B.8"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Order of operations reversal when solving",
+                  "diagnosis": "For 2x + 5 = 11, student divides by 2 first",
+                  "intervention": "'Undo' in reverse order - last operation done, first undone"
+                },
+                {
+                  "misconception": "Forgetting to flip inequality when multiplying/dividing by negative",
+                  "diagnosis": "Student solves -2x > 6 as x > -3 instead of x < -3",
+                  "intervention": "Test solutions, explore why sign flips with examples"
+                }
+              ],
+              "key_vocabulary": ["two-step equation", "inequality", "solution set"]
+            }
+          }
+        },
+        "geometry": {
+          "code": "7.G",
+          "standards": {
+            "7.G.A.1": {
+              "description": "Solve problems with scale drawings, compute actual lengths and areas",
+              "topics": ["scale drawings", "scale factor", "actual vs. scaled measurements"],
+              "prerequisites": ["6.RP.A.3", "area calculations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Using scale factor for area instead of scale factor squared",
+                  "diagnosis": "If scale is 1:2, student says area is 1:2 instead of 1:4",
+                  "intervention": "Explore with squares - doubling sides quadruples area"
+                }
+              ],
+              "key_vocabulary": ["scale drawing", "scale factor", "actual"]
+            },
+            "7.G.A.2": {
+              "description": "Draw geometric shapes with given conditions, triangle conditions",
+              "topics": ["constructing triangles", "triangle inequality"],
+              "prerequisites": ["understanding of triangles", "angle measurement"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Any three lengths can form a triangle",
+                  "diagnosis": "Student tries to make triangle from 1, 2, 5",
+                  "intervention": "Triangle inequality exploration with manipulatives"
+                }
+              ],
+              "key_vocabulary": ["triangle inequality", "unique triangle", "construction"]
+            },
+            "7.G.A.3": {
+              "description": "Describe 2D figures from slicing 3D figures",
+              "topics": ["cross sections", "slicing 3D shapes"],
+              "prerequisites": ["3D shape understanding", "2D shape properties"],
+              "key_vocabulary": ["cross section", "slice", "prism", "pyramid"]
+            },
+            "7.G.B.4": {
+              "description": "Know formulas for area and circumference of circles",
+              "topics": ["circle area", "circumference", "pi"],
+              "prerequisites": ["area concepts", "understanding of radius/diameter"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing radius and diameter in formulas",
+                  "diagnosis": "Student uses diameter in A = πr²",
+                  "intervention": "Consistent labeling, 'r for radius' explicit instruction"
+                },
+                {
+                  "misconception": "Thinking π = 3.14 exactly",
+                  "diagnosis": "Student doesn't understand π is irrational",
+                  "intervention": "Discuss approximation vs. exact, π as special number"
+                }
+              ],
+              "key_vocabulary": ["radius", "diameter", "circumference", "pi", "area"]
+            },
+            "7.G.B.5": {
+              "description": "Use facts about supplementary, complementary, vertical, adjacent angles",
+              "topics": ["angle relationships", "supplementary angles", "complementary angles", "vertical angles"],
+              "prerequisites": ["angle measurement", "equation solving"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing supplementary (180°) and complementary (90°)",
+                  "diagnosis": "Student adds to wrong total",
+                  "intervention": "Mnemonics: 'C comes before S' - 90 before 180"
+                }
+              ],
+              "key_vocabulary": ["supplementary", "complementary", "vertical angles", "adjacent angles"]
+            },
+            "7.G.B.6": {
+              "description": "Solve problems involving area, surface area, volume of 2D and 3D shapes",
+              "topics": ["area problems", "surface area problems", "volume problems"],
+              "prerequisites": ["6.G all standards", "7.G.B.4"],
+              "key_vocabulary": ["area", "surface area", "volume"]
+            }
+          }
+        },
+        "statistics_probability": {
+          "code": "7.SP",
+          "standards": {
+            "7.SP.A.1": {
+              "description": "Understand statistics uses sampling to learn about population",
+              "topics": ["sampling", "population", "representative sample"],
+              "prerequisites": ["6.SP all standards"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Bigger sample always better, regardless of how selected",
+                  "diagnosis": "Student doesn't consider bias in sampling method",
+                  "intervention": "Explore biased samples, discuss representative vs. convenient"
+                }
+              ],
+              "key_vocabulary": ["population", "sample", "representative", "random sample"]
+            },
+            "7.SP.A.2": {
+              "description": "Use data from random sample to draw inferences about population",
+              "topics": ["inference from samples", "predicting population characteristics"],
+              "prerequisites": ["7.SP.A.1"],
+              "key_vocabulary": ["inference", "generalize", "estimate"]
+            },
+            "7.SP.B.3": {
+              "description": "Compare two populations using measures of center and variability",
+              "topics": ["comparing data sets", "overlap in distributions"],
+              "prerequisites": ["6.SP.B.5", "7.SP.A.2"],
+              "key_vocabulary": ["mean", "median", "mean absolute deviation", "overlap"]
+            },
+            "7.SP.B.4": {
+              "description": "Compare two populations using measures from random samples",
+              "topics": ["comparative inference", "difference in means"],
+              "prerequisites": ["7.SP.B.3"],
+              "key_vocabulary": ["variation", "significant difference"]
+            },
+            "7.SP.C.5": {
+              "description": "Understand probability as number between 0 and 1",
+              "topics": ["probability scale", "likelihood"],
+              "prerequisites": ["fraction/decimal/percent understanding"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Probability can be greater than 1 or negative",
+                  "diagnosis": "Student gives probability as 1.5 or -0.3",
+                  "intervention": "Emphasize 0-1 range, connect to percent (0-100%)"
+                }
+              ],
+              "key_vocabulary": ["probability", "likely", "unlikely", "certain", "impossible"]
+            },
+            "7.SP.C.6": {
+              "description": "Approximate probability through experiments (relative frequency)",
+              "topics": ["experimental probability", "relative frequency", "long-run behavior"],
+              "prerequisites": ["7.SP.C.5"],
+              "key_vocabulary": ["experimental probability", "relative frequency", "trial"]
+            },
+            "7.SP.C.7": {
+              "description": "Develop probability models",
+              "topics": ["theoretical probability", "probability models", "uniform vs. non-uniform"],
+              "prerequisites": ["7.SP.C.6"],
+              "key_vocabulary": ["theoretical probability", "probability model", "outcome", "event"]
+            },
+            "7.SP.C.8": {
+              "description": "Find probabilities of compound events",
+              "topics": ["compound events", "sample space", "tree diagrams", "organized lists"],
+              "prerequisites": ["7.SP.C.7"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Adding probabilities for 'and' instead of multiplying",
+                  "diagnosis": "For P(A and B), student adds instead of multiplies for independent events",
+                  "intervention": "Use tree diagrams, visualize sample space"
+                }
+              ],
+              "key_vocabulary": ["compound event", "sample space", "simulation"]
+            }
+          }
+        }
+      }
+    },
+
+    "grade_8": {
+      "domains": {
+        "number_system": {
+          "code": "8.NS",
+          "standards": {
+            "8.NS.A.1": {
+              "description": "Know irrational numbers exist, approximate them with rationals",
+              "topics": ["irrational numbers", "rational vs. irrational", "decimal expansion"],
+              "prerequisites": ["7.NS.A.2d (terminating/repeating decimals)"],
+              "common_misconceptions": [
+                {
+                  "misconception": "All decimals are rational",
+                  "diagnosis": "Student thinks π = 3.14 exactly",
+                  "intervention": "Explore non-repeating, non-terminating decimals"
+                },
+                {
+                  "misconception": "√2 can be written as exact fraction",
+                  "diagnosis": "Student tries to find fraction equal to √2",
+                  "intervention": "Historical proof, calculator exploration"
+                }
+              ],
+              "key_vocabulary": ["rational number", "irrational number", "decimal expansion"]
+            },
+            "8.NS.A.2": {
+              "description": "Use rational approximations of irrational numbers",
+              "topics": ["approximating irrationals", "comparing rational and irrational numbers"],
+              "prerequisites": ["8.NS.A.1"],
+              "key_vocabulary": ["approximate", "estimate", "number line"]
+            }
+          }
+        },
+        "expressions_equations": {
+          "code": "8.EE",
+          "standards": {
+            "8.EE.A.1": {
+              "description": "Know and apply properties of integer exponents",
+              "topics": ["exponent properties", "negative exponents", "zero exponent"],
+              "prerequisites": ["6.EE.A.1", "integer operations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Negative exponent makes number negative",
+                  "diagnosis": "Student says 2⁻³ = -8 instead of 1/8",
+                  "intervention": "Pattern exploration: 2³, 2², 2¹, 2⁰, 2⁻¹..."
+                },
+                {
+                  "misconception": "Adding exponents when multiplying bases",
+                  "diagnosis": "Student says 2³ × 3² = 5⁵",
+                  "intervention": "Expand to show why bases must be same"
+                }
+              ],
+              "key_vocabulary": ["base", "exponent", "power", "property"]
+            },
+            "8.EE.A.2": {
+              "description": "Use square root and cube root symbols, evaluate roots",
+              "topics": ["square roots", "cube roots", "perfect squares", "perfect cubes"],
+              "prerequisites": ["exponent understanding", "multiplication facts"],
+              "common_misconceptions": [
+                {
+                  "misconception": "√25 = 12.5 (dividing by 2 instead of finding root)",
+                  "diagnosis": "Student divides by 2 for square root",
+                  "intervention": "Connect to inverse of squaring, 'what times itself = 25?'"
+                },
+                {
+                  "misconception": "Square root of negative exists in reals",
+                  "diagnosis": "Student tries to find √-9",
+                  "intervention": "Explore: no real number times itself = negative"
+                }
+              ],
+              "key_vocabulary": ["square root", "cube root", "perfect square", "perfect cube", "radical"]
+            },
+            "8.EE.A.3": {
+              "description": "Use scientific notation to estimate very large/small quantities",
+              "topics": ["scientific notation", "comparing in scientific notation"],
+              "prerequisites": ["8.EE.A.1", "place value understanding"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Larger exponent always means larger number",
+                  "diagnosis": "Student says 3×10⁻² > 5×10⁻³ because -2 > -3",
+                  "intervention": "Convert to standard form to compare, number line"
+                }
+              ],
+              "key_vocabulary": ["scientific notation", "order of magnitude"]
+            },
+            "8.EE.A.4": {
+              "description": "Perform operations with scientific notation",
+              "topics": ["adding/subtracting in scientific notation", "multiplying/dividing in scientific notation"],
+              "prerequisites": ["8.EE.A.3", "8.EE.A.1"],
+              "key_vocabulary": ["scientific notation", "exponent rules"]
+            },
+            "8.EE.B.5": {
+              "description": "Graph proportional relationships, interpret unit rate as slope",
+              "topics": ["slope as unit rate", "graphing proportions", "similar triangles and slope"],
+              "prerequisites": ["7.RP.A.2", "coordinate graphing"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Slope and y-intercept confused",
+                  "diagnosis": "Student identifies y-intercept as slope",
+                  "intervention": "Emphasize slope = steepness = rise/run"
+                }
+              ],
+              "key_vocabulary": ["slope", "unit rate", "proportional", "origin"]
+            },
+            "8.EE.B.6": {
+              "description": "Use similar triangles to explain slope consistency, derive y=mx and y=mx+b",
+              "topics": ["slope from similar triangles", "y=mx", "y=mx+b"],
+              "prerequisites": ["8.EE.B.5", "similar figures understanding"],
+              "key_vocabulary": ["slope", "y-intercept", "linear equation"]
+            },
+            "8.EE.C.7": {
+              "description": "Solve linear equations in one variable",
+              "sub_standards": {
+                "8.EE.C.7a": "Recognize one solution, no solution, or infinitely many solutions",
+                "8.EE.C.7b": "Solve with rational coefficients, use distributive property, collect like terms"
+              },
+              "topics": ["linear equations", "multi-step equations", "special cases"],
+              "prerequisites": ["7.EE.B.4", "distributive property"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Equations must have exactly one solution",
+                  "diagnosis": "Student can't interpret 2=2 or 3=5 as result",
+                  "intervention": "Explore identity equations and contradictions"
+                },
+                {
+                  "misconception": "Variables on both sides means no solution",
+                  "diagnosis": "Student gives up when seeing 3x+2=x+8",
+                  "intervention": "Practice 'gathering variables on one side'"
+                }
+              ],
+              "key_vocabulary": ["linear equation", "no solution", "infinitely many solutions", "identity"]
+            },
+            "8.EE.C.8": {
+              "description": "Analyze and solve systems of linear equations",
+              "sub_standards": {
+                "8.EE.C.8a": "Understand solutions as intersection points",
+                "8.EE.C.8b": "Solve systems algebraically and by graphing",
+                "8.EE.C.8c": "Solve real-world problems with systems"
+              },
+              "topics": ["systems of equations", "solving by graphing", "solving algebraically", "substitution", "elimination"],
+              "prerequisites": ["8.EE.C.7", "graphing linear equations"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Parallel lines have one solution",
+                  "diagnosis": "Student expects all systems to have intersection",
+                  "intervention": "Graph parallel lines, discuss 'no solution' meaning"
+                },
+                {
+                  "misconception": "Substitution works with any variable regardless of simplicity",
+                  "diagnosis": "Student makes errors with complex substitution",
+                  "intervention": "Teach choosing 'easiest' variable to isolate"
+                }
+              ],
+              "key_vocabulary": ["system of equations", "solution", "intersection", "substitution", "elimination"]
+            }
+          }
+        },
+        "functions": {
+          "code": "8.F",
+          "standards": {
+            "8.F.A.1": {
+              "description": "Understand function assigns exactly one output to each input",
+              "topics": ["function definition", "function notation", "input/output"],
+              "prerequisites": ["6.EE.C.9", "understanding of variables"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Function must be formula",
+                  "diagnosis": "Student doesn't recognize table or graph as function",
+                  "intervention": "Explore multiple representations of same function"
+                },
+                {
+                  "misconception": "Same output for different inputs means 'not a function'",
+                  "diagnosis": "Student says f(1)=3 and f(2)=3 can't be a function",
+                  "intervention": "Emphasize 'each input ONE output' - outputs can repeat"
+                }
+              ],
+              "key_vocabulary": ["function", "input", "output", "domain", "range"]
+            },
+            "8.F.A.2": {
+              "description": "Compare functions represented differently (algebraically, graphically, table, description)",
+              "topics": ["comparing functions", "rate of change", "initial value"],
+              "prerequisites": ["8.F.A.1", "8.EE.B.5"],
+              "key_vocabulary": ["rate of change", "initial value", "compare"]
+            },
+            "8.F.A.3": {
+              "description": "Interpret equation y=mx+b as defining linear function",
+              "topics": ["linear vs. nonlinear functions", "y=mx+b as function"],
+              "prerequisites": ["8.EE.B.6", "8.F.A.1"],
+              "common_misconceptions": [
+                {
+                  "misconception": "All equations are linear functions",
+                  "diagnosis": "Student doesn't distinguish y=x² from y=2x",
+                  "intervention": "Graph both, compare shapes and growth patterns"
+                }
+              ],
+              "key_vocabulary": ["linear function", "nonlinear function", "slope", "y-intercept"]
+            },
+            "8.F.B.4": {
+              "description": "Construct function to model linear relationship",
+              "topics": ["modeling with linear functions", "finding slope and intercept from data"],
+              "prerequisites": ["8.F.A.3", "8.EE.B.6"],
+              "key_vocabulary": ["model", "linear relationship", "slope", "y-intercept"]
+            },
+            "8.F.B.5": {
+              "description": "Describe qualitative features of function from graph",
+              "topics": ["increasing/decreasing", "linear/nonlinear", "sketching from description"],
+              "prerequisites": ["8.F.A.2", "8.F.A.3"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing the function with its graph",
+                  "diagnosis": "Student says 'the function goes up' instead of 'as x increases, y increases'",
+                  "intervention": "Practice precise language about function behavior"
+                }
+              ],
+              "key_vocabulary": ["increasing", "decreasing", "positive", "negative", "linear", "nonlinear"]
+            }
+          }
+        },
+        "geometry": {
+          "code": "8.G",
+          "standards": {
+            "8.G.A.1": {
+              "description": "Verify properties of rotations, reflections, translations experimentally",
+              "topics": ["transformations", "rotations", "reflections", "translations"],
+              "prerequisites": ["coordinate graphing", "angle measurement"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Rotation always around origin",
+                  "diagnosis": "Student can't rotate around other points",
+                  "intervention": "Practice with various centers of rotation"
+                }
+              ],
+              "key_vocabulary": ["rotation", "reflection", "translation", "transformation"]
+            },
+            "8.G.A.2": {
+              "description": "Understand congruence through transformations",
+              "topics": ["congruence", "rigid transformations", "sequences of transformations"],
+              "prerequisites": ["8.G.A.1"],
+              "key_vocabulary": ["congruent", "rigid transformation", "sequence"]
+            },
+            "8.G.A.3": {
+              "description": "Describe effect of dilations, translations, rotations, reflections on 2D figures with coordinates",
+              "topics": ["coordinate transformations", "dilations", "effect on coordinates"],
+              "prerequisites": ["8.G.A.1", "8.G.A.2"],
+              "key_vocabulary": ["dilation", "scale factor", "coordinate rules"]
+            },
+            "8.G.A.4": {
+              "description": "Understand similarity through transformations",
+              "topics": ["similarity", "dilations and similarity", "similar figures"],
+              "prerequisites": ["8.G.A.3", "7.G.A.1 (scale)"],
+              "key_vocabulary": ["similar", "dilation", "scale factor", "corresponding"]
+            },
+            "8.G.A.5": {
+              "description": "Use informal arguments to establish angle facts",
+              "topics": ["angle sum of triangle", "exterior angles", "parallel lines and transversals", "angle-angle similarity"],
+              "prerequisites": ["7.G.B.5", "understanding of parallel lines"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Exterior angle = adjacent interior angle",
+                  "diagnosis": "Student confuses exterior angle relationships",
+                  "intervention": "Draw and measure, establish exterior angle theorem"
+                }
+              ],
+              "key_vocabulary": ["exterior angle", "remote interior angles", "parallel lines", "transversal", "alternate interior angles"]
+            },
+            "8.G.B.6": {
+              "description": "Explain proof of Pythagorean Theorem and its converse",
+              "topics": ["Pythagorean Theorem", "proof", "converse"],
+              "prerequisites": ["area of squares", "right triangle understanding"],
+              "common_misconceptions": [
+                {
+                  "misconception": "a² + b² = c² works for any triangle",
+                  "diagnosis": "Student applies to non-right triangles",
+                  "intervention": "Emphasize 'right triangle only', test with non-right triangles"
+                },
+                {
+                  "misconception": "c is always the longest side regardless of labeling",
+                  "diagnosis": "Student doesn't identify hypotenuse correctly",
+                  "intervention": "'c is the hypotenuse - across from the right angle'"
+                }
+              ],
+              "key_vocabulary": ["Pythagorean Theorem", "hypotenuse", "leg", "right triangle"]
+            },
+            "8.G.B.7": {
+              "description": "Apply Pythagorean Theorem to find unknown side lengths",
+              "topics": ["using Pythagorean Theorem", "2D applications", "3D applications"],
+              "prerequisites": ["8.G.B.6", "8.EE.A.2 (square roots)"],
+              "key_vocabulary": ["leg", "hypotenuse", "distance"]
+            },
+            "8.G.B.8": {
+              "description": "Apply Pythagorean Theorem to find distance in coordinate system",
+              "topics": ["distance formula", "coordinate distance"],
+              "prerequisites": ["8.G.B.7", "coordinate graphing"],
+              "key_vocabulary": ["distance formula", "coordinate plane"]
+            },
+            "8.G.C.9": {
+              "description": "Know volume formulas for cones, cylinders, spheres",
+              "topics": ["volume of cylinders", "volume of cones", "volume of spheres"],
+              "prerequisites": ["6.G.A.2 (volume of prisms)", "7.G.B.4 (circles)"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Confusing height with slant height for cones",
+                  "diagnosis": "Student uses slant height in V = (1/3)πr²h",
+                  "intervention": "Emphasize 'height' is perpendicular to base"
+                }
+              ],
+              "key_vocabulary": ["cylinder", "cone", "sphere", "radius", "height"]
+            }
+          }
+        },
+        "statistics_probability": {
+          "code": "8.SP",
+          "standards": {
+            "8.SP.A.1": {
+              "description": "Construct and interpret scatter plots for bivariate data",
+              "topics": ["scatter plots", "bivariate data", "patterns in scatter plots"],
+              "prerequisites": ["coordinate graphing", "7.SP concepts"],
+              "key_vocabulary": ["scatter plot", "bivariate data", "clustering", "outlier"]
+            },
+            "8.SP.A.2": {
+              "description": "Know that straight lines model relationships with linear association",
+              "topics": ["linear association", "line of best fit", "modeling data"],
+              "prerequisites": ["8.SP.A.1", "8.F.A.3"],
+              "common_misconceptions": [
+                {
+                  "misconception": "Line must pass through all points",
+                  "diagnosis": "Student tries to connect all dots",
+                  "intervention": "Discuss 'best fit' - minimize overall distance"
+                }
+              ],
+              "key_vocabulary": ["linear association", "line of best fit", "trend"]
+            },
+            "8.SP.A.3": {
+              "description": "Use equation of linear model to solve problems; interpret slope and intercept",
+              "topics": ["interpreting linear models", "slope in context", "y-intercept in context"],
+              "prerequisites": ["8.SP.A.2", "8.F.B.4"],
+              "key_vocabulary": ["slope", "y-intercept", "predict", "extrapolate"]
+            },
+            "8.SP.A.4": {
+              "description": "Understand patterns of association in bivariate categorical data",
+              "topics": ["two-way tables", "relative frequencies", "associations in categorical data"],
+              "prerequisites": ["7.SP concepts", "ratio reasoning"],
+              "key_vocabulary": ["two-way table", "relative frequency", "association"]
+            }
+          }
+        }
+      }
+    },
+
+    "learning_progressions": {
+      "ratios_to_functions": {
+        "description": "How ratio concepts build to linear functions",
+        "pathway": [
+          {"grade": 6, "concept": "Ratio language and equivalent ratios", "standard": "6.RP.A.1-3"},
+          {"grade": 7, "concept": "Proportional relationships and y=kx", "standard": "7.RP.A.2"},
+          {"grade": 8, "concept": "Slope as unit rate, y=mx", "standard": "8.EE.B.5-6"},
+          {"grade": 8, "concept": "Linear functions y=mx+b", "standard": "8.F.A.3"}
+        ]
+      },
+      "integers_to_real_numbers": {
+        "description": "How number understanding expands",
+        "pathway": [
+          {"grade": 6, "concept": "Introduction to integers, absolute value", "standard": "6.NS.C.5-8"},
+          {"grade": 7, "concept": "Operations with all rational numbers", "standard": "7.NS.A.1-3"},
+          {"grade": 8, "concept": "Irrational numbers, real number system", "standard": "8.NS.A.1-2"}
+        ]
+      },
+      "expressions_to_functions": {
+        "description": "How algebraic thinking develops",
+        "pathway": [
+          {"grade": 6, "concept": "Variables in expressions, one-step equations", "standard": "6.EE"},
+          {"grade": 7, "concept": "Two-step equations, equivalent expressions", "standard": "7.EE"},
+          {"grade": 8, "concept": "Multi-step equations, systems", "standard": "8.EE.C.7-8"},
+          {"grade": 8, "concept": "Function concept and linear functions", "standard": "8.F"}
+        ]
+      }
+    }
+  },
+
+  "ela_6_8": {
+    "grade_6": {
+      "strands": {
+        "reading_literature": {
+          "code": "RL.6",
+          "standards": {
+            "RL.6.1": {
+              "description": "Cite textual evidence to support analysis of explicit text and inferences",
+              "topics": ["citing evidence", "textual evidence", "inference"],
+              "prerequisites": ["identifying main ideas (grade 5)", "understanding explicit vs. implicit"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Copying entire sentences instead of selecting relevant evidence",
+                  "indicator": "Student quotes full paragraphs without connection to claim",
+                  "support_strategy": "Teach highlighting specific words/phrases, use evidence sentence starters"
+                },
+                {
+                  "difficulty": "Distinguishing inference from explicit information",
+                  "indicator": "Student only uses directly stated information",
+                  "support_strategy": "Model thinking aloud about 'reading between the lines'"
+                }
+              ],
+              "key_vocabulary": ["cite", "textual evidence", "explicit", "inference", "support"]
+            },
+            "RL.6.2": {
+              "description": "Determine theme/central idea, how conveyed through details; summarize without opinions",
+              "topics": ["theme", "central idea", "summary", "supporting details"],
+              "prerequisites": ["identifying main idea", "summarizing fiction"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Confusing theme with topic or plot",
+                  "indicator": "Student says theme is 'friendship' instead of 'true friends support each other'",
+                  "support_strategy": "Theme = message/lesson, not just what it's about"
+                },
+                {
+                  "difficulty": "Including opinions in summary",
+                  "indicator": "Student writes 'it was a good story because...'",
+                  "support_strategy": "Practice objective language, 'the author' vs. 'I think'"
+                }
+              ],
+              "key_vocabulary": ["theme", "central idea", "summary", "objective"]
+            },
+            "RL.6.3": {
+              "description": "Describe how plot unfolds and characters respond/change",
+              "topics": ["plot structure", "character development", "character response"],
+              "prerequisites": ["plot elements (exposition, rising action, etc.)", "character traits"],
+              "key_vocabulary": ["plot", "exposition", "rising action", "climax", "resolution", "character development"]
+            },
+            "RL.6.4": {
+              "description": "Determine word/phrase meanings including figurative and connotative; analyze word choice impact",
+              "topics": ["figurative language", "connotation", "word choice", "tone"],
+              "prerequisites": ["basic figurative language (simile, metaphor)", "context clues"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Taking figurative language literally",
+                  "indicator": "Student interprets 'heart of gold' as actual gold",
+                  "support_strategy": "Build figurative language recognition, ask 'does this make literal sense?'"
+                }
+              ],
+              "key_vocabulary": ["figurative", "connotative", "denotative", "tone", "mood"]
+            },
+            "RL.6.5": {
+              "description": "Analyze how sentence, chapter, scene, stanza fits into structure and contributes to development",
+              "topics": ["text structure", "purpose of structural elements"],
+              "prerequisites": ["basic text structures", "paragraph purpose"],
+              "key_vocabulary": ["structure", "stanza", "scene", "chapter", "contribute"]
+            },
+            "RL.6.6": {
+              "description": "Explain how author develops point of view of narrator/speaker",
+              "topics": ["point of view", "narrator perspective", "speaker in poetry"],
+              "prerequisites": ["first/third person point of view"],
+              "key_vocabulary": ["point of view", "narrator", "speaker", "perspective"]
+            },
+            "RL.6.7": {
+              "description": "Compare/contrast reading experience to audio, video, or live version",
+              "topics": ["multimedia comparison", "medium analysis"],
+              "prerequisites": ["understanding of different media forms"],
+              "key_vocabulary": ["medium", "adaptation", "contrast"]
+            },
+            "RL.6.9": {
+              "description": "Compare/contrast texts in different forms/genres on similar themes",
+              "topics": ["genre comparison", "theme across texts"],
+              "prerequisites": ["understanding of genres", "theme identification"],
+              "key_vocabulary": ["genre", "form", "approach"]
+            },
+            "RL.6.10": {
+              "description": "Read and comprehend literature in grades 6-8 complexity band",
+              "topics": ["reading stamina", "text complexity"],
+              "prerequisites": ["grade 5 reading proficiency"],
+              "key_vocabulary": ["complexity", "proficiency"]
+            }
+          }
+        },
+        "reading_informational": {
+          "code": "RI.6",
+          "standards": {
+            "RI.6.1": {
+              "description": "Cite textual evidence to support analysis",
+              "topics": ["citing evidence in informational text", "analysis of nonfiction"],
+              "prerequisites": ["identifying main ideas in nonfiction", "evidence gathering"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Finding evidence in dense informational text",
+                  "indicator": "Student struggles to locate relevant information",
+                  "support_strategy": "Teach annotation strategies, use graphic organizers"
+                }
+              ],
+              "key_vocabulary": ["cite", "evidence", "analysis", "informational text"]
+            },
+            "RI.6.2": {
+              "description": "Determine central idea, how conveyed through details; provide objective summary",
+              "topics": ["central idea", "supporting details", "objective summary"],
+              "prerequisites": ["main idea identification", "summarizing nonfiction"],
+              "key_vocabulary": ["central idea", "summary", "objective", "details"]
+            },
+            "RI.6.3": {
+              "description": "Analyze how key individual, event, or idea is introduced, illustrated, elaborated",
+              "topics": ["text development", "elaboration techniques"],
+              "prerequisites": ["understanding of examples, anecdotes"],
+              "key_vocabulary": ["introduce", "illustrate", "elaborate", "anecdote"]
+            },
+            "RI.6.4": {
+              "description": "Determine meaning of words including figurative, connotative, technical meanings",
+              "topics": ["technical vocabulary", "domain-specific words", "context clues"],
+              "prerequisites": ["context clue strategies", "basic technical vocabulary"],
+              "key_vocabulary": ["technical", "domain-specific", "connotative"]
+            },
+            "RI.6.5": {
+              "description": "Analyze how sentence, paragraph, chapter, section fits into structure",
+              "topics": ["text structure", "organizational patterns", "section purpose"],
+              "prerequisites": ["basic text structures (cause/effect, compare/contrast, etc.)"],
+              "key_vocabulary": ["structure", "organization", "section"]
+            },
+            "RI.6.6": {
+              "description": "Determine author's point of view or purpose, explain how conveyed",
+              "topics": ["author's purpose", "point of view in nonfiction", "author's perspective"],
+              "prerequisites": ["basic author's purpose (inform, persuade, entertain)"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Distinguishing author's view from facts presented",
+                  "indicator": "Student can't identify when author is expressing opinion",
+                  "support_strategy": "Teach signal words for opinion, practice identifying perspective"
+                }
+              ],
+              "key_vocabulary": ["author's purpose", "point of view", "convey"]
+            },
+            "RI.6.7": {
+              "description": "Integrate information from different media/formats",
+              "topics": ["multimedia integration", "synthesizing information"],
+              "prerequisites": ["reading charts, graphs, diagrams"],
+              "key_vocabulary": ["integrate", "format", "visual", "quantitative"]
+            },
+            "RI.6.8": {
+              "description": "Trace and evaluate argument, distinguish supported from unsupported claims",
+              "topics": ["argument evaluation", "claims and evidence", "reasoning"],
+              "prerequisites": ["understanding of argument structure"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Accepting all claims as equally valid",
+                  "indicator": "Student doesn't evaluate evidence quality",
+                  "support_strategy": "Teach criteria for evaluating evidence, practice with examples"
+                }
+              ],
+              "key_vocabulary": ["argument", "claim", "evidence", "reasoning", "evaluate"]
+            },
+            "RI.6.9": {
+              "description": "Compare/contrast one author's presentation with another on same events",
+              "topics": ["comparing sources", "author perspective comparison"],
+              "prerequisites": ["comparing texts", "identifying perspective"],
+              "key_vocabulary": ["compare", "contrast", "presentation", "perspective"]
+            }
+          }
+        },
+        "writing": {
+          "code": "W.6",
+          "standards": {
+            "W.6.1": {
+              "description": "Write arguments to support claims with clear reasons and relevant evidence",
+              "topics": ["argumentative writing", "claims", "reasons", "evidence"],
+              "prerequisites": ["opinion writing", "paragraph structure"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Distinguishing claim from reason from evidence",
+                  "indicator": "Student mixes up structural elements",
+                  "support_strategy": "Use color coding, graphic organizers for argument structure"
+                },
+                {
+                  "difficulty": "Providing relevant evidence",
+                  "indicator": "Evidence doesn't connect to claim",
+                  "support_strategy": "Practice selecting and explaining evidence relevance"
+                }
+              ],
+              "key_vocabulary": ["argument", "claim", "reason", "evidence", "counterclaim"]
+            },
+            "W.6.2": {
+              "description": "Write informative/explanatory texts to examine a topic",
+              "topics": ["informative writing", "explanatory writing", "organization"],
+              "prerequisites": ["report writing", "paragraph development"],
+              "key_vocabulary": ["informative", "explanatory", "topic", "facts", "details", "transitions"]
+            },
+            "W.6.3": {
+              "description": "Write narratives with effective technique, relevant details, well-structured sequences",
+              "topics": ["narrative writing", "plot development", "descriptive details"],
+              "prerequisites": ["story writing", "sequence of events"],
+              "key_vocabulary": ["narrative", "dialogue", "pacing", "description", "sensory details"]
+            },
+            "W.6.4": {
+              "description": "Produce clear, coherent writing appropriate to task, purpose, audience",
+              "topics": ["writing process", "audience awareness", "purpose"],
+              "prerequisites": ["understanding of writing purposes"],
+              "key_vocabulary": ["coherent", "task", "purpose", "audience"]
+            },
+            "W.6.5": {
+              "description": "Develop writing by planning, revising, editing, rewriting",
+              "topics": ["writing process", "revision", "editing"],
+              "prerequisites": ["basic revision strategies"],
+              "key_vocabulary": ["revise", "edit", "rewrite", "draft"]
+            },
+            "W.6.6": {
+              "description": "Use technology to produce and publish writing",
+              "topics": ["digital writing", "publishing", "collaboration"],
+              "prerequisites": ["basic keyboarding", "word processing"],
+              "key_vocabulary": ["publish", "collaborate", "digital"]
+            },
+            "W.6.7": {
+              "description": "Conduct short research projects from several sources",
+              "topics": ["research", "source use", "focus questions"],
+              "prerequisites": ["basic research skills", "using sources"],
+              "key_vocabulary": ["research", "source", "focus"]
+            },
+            "W.6.8": {
+              "description": "Gather relevant information, assess credibility, quote/paraphrase, avoid plagiarism",
+              "topics": ["credibility assessment", "quoting", "paraphrasing", "plagiarism"],
+              "prerequisites": ["note-taking", "source use"],
+              "common_difficulties": [
+                {
+                  "difficulty": "Understanding plagiarism",
+                  "indicator": "Student copies without attribution",
+                  "support_strategy": "Explicit instruction on plagiarism, practice paraphrasing"
+                }
+              ],
+              "key_vocabulary": ["credibility", "quote", "paraphrase", "plagiarism", "bibliographic"]
+            },
+            "W.6.9": {
+              "description": "Draw evidence from texts to support analysis and research",
+              "topics": ["text-based evidence", "literary analysis", "research writing"],
+              "prerequisites": ["evidence gathering", "analysis writing"],
+              "key_vocabulary": ["evidence", "analysis", "support"]
+            },
+            "W.6.10": {
+              "description": "Write routinely over extended and shorter time frames",
+              "topics": ["writing fluency", "writing stamina"],
+              "prerequisites": ["regular writing practice"],
+              "key_vocabulary": ["routine", "extended", "reflection"]
+            }
+          }
+        },
+        "speaking_listening": {
+          "code": "SL.6",
+          "standards": {
+            "SL.6.1": {
+              "description": "Engage in collaborative discussions on grade 6 topics",
+              "topics": ["discussion skills", "collaboration", "building on ideas"],
+              "prerequisites": ["basic discussion participation"],
+              "key_vocabulary": ["collaborate", "discussion", "respond", "elaborate"]
+            },
+            "SL.6.2": {
+              "description": "Interpret information in diverse media/formats",
+              "topics": ["multimedia interpretation", "evaluating information"],
+              "prerequisites": ["reading visual information"],
+              "key_vocabulary": ["interpret", "evaluate", "credibility"]
+            },
+            "SL.6.3": {
+              "description": "Delineate speaker's argument and claims, evaluate reasoning",
+              "topics": ["evaluating arguments", "listening skills"],
+              "prerequisites": ["identifying arguments"],
+              "key_vocabulary": ["delineate", "evaluate", "reasoning", "evidence"]
+            },
+            "SL.6.4": {
+              "description": "Present claims with logical sequence and relevant descriptions/facts",
+              "topics": ["oral presentation", "logical organization"],
+              "prerequisites": ["basic presentation skills"],
+              "key_vocabulary": ["present", "sequence", "description"]
+            },
+            "SL.6.5": {
+              "description": "Include multimedia in presentations",
+              "topics": ["multimedia presentations"],
+              "prerequisites": ["basic technology use"],
+              "key_vocabulary": ["multimedia", "visual display"]
+            },
+            "SL.6.6": {
+              "description": "Adapt speech to variety of contexts",
+              "topics": ["formal vs. informal language", "audience adaptation"],
+              "prerequisites": ["understanding of formal/informal language"],
+              "key_vocabulary": ["formal", "informal", "adapt"]
+            }
+          }
+        },
+        "language": {
+          "code": "L.6",
+          "standards": {
+            "L.6.1": {
+              "description": "Demonstrate command of standard English grammar",
+              "topics": ["pronouns", "pronoun case", "intensive pronouns", "sentence patterns"],
+              "prerequisites": ["basic grammar", "sentence structure"],
+              "key_vocabulary": ["subjective", "objective", "possessive", "intensive pronoun"]
+            },
+            "L.6.2": {
+              "description": "Demonstrate command of punctuation, spelling",
+              "topics": ["punctuation", "spelling", "commas"],
+              "prerequisites": ["basic punctuation"],
+              "key_vocabulary": ["punctuation", "comma", "parentheses", "dashes"]
+            },
+            "L.6.3": {
+              "description": "Use knowledge of language for effectiveness",
+              "topics": ["sentence variety", "style", "consistency"],
+              "prerequisites": ["sentence construction"],
+              "key_vocabulary": ["vary", "style", "maintain"]
+            },
+            "L.6.4": {
+              "description": "Determine meaning of unknown words",
+              "topics": ["context clues", "affixes", "roots", "reference materials"],
+              "prerequisites": ["basic context clue strategies"],
+              "key_vocabulary": ["context", "affix", "root", "reference"]
+            },
+            "L.6.5": {
+              "description": "Demonstrate understanding of figurative language and word relationships",
+              "topics": ["figurative language", "personification", "connotation/denotation"],
+              "prerequisites": ["basic figurative language"],
+              "key_vocabulary": ["figurative", "personification", "connotation", "denotation"]
+            },
+            "L.6.6": {
+              "description": "Acquire and use grade-appropriate vocabulary",
+              "topics": ["academic vocabulary", "domain-specific vocabulary"],
+              "prerequisites": ["vocabulary development"],
+              "key_vocabulary": ["academic vocabulary", "domain-specific"]
+            }
+          }
+        }
+      }
+    },
+
+    "grade_7": {
+      "progression_from_6": {
+        "reading": "More complex inference, multiple central ideas, compare across texts",
+        "writing": "Acknowledge alternate claims in argument, more sophisticated organization",
+        "speaking_listening": "Track multiple speakers, present findings with visual displays",
+        "language": "More complex sentence structures, nuanced word meanings"
+      },
+      "key_standards": {
+        "RL.7.1": "Cite SEVERAL pieces of textual evidence (vs. just 'cite' in grade 6)",
+        "RL.7.2": "Analyze development of theme OVER COURSE OF TEXT",
+        "RI.7.8": "Assess whether reasoning is SOUND and evidence is RELEVANT AND SUFFICIENT",
+        "W.7.1": "Acknowledge ALTERNATE OR OPPOSING claims"
+      }
+    },
+
+    "grade_8": {
+      "progression_from_7": {
+        "reading": "Most strongly supporting evidence, central idea development and relationship to supporting ideas",
+        "writing": "Counterclaims in argument, more formal academic style",
+        "speaking_listening": "Evaluate speaker's point of view, reasoning, use of evidence",
+        "language": "Active/passive voice, verbals, more sophisticated punctuation"
+      },
+      "key_standards": {
+        "RL.8.1": "Cite evidence that MOST STRONGLY supports analysis",
+        "RI.8.2": "Central idea development INCLUDING RELATIONSHIP TO SUPPORTING IDEAS",
+        "RI.8.6": "Analyze how author ACKNOWLEDGES AND RESPONDS TO conflicting viewpoints",
+        "W.8.1": "Write arguments with CLAIMS, COUNTERCLAIMS, reasons, evidence"
+      }
+    },
+
+    "reading_difficulties": {
+      "common_patterns": [
+        {
+          "type": "Specific Word-Reading Difficulties (SWRD)",
+          "description": "Struggle with decoding despite adequate language comprehension",
+          "indicators": ["Slow, labored reading", "Frequent miscues", "Avoids reading aloud"],
+          "interventions": ["Explicit phonics instruction", "Fluency practice", "Morphology instruction"]
+        },
+        {
+          "type": "Specific Comprehension Difficulties (SCD)",
+          "description": "Adequate decoding but poor comprehension",
+          "indicators": ["Can read fluently but can't answer questions", "Lacks vocabulary", "Struggles with inference"],
+          "interventions": ["Vocabulary instruction", "Comprehension strategies", "Background knowledge building"]
+        },
+        {
+          "type": "Mixed Reading Difficulties (MRD)",
+          "description": "Both decoding and comprehension challenges",
+          "indicators": ["Slow reading AND poor comprehension"],
+          "interventions": ["Multi-component intervention", "Differentiated based on primary deficit"]
+        }
+      ],
+      "at_promise_considerations": [
+        "Build background knowledge before reading",
+        "Pre-teach vocabulary",
+        "Use high-interest, accessible texts",
+        "Provide audio support when appropriate",
+        "Focus on meaning-making, not just accuracy",
+        "Use collaborative discussion structures"
+      ]
+    }
+  },
+
+  "agent_usage_notes": {
+    "selecting_standards": {
+      "by_topic": "Use topic arrays within each standard to match user's requested topic to relevant standards",
+      "by_readiness": "If student is below grade level, look at prerequisites to identify gaps; if above, look at next grade's standards in same domain"
+    },
+    "using_misconceptions": {
+      "purpose": "Proactively address common errors when generating content",
+      "for_assessment": "Use diagnosis questions to identify if student holds misconception",
+      "for_intervention": "Use intervention strategies when misconception detected"
+    },
+    "learning_progressions": {
+      "for_remediation": "Trace back through progression to find prerequisite gaps",
+      "for_extension": "Follow progression forward for students ready for more"
+    },
+    "micro_lesson_structure_suggestions": {
+      "5_min": "Focus on single concept or skill, one example, one practice item",
+      "10_min": "Hook + direct instruction + 2-3 practice items + self-check",
+      "15_min": "Hook + direct instruction + guided practice + independent practice + wrap-up",
+      "20_min": "Full lesson arc with differentiated practice paths"
+    }
+  }
+}

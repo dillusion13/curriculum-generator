@@ -1,0 +1,1790 @@
+{
+  "metadata": {
+    "title": "California K-12 Standards - Enhanced Curriculum Agent Reference",
+    "version": "2.0",
+    "purpose": "Comprehensive standards reference with topic-level detail for curriculum generation",
+    "focus_grades": "6-8 (detailed), K-5 and 9-12 (summarized)",
+    "last_updated": "2026-01-15",
+    "sources": [
+      "Common Core State Standards for Mathematics",
+      "Common Core State Standards for ELA",
+      "CA Next Generation Science Standards",
+      "CA History-Social Science Framework",
+      "Smarter Balanced Achievement Level Descriptors",
+      "Research on student misconceptions and learning progressions"
+    ]
+  },
+
+  "math_6_8_detailed": {
+    "grade_6": {
+      "domains": {
+        "ratios_proportional_relationships": {
+          "cluster": "Understand ratio concepts and use ratio reasoning",
+          "standards": {
+            "6.RP.A.1": {
+              "description": "Understand the concept of a ratio and use ratio language to describe a ratio relationship between two quantities",
+              "key_skills": ["ratio language", "part-to-part", "part-to-whole"],
+              "prerequisites": ["5.NF multiplication/division of fractions", "understanding of multiplicative relationships"],
+              "common_misconceptions": [
+                "Confusing ratio with fraction (3:4 vs 3/4)",
+                "Adding instead of multiplying to find equivalent ratios",
+                "Treating ratio as subtraction (difference between quantities)"
+              ],
+              "intervention_strategies": [
+                "Use tape diagrams to show ratio relationships visually",
+                "Connect to real-world contexts (recipes, mixtures)",
+                "Explicitly contrast ratio notation with fraction notation"
+              ]
+            },
+            "6.RP.A.2": {
+              "description": "Understand the concept of a unit rate a/b associated with a ratio a:b with b ≠ 0",
+              "key_skills": ["unit rate calculation", "rate language", "per unit reasoning"],
+              "prerequisites": ["division fluency", "fraction division conceptual understanding"],
+              "common_misconceptions": [
+                "Dividing in wrong order (b/a instead of a/b)",
+                "Not understanding 'per' means division",
+                "Confusing rate with ratio"
+              ],
+              "intervention_strategies": [
+                "Use double number lines",
+                "Start with money contexts ($X per item)",
+                "Practice rate language explicitly"
+              ]
+            },
+            "6.RP.A.3": {
+              "description": "Use ratio and rate reasoning to solve real-world problems",
+              "substandards": {
+                "6.RP.A.3a": "Make tables of equivalent ratios, find missing values, plot on coordinate plane",
+                "6.RP.A.3b": "Solve unit rate problems (unit pricing, constant speed)",
+                "6.RP.A.3c": "Find percent of quantity as rate per 100",
+                "6.RP.A.3d": "Use ratio reasoning to convert measurement units"
+              },
+              "prerequisites": ["coordinate plane basics", "multiplication/division fluency", "fraction operations"],
+              "common_misconceptions": [
+                "Adding same number to both parts of ratio to scale",
+                "Percent confusion (30% = 30 not 0.30)",
+                "Cross-multiplication without understanding"
+              ],
+              "intervention_strategies": [
+                "Build tables systematically row by row",
+                "Use percent bars/grids",
+                "Connect percent to 'out of 100'"
+              ]
+            }
+          }
+        },
+        "number_system": {
+          "cluster_a": "Apply and extend previous understandings of multiplication and division",
+          "cluster_b": "Compute fluently with multi-digit numbers",
+          "cluster_c": "Apply and extend previous understandings of numbers to rational numbers",
+          "standards": {
+            "6.NS.A.1": {
+              "description": "Interpret and compute quotients of fractions, solve word problems with fraction division",
+              "prerequisites": ["fraction multiplication", "understanding division as 'how many groups'"],
+              "common_misconceptions": [
+                "Dividing numerators and denominators separately",
+                "Thinking division always makes smaller",
+                "Not knowing when to use fraction division in word problems"
+              ],
+              "intervention_strategies": [
+                "Use measurement model (how many 1/4s in 3?)",
+                "Visual fraction models before algorithm",
+                "Story problems with sharing contexts"
+              ]
+            },
+            "6.NS.B.2": {
+              "description": "Fluently divide multi-digit numbers using standard algorithm",
+              "prerequisites": ["multiplication facts", "place value understanding"],
+              "common_misconceptions": [
+                "Misaligning digits in quotient",
+                "Forgetting to bring down digits",
+                "Not checking with multiplication"
+              ]
+            },
+            "6.NS.B.3": {
+              "description": "Fluently add, subtract, multiply, divide multi-digit decimals",
+              "prerequisites": ["decimal place value", "whole number operations"],
+              "common_misconceptions": [
+                "Not aligning decimal points for addition/subtraction",
+                "Counting decimal places incorrectly in multiplication",
+                "Thinking 1.45 > 1.5 because 45 > 5"
+              ]
+            },
+            "6.NS.B.4": {
+              "description": "Find GCF and LCM, use distributive property",
+              "prerequisites": ["factors and multiples", "multiplication facts"],
+              "common_misconceptions": [
+                "Confusing GCF and LCM",
+                "Not finding ALL factors",
+                "Distributive property direction errors"
+              ]
+            },
+            "6.NS.C.5": {
+              "description": "Understand positive and negative numbers in real-world contexts",
+              "prerequisites": ["number line to zero", "opposite concept"],
+              "common_misconceptions": [
+                "Negative numbers are 'nothing' or don't exist",
+                "Zero is negative",
+                "Larger digit means larger negative (-9 > -2)"
+              ]
+            },
+            "6.NS.C.6": {
+              "description": "Understand rational number as point on number line",
+              "substandards": {
+                "6.NS.C.6a": "Recognize opposite signs of numbers as on opposite sides of 0",
+                "6.NS.C.6b": "Understand signs of coordinates in quadrants",
+                "6.NS.C.6c": "Find and position rational numbers on horizontal/vertical number lines"
+              }
+            },
+            "6.NS.C.7": {
+              "description": "Understand ordering and absolute value of rational numbers",
+              "common_misconceptions": [
+                "Confusing absolute value with 'making positive'",
+                "Thinking |-3| = -3",
+                "Ordering negatives incorrectly"
+              ]
+            },
+            "6.NS.C.8": {
+              "description": "Solve problems by graphing points in all four quadrants",
+              "prerequisites": ["coordinate plane in quadrant 1"]
+            }
+          }
+        },
+        "expressions_equations": {
+          "cluster_a": "Apply and extend previous understandings of arithmetic to algebraic expressions",
+          "cluster_b": "Reason about and solve one-variable equations and inequalities",
+          "cluster_c": "Represent and analyze quantitative relationships",
+          "standards": {
+            "6.EE.A.1": {
+              "description": "Write and evaluate numerical expressions involving whole-number exponents",
+              "prerequisites": ["multiplication fluency"],
+              "common_misconceptions": [
+                "Confusing 3² with 3×2",
+                "Adding exponents when multiplying base by exponent"
+              ]
+            },
+            "6.EE.A.2": {
+              "description": "Write, read, evaluate expressions with variables",
+              "substandards": {
+                "6.EE.A.2a": "Write expressions that record operations",
+                "6.EE.A.2b": "Identify parts of expression (term, factor, coefficient)",
+                "6.EE.A.2c": "Evaluate expressions at specific values"
+              },
+              "common_misconceptions": [
+                "Variable means one specific unknown only",
+                "5x means 5 + x",
+                "Coefficient vs constant confusion"
+              ]
+            },
+            "6.EE.A.3": {
+              "description": "Apply properties of operations to generate equivalent expressions",
+              "prerequisites": ["distributive property with numbers"]
+            },
+            "6.EE.A.4": {
+              "description": "Identify when two expressions are equivalent",
+              "common_misconceptions": [
+                "Expressions must look the same to be equivalent",
+                "Not substituting values to test"
+              ]
+            },
+            "6.EE.B.5": {
+              "description": "Understand solving equation/inequality as finding values that make it true",
+              "prerequisites": ["understanding equality"]
+            },
+            "6.EE.B.6": {
+              "description": "Use variables to represent numbers in expressions",
+              "common_misconceptions": [
+                "Equals sign means 'the answer is'",
+                "Balance scale concept not understood"
+              ]
+            },
+            "6.EE.B.7": {
+              "description": "Solve real-world problems with equations x + p = q and px = q",
+              "prerequisites": ["inverse operations understanding"]
+            },
+            "6.EE.B.8": {
+              "description": "Write and represent inequalities, recognize infinite solutions",
+              "common_misconceptions": [
+                "Inequality has only one solution",
+                "Graphing direction confusion"
+              ]
+            },
+            "6.EE.C.9": {
+              "description": "Use variables for dependent and independent quantities, analyze relationships",
+              "prerequisites": ["input-output tables from grade 5"]
+            }
+          }
+        },
+        "geometry": {
+          "cluster": "Solve real-world problems involving area, surface area, and volume",
+          "standards": {
+            "6.G.A.1": {
+              "description": "Find area of triangles, quadrilaterals, polygons by composing/decomposing",
+              "prerequisites": ["rectangle area", "triangle identification"],
+              "common_misconceptions": [
+                "Confusing area and perimeter",
+                "Using slant height instead of perpendicular height for triangles",
+                "Not halving for triangle area"
+              ]
+            },
+            "6.G.A.2": {
+              "description": "Find volume of right rectangular prism with fractional edge lengths",
+              "prerequisites": ["whole number volume", "fraction multiplication"]
+            },
+            "6.G.A.3": {
+              "description": "Draw polygons in coordinate plane given vertices",
+              "prerequisites": ["coordinate plane plotting"]
+            },
+            "6.G.A.4": {
+              "description": "Represent 3D figures using nets, find surface area",
+              "common_misconceptions": [
+                "Confusing surface area with volume",
+                "Miscounting faces in nets",
+                "Not recognizing which faces match"
+              ]
+            }
+          }
+        },
+        "statistics_probability": {
+          "cluster_a": "Develop understanding of statistical variability",
+          "cluster_b": "Summarize and describe distributions",
+          "standards": {
+            "6.SP.A.1": "Recognize statistical question (anticipates variability)",
+            "6.SP.A.2": "Understand data set has distribution described by center, spread, shape",
+            "6.SP.A.3": "Recognize measures of center and variability summarize data",
+            "6.SP.B.4": "Display data in plots (dot plots, histograms, box plots)",
+            "6.SP.B.5": "Summarize data sets in relation to context"
+          }
+        }
+      }
+    },
+
+    "grade_7": {
+      "domains": {
+        "ratios_proportional_relationships": {
+          "cluster": "Analyze proportional relationships and use them to solve problems",
+          "standards": {
+            "7.RP.A.1": {
+              "description": "Compute unit rates associated with ratios of fractions",
+              "prerequisites": ["6.RP unit rates with whole numbers", "fraction division"],
+              "common_misconceptions": [
+                "Difficulty with complex fractions",
+                "Not recognizing fraction ÷ fraction as unit rate"
+              ]
+            },
+            "7.RP.A.2": {
+              "description": "Recognize and represent proportional relationships",
+              "substandards": {
+                "7.RP.A.2a": "Decide if two quantities are proportionally related",
+                "7.RP.A.2b": "Identify constant of proportionality (unit rate) in tables, graphs, equations, diagrams, verbal descriptions",
+                "7.RP.A.2c": "Represent proportional relationships with equations",
+                "7.RP.A.2d": "Explain meaning of points on graph of proportional relationship"
+              },
+              "prerequisites": ["6.RP equivalent ratios", "coordinate graphing"],
+              "common_misconceptions": [
+                "All linear relationships are proportional",
+                "Graphs that pass near origin are proportional",
+                "Constant rate of change = proportional (ignoring y-intercept)"
+              ],
+              "intervention_strategies": [
+                "Compare proportional vs non-proportional tables",
+                "Emphasize origin as defining feature",
+                "Use real contexts (direct variation vs initial fee + rate)"
+              ]
+            },
+            "7.RP.A.3": {
+              "description": "Use proportional relationships to solve multistep ratio and percent problems",
+              "applications": ["simple interest", "tax", "markups/markdowns", "gratuities", "commissions", "percent increase/decrease", "percent error"],
+              "prerequisites": ["6.RP percent as rate per 100"],
+              "common_misconceptions": [
+                "Adding percent to original (not multiplying)",
+                "Percent increase/decrease from wrong base",
+                "Confusing markup and margin"
+              ]
+            }
+          }
+        },
+        "number_system": {
+          "cluster": "Apply and extend operations with rational numbers",
+          "standards": {
+            "7.NS.A.1": {
+              "description": "Apply and extend addition and subtraction to rational numbers",
+              "substandards": {
+                "7.NS.A.1a": "Describe situations where opposite quantities combine to 0",
+                "7.NS.A.1b": "Understand p + q as distance |q| from p",
+                "7.NS.A.1c": "Understand subtraction as adding additive inverse",
+                "7.NS.A.1d": "Apply properties of operations to add/subtract rational numbers"
+              },
+              "prerequisites": ["6.NS positive/negative number understanding"],
+              "common_misconceptions": [
+                "Subtracting negatives: a - (-b) confusion",
+                "Double negative = positive without understanding",
+                "Always subtract smaller from larger"
+              ],
+              "intervention_strategies": [
+                "Number line jumps",
+                "Chip/counter models",
+                "Context (temperature, money, elevation)"
+              ]
+            },
+            "7.NS.A.2": {
+              "description": "Apply and extend multiplication and division to rational numbers",
+              "substandards": {
+                "7.NS.A.2a": "Understand multiplication extended to rationals (signs)",
+                "7.NS.A.2b": "Understand division extended to rationals",
+                "7.NS.A.2c": "Apply properties to multiply/divide rationals",
+                "7.NS.A.2d": "Convert rational numbers to decimals, know terminating/repeating"
+              },
+              "common_misconceptions": [
+                "Negative × negative = negative",
+                "Sign rules memorized without understanding",
+                "All fractions are terminating decimals"
+              ]
+            },
+            "7.NS.A.3": {
+              "description": "Solve real-world problems with all four operations on rational numbers"
+            }
+          }
+        },
+        "expressions_equations": {
+          "cluster_a": "Use properties of operations to generate equivalent expressions",
+          "cluster_b": "Solve real-life and mathematical problems using numerical and algebraic expressions and equations",
+          "standards": {
+            "7.EE.A.1": {
+              "description": "Apply properties to add, subtract, factor, expand linear expressions with rational coefficients",
+              "prerequisites": ["6.EE equivalent expressions", "rational number operations"],
+              "common_misconceptions": [
+                "Distributing to only first term",
+                "Sign errors when factoring",
+                "Combining unlike terms"
+              ]
+            },
+            "7.EE.A.2": {
+              "description": "Understand rewriting expressions shows relationships (e.g., a + 0.05a = 1.05a)",
+              "common_misconceptions": [
+                "Not seeing connection between forms",
+                "Percent increase as addition vs multiplication"
+              ]
+            },
+            "7.EE.B.3": {
+              "description": "Solve multistep real-world problems with positive and negative rationals",
+              "includes": "Mental computation, estimation, assessing reasonableness"
+            },
+            "7.EE.B.4": {
+              "description": "Use variables to represent quantities and construct equations/inequalities",
+              "substandards": {
+                "7.EE.B.4a": "Solve problems leading to equations px + q = r and p(x + q) = r",
+                "7.EE.B.4b": "Solve problems leading to inequalities px + q > r or px + q < r"
+              },
+              "prerequisites": ["6.EE one-step equations"],
+              "common_misconceptions": [
+                "Inverse operation errors with multiple steps",
+                "Not distributing before solving",
+                "Inequality sign flip with negative division"
+              ]
+            }
+          }
+        },
+        "geometry": {
+          "standards": {
+            "7.G.A.1": "Solve problems with scale drawings, compute lengths and areas",
+            "7.G.A.2": "Draw shapes with given conditions (triangles from three measures)",
+            "7.G.A.3": "Describe 2D figures from slicing 3D figures",
+            "7.G.B.4": "Know and use formulas for area and circumference of circles",
+            "7.G.B.5": "Use angle relationships to solve for unknown angles",
+            "7.G.B.6": "Solve real-world problems with area, volume, surface area"
+          }
+        },
+        "statistics_probability": {
+          "standards": {
+            "7.SP.A.1": "Understand statistics from random sample represent population",
+            "7.SP.A.2": "Use data from random sample to draw inferences about population",
+            "7.SP.B.3": "Assess visual overlap of two numerical data distributions",
+            "7.SP.B.4": "Use measures of center and variability to compare populations",
+            "7.SP.C.5": "Understand probability between 0 and 1",
+            "7.SP.C.6": "Approximate probability through experiments",
+            "7.SP.C.7": "Develop probability models",
+            "7.SP.C.8": "Find probabilities of compound events"
+          }
+        }
+      }
+    },
+
+    "grade_8": {
+      "domains": {
+        "number_system": {
+          "standards": {
+            "8.NS.A.1": {
+              "description": "Know numbers that are not rational are irrational; understand every number has decimal expansion",
+              "prerequisites": ["7.NS rational number operations"],
+              "common_misconceptions": [
+                "π = 3.14 exactly",
+                "All square roots are irrational",
+                "Irrational means 'not a number'"
+              ]
+            },
+            "8.NS.A.2": {
+              "description": "Use rational approximations of irrational numbers to compare and locate on number line",
+              "common_misconceptions": [
+                "√2 = 1.5",
+                "Can't estimate irrational numbers"
+              ]
+            }
+          }
+        },
+        "expressions_equations": {
+          "cluster_a": "Work with radicals and integer exponents",
+          "cluster_b": "Understand connections between proportional relationships, lines, and linear equations",
+          "cluster_c": "Analyze and solve linear equations and pairs of simultaneous linear equations",
+          "standards": {
+            "8.EE.A.1": {
+              "description": "Know and apply properties of integer exponents",
+              "prerequisites": ["6.EE whole number exponents"],
+              "common_misconceptions": [
+                "Negative exponent means negative number",
+                "Adding exponents when multiplying bases",
+                "Zero exponent is zero"
+              ]
+            },
+            "8.EE.A.2": {
+              "description": "Use square root and cube root symbols; evaluate perfect squares/cubes; know √2 is irrational"
+            },
+            "8.EE.A.3": {
+              "description": "Use numbers in scientific notation to estimate very large/small quantities"
+            },
+            "8.EE.A.4": {
+              "description": "Perform operations with numbers in scientific notation"
+            },
+            "8.EE.B.5": {
+              "description": "Graph proportional relationships; interpret unit rate as slope; compare representations",
+              "prerequisites": ["7.RP proportional relationships"]
+            },
+            "8.EE.B.6": {
+              "description": "Use similar triangles to explain slope constancy; derive y = mx and y = mx + b",
+              "common_misconceptions": [
+                "Slope changes between points",
+                "Rise/run order confusion",
+                "Negative slope confusion"
+              ]
+            },
+            "8.EE.C.7": {
+              "description": "Solve linear equations in one variable",
+              "substandards": {
+                "8.EE.C.7a": "Give examples of equations with one, infinite, or no solutions",
+                "8.EE.C.7b": "Solve equations with rational coefficients, distribution, combining like terms"
+              },
+              "prerequisites": ["7.EE two-step equations"],
+              "common_misconceptions": [
+                "Variables on both sides means no solution",
+                "All equations have exactly one solution",
+                "Distribution errors"
+              ]
+            },
+            "8.EE.C.8": {
+              "description": "Analyze and solve pairs of simultaneous linear equations",
+              "substandards": {
+                "8.EE.C.8a": "Understand solutions as intersection points",
+                "8.EE.C.8b": "Solve systems algebraically and estimate graphically",
+                "8.EE.C.8c": "Solve real-world problems with systems"
+              },
+              "common_misconceptions": [
+                "Parallel lines have one solution",
+                "Same line has no solution",
+                "Substitution vs elimination confusion"
+              ]
+            }
+          }
+        },
+        "functions": {
+          "cluster_a": "Define, evaluate, and compare functions",
+          "cluster_b": "Use functions to model relationships",
+          "standards": {
+            "8.F.A.1": {
+              "description": "Understand function as rule assigning exactly one output to each input",
+              "prerequisites": ["input-output understanding from earlier grades"],
+              "common_misconceptions": [
+                "Function means 'formula'",
+                "Vertical line test without understanding",
+                "x can have multiple y values"
+              ]
+            },
+            "8.F.A.2": {
+              "description": "Compare properties of functions represented differently (algebraically, graphically, tables, verbal)",
+              "common_misconceptions": [
+                "Same representation required for comparison",
+                "Not recognizing same function in different forms"
+              ]
+            },
+            "8.F.A.3": {
+              "description": "Interpret y = mx + b as linear; give examples of non-linear functions"
+            },
+            "8.F.B.4": {
+              "description": "Construct function to model linear relationship; determine rate of change and initial value",
+              "common_misconceptions": [
+                "Rate of change vs y-intercept confusion",
+                "Starting value = first y-value in table"
+              ]
+            },
+            "8.F.B.5": {
+              "description": "Describe qualitative functional relationship from graph; sketch from verbal description"
+            }
+          }
+        },
+        "geometry": {
+          "standards": {
+            "8.G.A.1": "Verify properties of rotations, reflections, translations",
+            "8.G.A.2": "Understand congruence through sequences of transformations",
+            "8.G.A.3": "Describe effect of dilations, translations, rotations, reflections on 2D figures using coordinates",
+            "8.G.A.4": "Understand similarity through sequences of transformations",
+            "8.G.A.5": "Use informal arguments for angle relationships",
+            "8.G.B.6": "Explain Pythagorean theorem proof and its converse",
+            "8.G.B.7": "Apply Pythagorean theorem for unknown side lengths",
+            "8.G.B.8": "Apply Pythagorean theorem to find distance between points",
+            "8.G.C.9": "Know formulas for volumes of cones, cylinders, spheres"
+          }
+        },
+        "statistics_probability": {
+          "standards": {
+            "8.SP.A.1": "Construct and interpret scatter plots for bivariate data",
+            "8.SP.A.2": "Know that straight lines model relationships with linear association",
+            "8.SP.A.3": "Use equation of linear model to solve problems; interpret slope and intercept",
+            "8.SP.A.4": "Understand patterns of association in bivariate categorical data using two-way tables"
+          }
+        }
+      }
+    },
+
+    "learning_progressions": {
+      "ratios_to_proportions_to_linear": {
+        "grade_6": "Ratio concepts, unit rates, equivalent ratios, percent as rate per 100",
+        "grade_7": "Proportional relationships, constant of proportionality, y = kx, multistep percent problems",
+        "grade_8": "Slope as rate of change, y = mx + b, comparing linear functions, systems of equations"
+      },
+      "operations_to_expressions_to_equations": {
+        "grade_6": "Evaluate expressions, one-step equations (x + p = q, px = q), inequalities with infinite solutions",
+        "grade_7": "Equivalent expressions with rationals, two-step equations (px + q = r), inequalities with graphs",
+        "grade_8": "Multi-step equations with distribution, equations with no/infinite solutions, systems of linear equations"
+      },
+      "integers_to_rationals_to_reals": {
+        "grade_6": "Positive and negative integers, rational numbers on number line, absolute value",
+        "grade_7": "Operations with all rational numbers, terminating and repeating decimals",
+        "grade_8": "Irrational numbers, real number system, approximating irrationals"
+      }
+    }
+  },
+
+  "ela_6_8_detailed": {
+    "grade_6": {
+      "reading_literature": {
+        "key_ideas_details": {
+          "RL.6.1": {
+            "description": "Cite textual evidence to support analysis of explicit and inferential meaning",
+            "prerequisites": ["identifying explicit information", "basic inference from 5th grade"],
+            "common_difficulties": [
+              "Distinguishing explicit from inferential",
+              "Finding relevant evidence vs any evidence",
+              "Not citing enough evidence"
+            ],
+            "intervention_strategies": [
+              "Annotation practice with color coding",
+              "Evidence sentence starters",
+              "Think-alouds modeling evidence selection"
+            ]
+          },
+          "RL.6.2": {
+            "description": "Determine theme or central idea and how it develops through details; summarize without opinions",
+            "prerequisites": ["identifying topic vs theme", "retelling"],
+            "common_difficulties": [
+              "Confusing topic with theme",
+              "Theme as one word vs statement",
+              "Including opinions in summary",
+              "Retelling vs summarizing"
+            ],
+            "intervention_strategies": [
+              "Theme vs topic sorting activities",
+              "Theme statement frames",
+              "Summary templates that exclude opinion language"
+            ]
+          },
+          "RL.6.3": {
+            "description": "Describe how plot unfolds and how characters respond/change toward resolution",
+            "prerequisites": ["plot elements", "character traits"],
+            "common_difficulties": [
+              "Describing events without analysis",
+              "Not connecting character change to plot",
+              "Missing cause-effect in plot"
+            ]
+          }
+        },
+        "craft_structure": {
+          "RL.6.4": "Determine meaning of words/phrases including figurative and connotative; analyze word choice impact",
+          "RL.6.5": "Analyze how sentence, chapter, scene, stanza fits into overall structure and contributes to theme/setting/plot",
+          "RL.6.6": "Explain how author develops point of view of narrator or speaker"
+        },
+        "integration_knowledge": {
+          "RL.6.7": "Compare/contrast reading story/drama/poem to audio, video, or live version",
+          "RL.6.9": "Compare/contrast texts in different forms/genres on similar themes"
+        },
+        "range_complexity": {
+          "RL.6.10": "Read and comprehend literature in grades 6-8 complexity band proficiently, with scaffolding at high end"
+        }
+      },
+      "reading_informational": {
+        "key_ideas_details": {
+          "RI.6.1": {
+            "description": "Cite textual evidence to support analysis of explicit and inferential meaning",
+            "same_skill_as": "RL.6.1",
+            "informational_specific": "May require more domain vocabulary"
+          },
+          "RI.6.2": {
+            "description": "Determine central idea and how conveyed through details; summarize without opinions",
+            "common_difficulties": [
+              "Central idea vs main topic",
+              "Identifying supporting details",
+              "Objective summary vs response"
+            ]
+          },
+          "RI.6.3": {
+            "description": "Analyze how key individual, event, or idea is introduced, illustrated, and elaborated",
+            "common_difficulties": [
+              "Not recognizing elaboration techniques",
+              "Missing structural signals"
+            ]
+          }
+        },
+        "craft_structure": {
+          "RI.6.4": "Determine meaning of words/phrases including figurative, connotative, and technical meanings",
+          "RI.6.5": "Analyze how sentence, paragraph, chapter, section fits into overall structure and contributes to ideas",
+          "RI.6.6": "Determine author's point of view or purpose and explain how conveyed"
+        },
+        "integration_knowledge": {
+          "RI.6.7": "Integrate information from different media/formats to develop coherent understanding",
+          "RI.6.8": {
+            "description": "Trace and evaluate argument and claims; distinguish supported from unsupported claims",
+            "common_difficulties": [
+              "Identifying claims vs facts",
+              "Evaluating evidence quality",
+              "Recognizing unsupported claims"
+            ]
+          },
+          "RI.6.9": "Compare/contrast one author's presentation with another's on same events"
+        }
+      },
+      "writing": {
+        "text_types": {
+          "W.6.1": {
+            "description": "Write arguments to support claims with clear reasons and relevant evidence",
+            "substandards": {
+              "W.6.1a": "Introduce claims, organize reasons and evidence clearly",
+              "W.6.1b": "Support claims with clear reasons and relevant evidence from credible sources",
+              "W.6.1c": "Use words, phrases, clauses to clarify relationships among claims and reasons",
+              "W.6.1d": "Establish and maintain formal style",
+              "W.6.1e": "Provide concluding statement that follows from argument"
+            },
+            "prerequisites": ["5th grade opinion writing"],
+            "common_difficulties": [
+              "Claim vs opinion vs fact",
+              "Organizing evidence logically",
+              "Maintaining formal tone",
+              "Weak conclusions"
+            ],
+            "intervention_strategies": [
+              "Claim-evidence-reasoning framework",
+              "Transition word banks",
+              "Peer review with checklist"
+            ]
+          },
+          "W.6.2": {
+            "description": "Write informative/explanatory texts to examine topic and convey ideas through organization and analysis",
+            "substandards": {
+              "W.6.2a": "Introduce topic; organize with definition, classification, comparison/contrast, cause/effect; include formatting and multimedia",
+              "W.6.2b": "Develop topic with relevant facts, definitions, details, quotations, examples",
+              "W.6.2c": "Use appropriate transitions to clarify relationships",
+              "W.6.2d": "Use precise language and domain-specific vocabulary",
+              "W.6.2e": "Establish and maintain formal style",
+              "W.6.2f": "Provide concluding statement that follows from information"
+            },
+            "common_difficulties": [
+              "Choosing organizational structure",
+              "Integrating sources",
+              "Domain vocabulary use",
+              "Transitions between ideas"
+            ]
+          },
+          "W.6.3": {
+            "description": "Write narratives with effective technique, descriptive details, and well-structured sequences",
+            "substandards": {
+              "W.6.3a": "Engage reader by establishing context, introducing narrator/characters, organizing sequence",
+              "W.6.3b": "Use narrative techniques: dialogue, pacing, description",
+              "W.6.3c": "Use transition words, phrases, clauses for sequence and shifts",
+              "W.6.3d": "Use precise words, descriptive details, sensory language",
+              "W.6.3e": "Provide conclusion that follows from narrated experiences"
+            }
+          }
+        },
+        "production_distribution": {
+          "W.6.4": "Produce clear, coherent writing appropriate to task, purpose, audience",
+          "W.6.5": "Develop and strengthen writing through planning, revising, editing, rewriting",
+          "W.6.6": "Use technology to produce and publish writing; demonstrate keyboarding skills"
+        },
+        "research": {
+          "W.6.7": "Conduct short research projects to answer question, drawing on several sources",
+          "W.6.8": "Gather relevant information from multiple sources; assess credibility; quote/paraphrase avoiding plagiarism",
+          "W.6.9": "Draw evidence from literary or informational texts to support analysis"
+        }
+      },
+      "speaking_listening": {
+        "SL.6.1": "Engage in collaborative discussions with preparation, following rules, posing/responding to questions",
+        "SL.6.2": "Interpret information from diverse media; explain how it contributes to topic",
+        "SL.6.3": "Delineate speaker's argument and claims, distinguishing supported from unsupported",
+        "SL.6.4": "Present claims and findings with appropriate eye contact, volume, pronunciation",
+        "SL.6.5": "Include multimedia in presentations",
+        "SL.6.6": "Adapt speech to context and task"
+      },
+      "language": {
+        "L.6.1": "Demonstrate command of grammar: pronouns (case, intensive, vague reference), sentence patterns",
+        "L.6.2": "Demonstrate command of punctuation, spelling",
+        "L.6.3": "Use knowledge of language for variety in sentences",
+        "L.6.4": "Determine word meaning using context, affixes, roots, reference materials",
+        "L.6.5": "Demonstrate understanding of figurative language, word relationships, nuances",
+        "L.6.6": "Acquire and use grade-appropriate academic and domain-specific vocabulary"
+      }
+    },
+
+    "grade_7": {
+      "reading_literature": {
+        "key_ideas_details": {
+          "RL.7.1": {
+            "description": "Cite SEVERAL pieces of textual evidence to support analysis",
+            "progression_from_6": "Quantity increases from 'cite' to 'cite several'"
+          },
+          "RL.7.2": {
+            "description": "Determine theme and analyze its development over course of text; provide objective summary",
+            "progression_from_6": "Adds 'analyze development'"
+          },
+          "RL.7.3": {
+            "description": "Analyze how particular elements of story/drama interact (setting shapes characters/plot)",
+            "progression_from_6": "Moves from 'describe' to 'analyze interactions'"
+          }
+        },
+        "craft_structure": {
+          "RL.7.4": "Determine meaning including figurative and connotative; analyze impact of rhymes and sound repetition",
+          "RL.7.5": "Analyze how drama's or poem's form/structure contributes to meaning",
+          "RL.7.6": "Analyze how author develops and contrasts points of view of different characters/narrators"
+        },
+        "integration_knowledge": {
+          "RL.7.7": "Compare/contrast written story, drama, poem to audio/filmed/staged/multimedia version",
+          "RL.7.9": "Compare/contrast fictional portrayal to historical account of same period"
+        }
+      },
+      "reading_informational": {
+        "key_ideas_details": {
+          "RI.7.1": "Cite several pieces of textual evidence to support analysis",
+          "RI.7.2": {
+            "description": "Determine TWO OR MORE central ideas and analyze development; provide objective summary",
+            "progression_from_6": "Multiple central ideas"
+          },
+          "RI.7.3": "Analyze interactions between individuals, events, ideas (how ideas influence individuals or vice versa)"
+        },
+        "craft_structure": {
+          "RI.7.4": "Determine meaning; analyze impact of specific word choice on meaning and tone",
+          "RI.7.5": "Analyze structure author uses; how major sections contribute to whole and to idea development",
+          "RI.7.6": "Determine author's point of view/purpose and analyze how author distinguishes position from others"
+        },
+        "integration_knowledge": {
+          "RI.7.7": "Compare/contrast text to audio, video, multimedia version",
+          "RI.7.8": {
+            "description": "Trace and evaluate argument; assess whether reasoning is sound and evidence relevant/sufficient",
+            "progression_from_6": "Adds 'sound reasoning' and 'sufficient' criteria"
+          },
+          "RI.7.9": "Analyze how two+ authors shape presentations by emphasizing different evidence or interpretations"
+        }
+      },
+      "writing": {
+        "text_types": {
+          "W.7.1": {
+            "description": "Write arguments with clear reasons and relevant evidence",
+            "progression_from_6": "Adds acknowledging alternate/opposing claims",
+            "substandards": {
+              "W.7.1a": "Introduce claims, acknowledge alternate/opposing claims, organize logically",
+              "W.7.1b": "Support with logical reasoning and relevant evidence from accurate, credible sources",
+              "W.7.1c": "Use words, phrases, clauses to create cohesion and clarify relationships",
+              "W.7.1d": "Establish and maintain formal style",
+              "W.7.1e": "Provide concluding statement that follows from and supports argument"
+            }
+          },
+          "W.7.2": {
+            "description": "Write informative/explanatory texts",
+            "progression_from_6": "Topic introduced 'clearly, previewing what is to follow'"
+          },
+          "W.7.3": {
+            "description": "Write narratives",
+            "progression_from_6": "Point of view explicitly introduced"
+          }
+        }
+      }
+    },
+
+    "grade_8": {
+      "reading_literature": {
+        "key_ideas_details": {
+          "RL.8.1": {
+            "description": "Cite textual evidence that MOST STRONGLY supports analysis",
+            "progression_from_7": "Quality over quantity - 'most strongly'"
+          },
+          "RL.8.2": {
+            "description": "Determine theme and analyze relationship to characters, setting, plot; provide objective summary",
+            "progression_from_7": "Analyze relationship of theme to multiple elements"
+          },
+          "RL.8.3": {
+            "description": "Analyze how dialogue or incidents propel action, reveal character, or provoke decision",
+            "progression_from_7": "Specific focus on dialogue and incident effects"
+          }
+        },
+        "craft_structure": {
+          "RL.8.4": "Determine meaning; analyze impact of word choice including analogies and allusions",
+          "RL.8.5": "Compare and contrast structure of two or more texts; analyze how structure contributes to meaning and style",
+          "RL.8.6": "Analyze how differences in points of view of characters/audience create effects (suspense, humor)"
+        },
+        "integration_knowledge": {
+          "RL.8.7": "Analyze extent to which filmed/staged production stays faithful to or departs from text; evaluate choices",
+          "RL.8.9": "Analyze how modern work draws on themes, patterns, character types from myths, traditional stories, religious works"
+        }
+      },
+      "reading_informational": {
+        "key_ideas_details": {
+          "RI.8.1": "Cite textual evidence that most strongly supports analysis",
+          "RI.8.2": {
+            "description": "Determine central idea and analyze development including relationship to supporting ideas; provide objective summary",
+            "progression_from_7": "Analyze relationship to supporting ideas"
+          },
+          "RI.8.3": "Analyze how text makes connections/distinctions between individuals, ideas, events (comparisons, analogies, categories)"
+        },
+        "craft_structure": {
+          "RI.8.4": "Determine meaning including figurative, connotative, technical; analyze impact including analogies and allusions",
+          "RI.8.5": "Analyze in detail structure of specific paragraph including how sentences develop and refine key concept",
+          "RI.8.6": "Determine author's point of view/purpose and analyze how author acknowledges and responds to conflicting evidence/viewpoints"
+        },
+        "integration_knowledge": {
+          "RI.8.7": "Evaluate advantages and disadvantages of using different mediums for a topic/idea",
+          "RI.8.8": {
+            "description": "Delineate and evaluate argument and claims; assess whether reasoning is sound and evidence relevant/sufficient; recognize irrelevant evidence",
+            "progression_from_7": "Adds 'recognize when irrelevant evidence is introduced'"
+          },
+          "RI.8.9": "Analyze case in which two+ texts provide conflicting information; identify where texts disagree on fact or interpretation"
+        }
+      },
+      "writing": {
+        "text_types": {
+          "W.8.1": {
+            "description": "Write arguments with clear reasons and relevant evidence",
+            "progression_from_7": "Claims introduced 'precisely'"
+          },
+          "W.8.2": {
+            "description": "Write informative/explanatory texts including career documents",
+            "progression_from_7": "Adds 'extended definitions' and 'concrete details'"
+          },
+          "W.8.3": "Write narratives with effective technique, relevant details, well-structured sequences"
+        }
+      }
+    },
+
+    "learning_progressions": {
+      "textual_evidence": {
+        "grade_6": "Cite textual evidence",
+        "grade_7": "Cite several pieces of textual evidence",
+        "grade_8": "Cite evidence that most strongly supports"
+      },
+      "theme_analysis": {
+        "grade_6": "Determine theme and how conveyed through details",
+        "grade_7": "Analyze theme development over course of text",
+        "grade_8": "Analyze theme's relationship to characters, setting, plot"
+      },
+      "argument_evaluation": {
+        "grade_6": "Distinguish supported from unsupported claims",
+        "grade_7": "Assess whether reasoning is sound and evidence relevant and sufficient",
+        "grade_8": "Recognize when irrelevant evidence is introduced"
+      },
+      "argumentative_writing": {
+        "grade_6": "Support claims with clear reasons and relevant evidence",
+        "grade_7": "Acknowledge alternate or opposing claims",
+        "grade_8": "Introduce claims precisely; distinguish from opposing claims"
+      }
+    },
+
+    "common_reading_difficulties": {
+      "inference": {
+        "description": "Students struggle to make inferences, especially knowledge-based inferences requiring background knowledge integration",
+        "indicators": [
+          "Can answer literal questions but not inferential",
+          "Doesn't connect prior knowledge to text",
+          "Misses implied information"
+        ],
+        "intervention_strategies": [
+          "Explicit inference instruction with modeling",
+          "Question-answer relationships (QAR)",
+          "Activate prior knowledge before reading",
+          "Think-alouds demonstrating inference process"
+        ]
+      },
+      "main_idea": {
+        "description": "Students confuse topic with main idea or cannot identify how details support central idea",
+        "indicators": [
+          "Gives topic as main idea (single word)",
+          "Includes minor details in summary",
+          "Cannot distinguish key from supporting ideas"
+        ],
+        "intervention_strategies": [
+          "Main idea vs topic explicit instruction",
+          "Text structure instruction",
+          "Summarization with templates",
+          "Highlighting key details practice"
+        ]
+      },
+      "vocabulary": {
+        "description": "Academic and domain-specific vocabulary gaps impede comprehension",
+        "indicators": [
+          "Skips unknown words",
+          "Cannot use context clues effectively",
+          "Limited morphological awareness"
+        ],
+        "intervention_strategies": [
+          "Explicit vocabulary instruction with multiple exposures",
+          "Morphology instruction (prefixes, suffixes, roots)",
+          "Context clue strategies",
+          "Wide reading in content areas"
+        ]
+      },
+      "text_structure": {
+        "description": "Students don't recognize how text is organized or use structure to aid comprehension",
+        "indicators": [
+          "Cannot identify organizational pattern",
+          "Doesn't use signal words",
+          "Struggles with cause-effect, compare-contrast"
+        ],
+        "intervention_strategies": [
+          "Explicit text structure instruction",
+          "Graphic organizers matching structure",
+          "Signal word instruction",
+          "Writing in various structures"
+        ]
+      }
+    }
+  },
+
+  "topic_to_standards_mapping": {
+    "math_topics": {
+      "ratios": {
+        "grade_6": ["6.RP.A.1", "6.RP.A.2", "6.RP.A.3"],
+        "grade_7": ["7.RP.A.1", "7.RP.A.2"],
+        "grade_8": ["8.EE.B.5"]
+      },
+      "proportions": {
+        "grade_6": ["6.RP.A.3"],
+        "grade_7": ["7.RP.A.2", "7.RP.A.3"],
+        "grade_8": ["8.EE.B.5", "8.EE.B.6"]
+      },
+      "percent": {
+        "grade_6": ["6.RP.A.3c"],
+        "grade_7": ["7.RP.A.3"],
+        "grade_8": []
+      },
+      "integers": {
+        "grade_6": ["6.NS.C.5", "6.NS.C.6", "6.NS.C.7"],
+        "grade_7": ["7.NS.A.1", "7.NS.A.2", "7.NS.A.3"],
+        "grade_8": ["8.NS.A.1"]
+      },
+      "fractions": {
+        "grade_6": ["6.NS.A.1"],
+        "grade_7": ["7.NS.A.1", "7.NS.A.2"],
+        "grade_8": []
+      },
+      "decimals": {
+        "grade_6": ["6.NS.B.3"],
+        "grade_7": ["7.NS.A.2d"],
+        "grade_8": []
+      },
+      "expressions": {
+        "grade_6": ["6.EE.A.1", "6.EE.A.2", "6.EE.A.3", "6.EE.A.4"],
+        "grade_7": ["7.EE.A.1", "7.EE.A.2"],
+        "grade_8": ["8.EE.A.1", "8.EE.A.2", "8.EE.A.3", "8.EE.A.4"]
+      },
+      "one_step_equations": {
+        "grade_6": ["6.EE.B.5", "6.EE.B.6", "6.EE.B.7"],
+        "grade_7": [],
+        "grade_8": []
+      },
+      "two_step_equations": {
+        "grade_6": [],
+        "grade_7": ["7.EE.B.3", "7.EE.B.4"],
+        "grade_8": []
+      },
+      "multi_step_equations": {
+        "grade_6": [],
+        "grade_7": [],
+        "grade_8": ["8.EE.C.7"]
+      },
+      "systems_of_equations": {
+        "grade_6": [],
+        "grade_7": [],
+        "grade_8": ["8.EE.C.8"]
+      },
+      "linear_functions": {
+        "grade_6": ["6.EE.C.9"],
+        "grade_7": [],
+        "grade_8": ["8.F.A.1", "8.F.A.2", "8.F.A.3", "8.F.B.4", "8.F.B.5"]
+      },
+      "slope": {
+        "grade_6": [],
+        "grade_7": [],
+        "grade_8": ["8.EE.B.5", "8.EE.B.6", "8.F.B.4"]
+      },
+      "area": {
+        "grade_6": ["6.G.A.1"],
+        "grade_7": ["7.G.B.4", "7.G.B.6"],
+        "grade_8": []
+      },
+      "volume": {
+        "grade_6": ["6.G.A.2"],
+        "grade_7": ["7.G.B.6"],
+        "grade_8": ["8.G.C.9"]
+      },
+      "surface_area": {
+        "grade_6": ["6.G.A.4"],
+        "grade_7": ["7.G.B.6"],
+        "grade_8": []
+      },
+      "pythagorean_theorem": {
+        "grade_6": [],
+        "grade_7": [],
+        "grade_8": ["8.G.B.6", "8.G.B.7", "8.G.B.8"]
+      },
+      "transformations": {
+        "grade_6": [],
+        "grade_7": [],
+        "grade_8": ["8.G.A.1", "8.G.A.2", "8.G.A.3", "8.G.A.4"]
+      },
+      "probability": {
+        "grade_6": [],
+        "grade_7": ["7.SP.C.5", "7.SP.C.6", "7.SP.C.7", "7.SP.C.8"],
+        "grade_8": []
+      },
+      "statistics": {
+        "grade_6": ["6.SP.A.1", "6.SP.A.2", "6.SP.A.3", "6.SP.B.4", "6.SP.B.5"],
+        "grade_7": ["7.SP.A.1", "7.SP.A.2", "7.SP.B.3", "7.SP.B.4"],
+        "grade_8": ["8.SP.A.1", "8.SP.A.2", "8.SP.A.3", "8.SP.A.4"]
+      }
+    },
+    "ela_topics": {
+      "theme": {
+        "grade_6": ["RL.6.2"],
+        "grade_7": ["RL.7.2"],
+        "grade_8": ["RL.8.2"]
+      },
+      "central_idea": {
+        "grade_6": ["RI.6.2"],
+        "grade_7": ["RI.7.2"],
+        "grade_8": ["RI.8.2"]
+      },
+      "textual_evidence": {
+        "grade_6": ["RL.6.1", "RI.6.1"],
+        "grade_7": ["RL.7.1", "RI.7.1"],
+        "grade_8": ["RL.8.1", "RI.8.1"]
+      },
+      "character_analysis": {
+        "grade_6": ["RL.6.3"],
+        "grade_7": ["RL.7.3"],
+        "grade_8": ["RL.8.3"]
+      },
+      "point_of_view": {
+        "grade_6": ["RL.6.6", "RI.6.6"],
+        "grade_7": ["RL.7.6", "RI.7.6"],
+        "grade_8": ["RL.8.6", "RI.8.6"]
+      },
+      "text_structure": {
+        "grade_6": ["RL.6.5", "RI.6.5"],
+        "grade_7": ["RL.7.5", "RI.7.5"],
+        "grade_8": ["RL.8.5", "RI.8.5"]
+      },
+      "word_choice": {
+        "grade_6": ["RL.6.4", "RI.6.4"],
+        "grade_7": ["RL.7.4", "RI.7.4"],
+        "grade_8": ["RL.8.4", "RI.8.4"]
+      },
+      "argument_analysis": {
+        "grade_6": ["RI.6.8"],
+        "grade_7": ["RI.7.8"],
+        "grade_8": ["RI.8.8"]
+      },
+      "compare_contrast": {
+        "grade_6": ["RL.6.9", "RI.6.9"],
+        "grade_7": ["RL.7.9", "RI.7.9"],
+        "grade_8": ["RL.8.9", "RI.8.9"]
+      },
+      "argumentative_writing": {
+        "grade_6": ["W.6.1"],
+        "grade_7": ["W.7.1"],
+        "grade_8": ["W.8.1"]
+      },
+      "informative_writing": {
+        "grade_6": ["W.6.2"],
+        "grade_7": ["W.7.2"],
+        "grade_8": ["W.8.2"]
+      },
+      "narrative_writing": {
+        "grade_6": ["W.6.3"],
+        "grade_7": ["W.7.3"],
+        "grade_8": ["W.8.3"]
+      },
+      "research": {
+        "grade_6": ["W.6.7", "W.6.8", "W.6.9"],
+        "grade_7": ["W.7.7", "W.7.8", "W.7.9"],
+        "grade_8": ["W.8.7", "W.8.8", "W.8.9"]
+      }
+    }
+  },
+
+  "readiness_indicators_detailed": {
+    "math_6_8": {
+      "below_grade_level": {
+        "observable_signs": [
+          "Cannot perform grade-level computations accurately",
+          "Does not understand foundational concepts from prior grades",
+          "Cannot explain mathematical reasoning",
+          "Relies heavily on counting strategies",
+          "Cannot work with multi-step problems",
+          "Avoids word problems",
+          "Cannot represent problems visually"
+        ],
+        "specific_gaps_by_topic": {
+          "ratios_proportions": [
+            "Treats ratios as subtraction",
+            "Adds same number to scale ratios",
+            "Cannot find unit rate",
+            "Confuses ratio with fraction notation"
+          ],
+          "integers": [
+            "Cannot order negative numbers",
+            "Subtracting negatives is impossible",
+            "Absolute value makes negative",
+            "Zero is negative"
+          ],
+          "fractions": [
+            "Whole number bias (1/4 > 1/2 because 4 > 2)",
+            "Adds numerators and denominators separately",
+            "Cannot divide fractions conceptually"
+          ],
+          "equations": [
+            "Equals sign means 'the answer'",
+            "Variables represent one specific unknown only",
+            "Cannot identify inverse operations"
+          ]
+        },
+        "support_strategies": [
+          "Diagnostic assessment to identify specific gaps",
+          "Targeted prerequisite instruction",
+          "Manipulatives and visual models",
+          "Multiple representations for same concept",
+          "Reduced problem complexity",
+          "Immediate feedback loops",
+          "Peer tutoring with structured protocols"
+        ]
+      },
+      "approaching_grade_level": {
+        "observable_signs": [
+          "Inconsistent accuracy on grade-level problems",
+          "Can perform procedures but cannot explain why",
+          "Needs scaffolding for multi-step problems",
+          "Makes progress with support",
+          "Some conceptual gaps from prior grades",
+          "Can sometimes transfer to new contexts"
+        ],
+        "support_strategies": [
+          "Worked examples with fading support",
+          "Error analysis activities",
+          "Strategic questioning to build understanding",
+          "Practice with immediate feedback",
+          "Graphic organizers for problem-solving",
+          "Peer discussion of strategies"
+        ]
+      },
+      "at_grade_level": {
+        "observable_signs": [
+          "Consistently accurate on grade-level problems",
+          "Can explain reasoning and justify solutions",
+          "Applies concepts to new situations",
+          "Uses multiple strategies appropriately",
+          "Self-monitors and catches errors",
+          "Engages productively with challenging problems"
+        ]
+      },
+      "above_grade_level": {
+        "observable_signs": [
+          "Quickly masters new concepts",
+          "Makes connections across mathematical domains",
+          "Creates own problems and extensions",
+          "Can teach concepts to others",
+          "Seeks out challenging problems",
+          "Shows mathematical creativity"
+        ],
+        "extension_strategies": [
+          "Open-ended problem solving",
+          "Cross-grade exploration",
+          "Mathematical investigations",
+          "Competition mathematics",
+          "Project-based applications",
+          "Peer mentoring roles"
+        ]
+      }
+    },
+    "ela_6_8": {
+      "below_grade_level": {
+        "observable_signs": [
+          "Cannot read grade-level text fluently",
+          "Limited comprehension of complex text",
+          "Cannot cite relevant evidence",
+          "Summary includes opinions or retellings",
+          "Cannot identify theme or central idea",
+          "Struggles with inferential questions",
+          "Writing lacks organization and development"
+        ],
+        "specific_gaps_by_skill": {
+          "comprehension": [
+            "Decodes but doesn't comprehend",
+            "Cannot make inferences",
+            "Limited vocabulary knowledge",
+            "Doesn't use text structure"
+          ],
+          "writing": [
+            "No clear thesis or claim",
+            "Evidence not connected to claim",
+            "No organizational structure",
+            "Cannot maintain formal style"
+          ]
+        },
+        "support_strategies": [
+          "Fluency practice with grade-level text",
+          "Explicit vocabulary instruction",
+          "Graphic organizers for comprehension",
+          "Sentence frames for writing",
+          "Modeled think-alouds",
+          "Chunked text with check-ins",
+          "Audio support for content access"
+        ]
+      },
+      "approaching_grade_level": {
+        "observable_signs": [
+          "Can read grade-level text with some support",
+          "Comprehension is literal rather than inferential",
+          "Can cite evidence but not always relevant",
+          "Writing has some organization but weak development",
+          "Inconsistent use of textual evidence"
+        ],
+        "support_strategies": [
+          "Inference instruction with scaffolds",
+          "Evidence relevance practice",
+          "Paragraph development instruction",
+          "Peer review with rubrics",
+          "Mentor text analysis"
+        ]
+      },
+      "at_grade_level": {
+        "observable_signs": [
+          "Reads grade-level text fluently and with comprehension",
+          "Makes appropriate inferences",
+          "Cites relevant and sufficient evidence",
+          "Writing is organized with developed ideas",
+          "Can analyze author's craft and structure"
+        ]
+      },
+      "above_grade_level": {
+        "observable_signs": [
+          "Comprehends complex text beyond grade level",
+          "Makes sophisticated inferences and connections",
+          "Analyzes across texts independently",
+          "Writing shows voice and style",
+          "Can evaluate arguments critically"
+        ],
+        "extension_strategies": [
+          "Complex text study",
+          "Independent research projects",
+          "Creative writing opportunities",
+          "Literary criticism introduction",
+          "Cross-curricular connections"
+        ]
+      }
+    }
+  },
+
+  "english_learner_support": {
+    "ca_eld_proficiency_levels": {
+      "emerging": {
+        "description": "Students at this level typically progress quickly, learn to use English for immediate needs, and begin to understand and use academic language for the grade level",
+        "support_level": "Substantial linguistic support required",
+        "characteristics": [
+          "Beginning to understand simple conversations and written texts",
+          "Producing simple words and phrases",
+          "Relying heavily on context clues, visuals, and gestures",
+          "May have strong literacy in home language",
+          "Can engage in complex cognitive tasks with substantial language support"
+        ],
+        "what_students_can_do": [
+          "Respond to simple questions with single words or short phrases",
+          "Follow one-step directions with visual support",
+          "Identify key words in context with support",
+          "Participate in conversations using gestures and single words",
+          "Copy or label using word banks"
+        ]
+      },
+      "expanding": {
+        "description": "Students at this level use their growing language skills in more advanced ways appropriate to their age and grade level",
+        "support_level": "Moderate linguistic support required",
+        "characteristics": [
+          "Understanding more complex speech and texts",
+          "Producing longer sentences with some errors",
+          "Beginning to use academic vocabulary",
+          "Can discuss content with some scaffolding",
+          "Reading grade-level text with support"
+        ],
+        "what_students_can_do": [
+          "Respond to questions with phrases and simple sentences",
+          "Follow multi-step directions",
+          "Identify main ideas with support",
+          "Participate in discussions using sentence frames",
+          "Write paragraphs with organizational support"
+        ]
+      },
+      "bridging": {
+        "description": "Students at this level can independently use a variety of high-level English language skills and participate in grade-level academic activities",
+        "support_level": "Light linguistic support required",
+        "characteristics": [
+          "Understanding most spoken and written English",
+          "Producing complex sentences with minimal errors",
+          "Using academic and domain-specific vocabulary",
+          "Can engage in grade-level discussions",
+          "Approaching fluency in reading and writing"
+        ],
+        "what_students_can_do": [
+          "Respond to questions with detailed explanations",
+          "Follow complex directions independently",
+          "Identify central ideas and analyze text",
+          "Lead and contribute to academic discussions",
+          "Write multi-paragraph texts with grade-level structure"
+        ]
+      }
+    },
+    "scaffolding_strategies_by_level": {
+      "emerging_substantial_support": {
+        "visual_supports": [
+          "Pictures and photographs for all key vocabulary",
+          "Graphic organizers (pre-filled or partially filled)",
+          "Videos with captions",
+          "Real objects and manipulatives",
+          "Labeled diagrams and charts",
+          "Visual schedules and step-by-step images"
+        ],
+        "linguistic_supports": [
+          "Word banks with pictures",
+          "Sentence starters with heavy scaffolding (fill in one word)",
+          "Native language support/glossaries when available",
+          "Simplified text (not watered-down content)",
+          "Audio recordings of text",
+          "Key vocabulary pre-taught with visuals and gestures"
+        ],
+        "instructional_strategies": [
+          "Total Physical Response (TPR)",
+          "Think-alouds with visual modeling",
+          "Chunked text with frequent comprehension checks",
+          "Partner work with more proficient peer",
+          "One-step directions at a time",
+          "Allow drawing or pointing as response",
+          "Extended wait time (10+ seconds)",
+          "Repetition and rephrasing"
+        ],
+        "output_expectations": [
+          "Single words or short phrases",
+          "Pointing or gesturing",
+          "Drawing or labeling",
+          "Copying with word bank",
+          "Yes/no or either/or responses",
+          "Matching activities"
+        ]
+      },
+      "expanding_moderate_support": {
+        "visual_supports": [
+          "Graphic organizers (partially filled or blank)",
+          "Anchor charts with examples",
+          "Timelines and flowcharts",
+          "Labeled diagrams",
+          "Color-coded text features"
+        ],
+        "linguistic_supports": [
+          "Sentence frames (fill in multiple words/phrases)",
+          "Sentence starters",
+          "Word banks (without pictures)",
+          "Glossaries for academic vocabulary",
+          "Highlighted key vocabulary in text",
+          "Paragraph frames for writing"
+        ],
+        "instructional_strategies": [
+          "Structured academic discussions",
+          "Think-pair-share with sentence frames",
+          "Guided notes with blanks to fill",
+          "Jigsaw reading with mixed-proficiency groups",
+          "Two-step directions",
+          "Modeling followed by guided practice",
+          "Comprehension checks at paragraph level"
+        ],
+        "output_expectations": [
+          "Complete sentences",
+          "Short paragraphs with support",
+          "Verbal explanations using frames",
+          "Collaborative writing",
+          "Summarizing with templates",
+          "Compare/contrast with graphic organizer"
+        ]
+      },
+      "bridging_light_support": {
+        "visual_supports": [
+          "Complex graphic organizers (student-created)",
+          "Reference charts available but not required",
+          "Multimedia resources for extension"
+        ],
+        "linguistic_supports": [
+          "Academic vocabulary lists (without definitions)",
+          "Writing checklists",
+          "Rubrics with academic language expectations",
+          "Transitional phrase banks",
+          "Genre-specific templates as reference"
+        ],
+        "instructional_strategies": [
+          "Academic discussions with minimal structure",
+          "Independent research with check-ins",
+          "Peer editing and feedback",
+          "Multi-step directions",
+          "Extension activities connecting to prior knowledge",
+          "Socratic seminars with preparation support"
+        ],
+        "output_expectations": [
+          "Multi-paragraph writing",
+          "Oral presentations",
+          "Complex sentence structures",
+          "Academic register in discussions",
+          "Analysis and evaluation",
+          "Independent reading of grade-level text"
+        ]
+      }
+    },
+    "domain_specific_scaffolds": {
+      "math": {
+        "emerging": [
+          "Math manipulatives with labeled vocabulary",
+          "Visual models for all operations",
+          "Number lines and place value charts",
+          "Word problem sentence frames",
+          "Key math vocabulary with pictures and symbols",
+          "Step-by-step problem-solving templates with visuals"
+        ],
+        "expanding": [
+          "Math vocabulary journals",
+          "Problem-solving frames (What do I know? What do I need to find?)",
+          "Explanation sentence starters ('First I... Then I... Because...')",
+          "Peer math talks with discussion frames",
+          "Error analysis with guiding questions"
+        ],
+        "bridging": [
+          "Academic vocabulary expectations in explanations",
+          "Justify your reasoning prompts",
+          "Multiple solution path discussions",
+          "Real-world application problems",
+          "Peer teaching opportunities"
+        ]
+      },
+      "ela_reading": {
+        "emerging": [
+          "Picture walks before reading",
+          "Audio support while reading",
+          "Key vocabulary pre-taught with images",
+          "Graphic organizers for story elements",
+          "Yes/no and either/or comprehension questions",
+          "Native language summaries when available"
+        ],
+        "expanding": [
+          "Annotated texts with margin notes",
+          "Guided reading questions",
+          "Evidence sentence starters",
+          "Character/event graphic organizers",
+          "Partner reading with discussion frames",
+          "Text-dependent question stems"
+        ],
+        "bridging": [
+          "Close reading protocols",
+          "Independent annotation strategies",
+          "Literary analysis frameworks",
+          "Text-to-text connection prompts",
+          "Academic discussion protocols"
+        ]
+      },
+      "ela_writing": {
+        "emerging": [
+          "Dictation to teacher or peer",
+          "Sentence combining from word banks",
+          "Copy and complete sentences",
+          "Labeled drawings with captions",
+          "Collaborative writing (class or group)",
+          "Fill-in-the-blank paragraphs"
+        ],
+        "expanding": [
+          "Paragraph frames with transitions",
+          "Sentence starters for each paragraph type",
+          "Peer writing conferences with guided questions",
+          "Mentor text analysis",
+          "Graphic organizer to draft process",
+          "Revision checklists"
+        ],
+        "bridging": [
+          "Genre-specific writing checklists",
+          "Peer editing with rubrics",
+          "Self-assessment tools",
+          "Multiple draft process",
+          "Voice and style development"
+        ]
+      }
+    },
+    "sentence_frames_by_task": {
+      "making_claims": {
+        "emerging": "I think ___ because ___.",
+        "expanding": "Based on the evidence, I believe ___ because ___.",
+        "bridging": "The evidence suggests that ___, which demonstrates ___."
+      },
+      "citing_evidence": {
+        "emerging": "I see ___ in the text.",
+        "expanding": "According to the text, '___' shows that ___.",
+        "bridging": "The author states, '___,' which supports the idea that ___ by ___."
+      },
+      "comparing": {
+        "emerging": "___ and ___ are the same/different because ___.",
+        "expanding": "Both ___ and ___ share ___, but they differ in ___.",
+        "bridging": "While ___ and ___ are similar in that ___, they diverge significantly regarding ___."
+      },
+      "explaining_process": {
+        "emerging": "First, ___. Then, ___. Last, ___.",
+        "expanding": "To begin, ___. Next, ___. Finally, ___.",
+        "bridging": "The process involves several steps: initially ___, followed by ___, and concluding with ___."
+      },
+      "math_reasoning": {
+        "emerging": "I ___ (added/subtracted/multiplied/divided) because ___.",
+        "expanding": "I solved this by ___ because the problem asked me to ___.",
+        "bridging": "My approach was to ___, which is appropriate because ___. This strategy works here because ___."
+      },
+      "agreeing_disagreeing": {
+        "emerging": "I agree/disagree with ___ because ___.",
+        "expanding": "I agree with ___'s point that ___, and I would add ___.",
+        "bridging": "While I appreciate ___'s perspective on ___, I would argue that ___ because ___."
+      }
+    },
+    "grouping_considerations": {
+      "heterogeneous_mixed_proficiency": {
+        "when_to_use": [
+          "Collaborative projects with defined roles",
+          "Peer modeling of academic language",
+          "Jigsaw activities where all contribute unique pieces",
+          "Discussions where diverse perspectives are valued"
+        ],
+        "benefits": "ELs hear proficient language models; all students practice explaining and paraphrasing",
+        "cautions": "Ensure ELs have meaningful roles, not just listening"
+      },
+      "homogeneous_same_proficiency": {
+        "when_to_use": [
+          "Designated ELD instruction",
+          "Targeted skill practice",
+          "When specific scaffolds are needed for all",
+          "Building confidence before mixed-group work"
+        ],
+        "benefits": "Tailored instruction to specific needs; comfortable risk-taking environment",
+        "cautions": "Avoid tracking; use flexibly based on skills, not fixed levels"
+      },
+      "strategic_partnering": {
+        "emerging_with_expanding": "Expanding student can model; emerging student has accessible peer support",
+        "expanding_with_bridging": "Both can engage meaningfully; bridging student extends thinking",
+        "same_home_language": "Can clarify concepts in L1 when needed; supports content comprehension"
+      }
+    },
+    "progress_monitoring": {
+      "indicators_of_growth": [
+        "Longer utterances in academic discussions",
+        "More precise vocabulary use",
+        "Fewer reliance on sentence frames",
+        "Increased independence in reading/writing",
+        "Self-correction of errors",
+        "Transferring skills across content areas"
+      ],
+      "when_to_reduce_scaffolds": [
+        "Student consistently succeeds with current support level",
+        "Student begins self-scaffolding (creating own graphic organizers)",
+        "Student can explain thinking without prompts",
+        "Student helps peers with similar tasks"
+      ]
+    }
+  },
+
+  "group_vs_individual_instruction": {
+    "individual_instruction": {
+      "when_to_use": [
+        "Significant skill gaps requiring targeted intervention",
+        "Student needs confidential/sensitive support",
+        "Initial diagnostic assessment",
+        "Intensive remediation on specific prerequisite skills",
+        "Student anxiety in group settings",
+        "Highly accelerated learner needing extension"
+      ],
+      "advantages": [
+        "Fully personalized pacing",
+        "Immediate error correction",
+        "100% engagement required",
+        "Can address specific misconceptions",
+        "Builds student-teacher relationship"
+      ],
+      "content_design_considerations": [
+        "More interactive/responsive design",
+        "Built-in checkpoints for understanding",
+        "Adaptive difficulty",
+        "Frequent comprehension checks",
+        "Self-paced with mastery requirements"
+      ]
+    },
+    "small_group_instruction": {
+      "recommended_size": "3-6 students",
+      "when_to_use": [
+        "Students with similar skill gaps or learning goals",
+        "Collaborative problem-solving activities",
+        "Discussion-based learning",
+        "Peer support and modeling opportunities",
+        "Efficient use of intervention time"
+      ],
+      "advantages": [
+        "Peer learning and support",
+        "Discussion develops thinking",
+        "More efficient than 1:1",
+        "Social accountability",
+        "Diverse perspectives on problems"
+      ],
+      "grouping_strategies": {
+        "homogeneous_by_skill": {
+          "use_for": "Targeted skill instruction, intervention groups",
+          "example": "All students working on two-step equations"
+        },
+        "heterogeneous_mixed_ability": {
+          "use_for": "Collaborative projects, peer tutoring, discussion",
+          "example": "Mixed readiness levels working on open-ended problem"
+        },
+        "interest_based": {
+          "use_for": "Engagement, project-based learning",
+          "example": "Students who chose 'sports statistics' as context"
+        }
+      },
+      "content_design_considerations": [
+        "Discussion prompts and protocols",
+        "Collaborative tasks with individual accountability",
+        "Roles for group members",
+        "Think-pair-share structures",
+        "Gallery walks and peer feedback"
+      ]
+    },
+    "whole_class_instruction": {
+      "when_to_use": [
+        "Introducing new concepts",
+        "Building shared vocabulary and language",
+        "Community building",
+        "Class discussions on big ideas",
+        "Demonstrations and modeling"
+      ],
+      "content_design_considerations": [
+        "Multiple entry points for different readiness levels",
+        "Built-in differentiation (tiered questions, choice)",
+        "Checks for understanding throughout",
+        "Opportunities for all to participate"
+      ]
+    },
+    "blended_station_rotation": {
+      "description": "Students rotate through different modalities/groupings",
+      "typical_structure": [
+        "Station 1: Teacher-led small group (targeted instruction)",
+        "Station 2: Collaborative practice (peer learning)",
+        "Station 3: Independent digital practice (self-paced)",
+        "Station 4: Hands-on application (concrete learning)"
+      ],
+      "benefits": [
+        "Combines advantages of multiple formats",
+        "Differentiation built into structure",
+        "Student agency and movement",
+        "Efficient use of teacher time"
+      ],
+      "content_design_considerations": [
+        "Clear directions for independent stations",
+        "Meaningful work at all stations (not busywork)",
+        "Transitions planned",
+        "Assessment embedded at each station"
+      ]
+    }
+  },
+
+  "agent_usage_guidance": {
+    "eld_differentiation": {
+      "instruction": "When EL students are present, look up english_learner_support to determine appropriate scaffolds based on proficiency level",
+      "process": [
+        "1. Identify EL proficiency level(s) in the class (Emerging/Expanding/Bridging)",
+        "2. Look up scaffolding_strategies_by_level for that level",
+        "3. Check domain_specific_scaffolds for subject-specific supports",
+        "4. Include appropriate sentence_frames_by_task for the learning activity",
+        "5. Apply grouping_considerations for collaborative work"
+      ],
+      "scaffold_intensity": {
+        "emerging": "Include ALL scaffolds from the emerging list - visual supports, linguistic supports, adapted output expectations",
+        "expanding": "Include MOST scaffolds from expanding list, can offer emerging scaffolds as backup",
+        "bridging": "Include SOME scaffolds from bridging list, students should be moving toward independence"
+      }
+    },
+    "grouping_selection": {
+      "instruction": "Use group_vs_individual_instruction to determine appropriate instructional format based on user input",
+      "decision_tree": {
+        "individual": "Select when user indicates 1 student OR student needs intensive remediation OR sensitive/private content",
+        "small_group_homogeneous": "Select when multiple students at same readiness level working on same skill gap",
+        "small_group_heterogeneous": "Select when collaborative/discussion-based learning is goal OR peer modeling is beneficial",
+        "whole_class": "Select when introducing new content to all OR building shared understanding"
+      }
+    },
+    "topic_lookup": {
+      "instruction": "Given a topic (e.g., 'ratios', 'theme analysis'), look up in topic_to_standards_mapping to find relevant standards, then retrieve detailed information from the grade-specific sections",
+      "example": {
+        "input": "Topic: proportions, Grade: 7",
+        "lookup_path": "topic_to_standards_mapping.math_topics.proportions.grade_7",
+        "returns": ["7.RP.A.2", "7.RP.A.3"],
+        "then_retrieve": "math_6_8_detailed.grade_7.domains.ratios_proportional_relationships.standards.7.RP.A.2"
+      }
+    },
+    "differentiation": {
+      "instruction": "Use readiness_indicators_detailed to identify observable signs for each level, then apply corresponding support/extension strategies",
+      "below_level": {
+        "approach": "Check specific_gaps_by_topic for the topic being taught, address prerequisite gaps, use visual models, reduce complexity",
+        "content_adjustment": "Focus on foundational concepts, more scaffolding, explicit instruction"
+      },
+      "above_level": {
+        "approach": "Use extension_strategies, connect across domains, increase complexity",
+        "content_adjustment": "Add depth, open-ended problems, cross-grade content"
+      }
+    },
+    "prerequisite_check": {
+      "instruction": "Before teaching a standard, check the prerequisites field to identify what students should already know",
+      "remediation": "If prerequisite gaps exist, provide targeted mini-lessons before main content"
+    },
+    "misconception_prevention": {
+      "instruction": "Review common_misconceptions for the topic before instruction; design lesson to explicitly address and prevent these",
+      "during_instruction": "Use intervention_strategies proactively, not just reactively"
+    },
+    "learning_progression": {
+      "instruction": "Use learning_progressions sections to understand where a concept fits in the vertical sequence",
+      "credit_recovery": "For students recovering credit, focus on current grade standards while filling prerequisite gaps from progression"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app/app
+      - ./files:/app/files
+      - ./outputs:/app/outputs
+      - ./test_curriculum.py:/app/test_curriculum.py
+      - ./generate_comparison_report.py:/app/generate_comparison_report.py
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1

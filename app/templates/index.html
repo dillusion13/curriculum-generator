@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-mark">
+                <span class="material-symbols-outlined">auto_stories</span>
+            </div>
+            <h1>Curriculum Generator</h1>
+            <p class="subtitle">Create differentiated, standards-aligned K-12 lesson plans</p>
+        </header>
+
+        <form id="curriculum-form">
+            <section class="form-section" data-section="lesson">
+                <h2>
+                    <span class="section-icon material-symbols-outlined">edit_note</span>
+                    Lesson Details
+                </h2>
+
+                <div class="section-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="grade">Grade Level</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">Select grade...</option>
+                                <option value="0">Kindergarten</option>
+                                <option value="1">1st Grade</option>
+                                <option value="2">2nd Grade</option>
+                                <option value="3">3rd Grade</option>
+                                <option value="4">4th Grade</option>
+                                <option value="5">5th Grade</option>
+                                <option value="6" selected>6th Grade</option>
+                                <option value="7">7th Grade</option>
+                                <option value="8">8th Grade</option>
+                                <option value="9">9th Grade</option>
+                                <option value="10">10th Grade</option>
+                                <option value="11">11th Grade</option>
+                                <option value="12">12th Grade</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select subject...</option>
+                                <option value="Math" selected>Math</option>
+                                <option value="ELA">ELA</option>
+                                <option value="Science">Science</option>
+                                <option value="History">History</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="topic">Topic</label>
+                        <input type="text" id="topic" name="topic"
+                               placeholder="e.g., equivalent ratios, theme analysis, cell division"
+                               value="equivalent ratios" required>
+                    </div>
+
+                    <div class="form-row triple">
+                        <div class="form-group">
+                            <label for="session_length">Session Length</label>
+                            <select id="session_length" name="session_length">
+                                <option value="5">5 min</option>
+                                <option value="10">10 min</option>
+                                <option value="15" selected>15 min</option>
+                                <option value="20">20 min</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="learning_goal_type">Learning Goal</label>
+                            <select id="learning_goal_type" name="learning_goal_type">
+                                <option value="introduce">Introduce</option>
+                                <option value="practice" selected>Practice</option>
+                                <option value="assess">Assess</option>
+                                <option value="remediate">Remediate</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="group_format">Group Format</label>
+                            <select id="group_format" name="group_format">
+                                <option value="individual">Individual</option>
+                                <option value="small_group" selected>Small Group</option>
+                                <option value="whole_class">Whole Class</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width approach-selector">
+                        <label for="pedagogical_approach">
+                            <span class="material-symbols-outlined approach-icon">psychology</span>
+                            Teaching Approach
+                            <span class="optional-badge">Optional</span>
+                        </label>
+                        <select id="pedagogical_approach" name="pedagogical_approach">
+                            <option value="">Auto-select based on subject & goal</option>
+                            <optgroup label="Inquiry & Problem-Based">
+                                <option value="5e_lessons">5E Lesson Model (Engage, Explore, Explain...)</option>
+                                <option value="3_act_math">3 Act Math Tasks</option>
+                                <option value="inquiry_based_learning">Inquiry-Based Learning</option>
+                                <option value="design_thinking">Design-Based Thinking</option>
+                            </optgroup>
+                            <optgroup label="Project & Passion-Driven">
+                                <option value="project_based_learning">Project-Based Learning (PBL)</option>
+                                <option value="place_based_learning">Place-Based Learning</option>
+                                <option value="passion_based_learning">Passion-Based Learning</option>
+                                <option value="genius_hour">Genius Hour</option>
+                            </optgroup>
+                            <optgroup label="Collaborative Learning">
+                                <option value="peer_teaching">Peer Teaching</option>
+                                <option value="cross_age_peer_teaching">Cross-Age Peer Teaching</option>
+                                <option value="socratic_seminar">Socratic Seminar</option>
+                            </optgroup>
+                            <optgroup label="Creative & Performance">
+                                <option value="readers_theatre">Readers Theatre</option>
+                                <option value="role_play">Role Play Scenarios</option>
+                                <option value="unboxing_video">Unboxing Video</option>
+                                <option value="makerspace">Makerspace</option>
+                            </optgroup>
+                            <optgroup label="Engagement & Skills">
+                                <option value="gamification">Gamification-Based Learning</option>
+                                <option value="flipped_learning">Flipped Learning</option>
+                                <option value="4c_lessons">4C Lessons (Critical Thinking, Creativity...)</option>
+                            </optgroup>
+                            <optgroup label="Civic & Cultural">
+                                <option value="action_civics">Action Civics</option>
+                                <option value="culturally_responsive_literacy">Culturally Responsive Literacy</option>
+                            </optgroup>
+                        </select>
+                        <p class="approach-hint">Choose a specific teaching methodology or let the system recommend one</p>
+                    </div>
+
+                    <div class="form-group full-width udl-toggle">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="include_udl_docs" name="include_udl_docs" value="true">
+                            <span class="checkbox-text">
+                                <span class="material-symbols-outlined checkbox-icon">accessibility_new</span>
+                                Include UDL alignment documentation in Teacher Guide
+                            </span>
+                            <span class="optional-badge">For IEP/Compliance</span>
+                        </label>
+                        <p class="approach-hint">All lessons apply UDL principles. Check this to include explicit checkpoint documentation.</p>
+                    </div>
+
+                    <div class="form-group full-width model-selector">
+                        <label for="model">
+                            <span class="material-symbols-outlined model-icon">smart_toy</span>
+                            AI Model
+                            <span class="optional-badge">Advanced</span>
+                        </label>
+                        <select id="model" name="model">
+                            <option value="claude-sonnet-4.5" selected>Claude Sonnet 4.5 (Anthropic)</option>
+                            <option value="gemini-3-pro">Gemini 3.0 Pro (Google)</option>
+                        </select>
+                        <p class="approach-hint">Choose which AI model generates your curriculum</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="output-preview">
+                <h3>
+                    <span class="material-symbols-outlined">description</span>
+                    What You'll Get
+                </h3>
+                <div class="output-items">
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">school</span>
+                        <div>
+                            <strong>Teacher Guide</strong>
+                            <span>Lesson phases, UDL alignment, discussion prompts, misconceptions</span>
+                        </div>
+                    </div>
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">groups</span>
+                        <div>
+                            <strong>4 Differentiated Handouts</strong>
+                            <span>Below Level, Approaching, At Level, Above Level</span>
+                        </div>
+                    </div>
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">translate</span>
+                        <div>
+                            <strong>EL Scaffolding Strategies</strong>
+                            <span>Emerging, Expanding, Bridging supports</span>
+                        </div>
+                    </div>
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">checklist</span>
+                        <div>
+                            <strong>Differentiation Overview</strong>
+                            <span>Key scaffolds & what to monitor per level</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn">
+                <span class="btn-content">
+                    <svg class="btn-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <span class="btn-text">Generate Curriculum</span>
+                </span>
+                <span class="btn-loading" style="display: none;">
+                    <span class="spinner"></span>
+                    Generating...
+                </span>
+            </button>
+        </form>
+
+        <div id="results" style="display: none;">
+            <div class="results-header">
+                <span class="material-symbols-outlined success-icon">check_circle</span>
+                <h2>Generated Materials</h2>
+            </div>
+            <div id="download-links"></div>
+        </div>
+
+        <div id="error-message" class="error" style="display: none;">
+            <span class="material-symbols-outlined">error</span>
+            <span class="error-text"></span>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('curriculum-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnContent = submitBtn.querySelector('.btn-content');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        const results = document.getElementById('results');
+        const downloadLinks = document.getElementById('download-links');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = errorMessage.querySelector('.error-text');
+
+        // Icon mapping for different file types
+        const fileIcons = {
+            'Teacher Guide': 'school',
+            'Below Level': 'trending_down',
+            'Approaching Level': 'trending_flat',
+            'At Level': 'check',
+            'Above Level': 'trending_up'
+        };
+
+        function getIconForFile(fileName) {
+            for (const [key, icon] of Object.entries(fileIcons)) {
+                if (fileName.includes(key)) return icon;
+            }
+            return 'description';
+        }
+
+        function createDownloadLink(file) {
+            const link = document.createElement('a');
+            link.href = file.download_url;
+            link.className = 'download-link';
+            link.download = '';
+
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'material-symbols-outlined file-icon';
+            iconSpan.textContent = getIconForFile(file.name);
+
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'file-name';
+            nameSpan.textContent = file.name;
+
+            const actionSpan = document.createElement('span');
+            actionSpan.className = 'file-action';
+
+            const actionText = document.createElement('span');
+            actionText.textContent = 'Download';
+
+            const actionIcon = document.createElement('span');
+            actionIcon.className = 'material-symbols-outlined';
+            actionIcon.textContent = 'download';
+
+            actionSpan.appendChild(actionText);
+            actionSpan.appendChild(actionIcon);
+
+            link.appendChild(iconSpan);
+            link.appendChild(nameSpan);
+            link.appendChild(actionSpan);
+
+            return link;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loading state
+            btnContent.style.display = 'none';
+            btnLoading.style.display = 'inline-flex';
+            submitBtn.disabled = true;
+            results.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Generation failed');
+                }
+
+                const data = await response.json();
+
+                // Clear previous links
+                while (downloadLinks.firstChild) {
+                    downloadLinks.removeChild(downloadLinks.firstChild);
+                }
+
+                // Add new download links
+                data.files.forEach(file => {
+                    downloadLinks.appendChild(createDownloadLink(file));
+                });
+
+                results.style.display = 'block';
+
+            } catch (error) {
+                errorText.textContent = error.message;
+                errorMessage.style.display = 'flex';
+            } finally {
+                btnContent.style.display = 'inline-flex';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

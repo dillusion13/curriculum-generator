@@ -1,0 +1,562 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-01-15",
+    "source": "California Department of Education",
+    "description": "California K-12 Academic Standards and Student Readiness Indicators",
+    "subjects": ["ELA", "Mathematics", "Science", "History-Social Science"],
+    "standards_frameworks": {
+      "ela_math": "California Common Core State Standards (CA CCSS) - Adopted 2010, Modified 2013",
+      "science": "California Next Generation Science Standards (CA NGSS) - Adopted 2013",
+      "history_social_science": "History-Social Science Framework - Adopted 2016"
+    }
+  },
+  "readiness_levels": {
+    "description": "Based on Smarter Balanced/CAASPP Achievement Level Descriptors",
+    "levels": {
+      "level_1_below": {
+        "label": "Standard Not Met",
+        "description": "Student does not consistently demonstrate grade-level knowledge and skills",
+        "action": "Intensive intervention needed; focus on prerequisite skills"
+      },
+      "level_2_approaching": {
+        "label": "Standard Nearly Met",
+        "description": "Student demonstrates foundational grade-level knowledge and skills with limited range of complexity",
+        "action": "Strategic support needed; scaffolded instruction with grade-level content"
+      },
+      "level_3_at": {
+        "label": "Standard Met",
+        "description": "Student consistently demonstrates proficient grade-level knowledge and skills with broad range of complexity",
+        "action": "On track; continue grade-level instruction with enrichment opportunities"
+      },
+      "level_4_above": {
+        "label": "Standard Exceeded",
+        "description": "Student consistently demonstrates advanced grade-level knowledge and skills with deep understanding and full range of complexity",
+        "action": "Extension activities; accelerated content; leadership opportunities"
+      }
+    }
+  },
+  "subjects": {
+    "ela": {
+      "full_name": "English Language Arts & Literacy",
+      "standards_source": "CA Common Core State Standards for ELA/Literacy",
+      "strands": ["Reading", "Writing", "Speaking and Listening", "Language"],
+      "anchor_standards": "College and Career Readiness Anchor Standards",
+      "grade_bands": {
+        "K-2": {
+          "focus": "Foundational literacy skills development",
+          "key_domains": {
+            "reading_foundational": {
+              "description": "Print concepts, phonological awareness, phonics, fluency",
+              "K": ["RF.K.1-4: Print concepts, phonemic awareness, phonics basics, read emergent texts"],
+              "1": ["RF.1.1-4: Advanced phonics, decode one-syllable words, read with fluency"],
+              "2": ["RF.2.3-4: Decode multi-syllable words, prefixes/suffixes, read fluently"]
+            },
+            "reading_literature": {
+              "description": "Key ideas, craft and structure, integration of knowledge",
+              "progression": "Ask questions > Retell with key details > Describe characters/settings/events"
+            },
+            "reading_informational": {
+              "description": "Comprehension of nonfiction texts",
+              "progression": "Identify main topic > Key details > Connections between information"
+            },
+            "writing": {
+              "description": "Opinion, informative/explanatory, narrative writing",
+              "progression": "Draw/dictate/write > Simple sentences > Organized paragraphs"
+            },
+            "speaking_listening": {
+              "description": "Collaborative discussions, presentation",
+              "focus": "Participate in conversations, confirm understanding, describe/tell stories"
+            },
+            "language": {
+              "description": "Grammar, vocabulary acquisition",
+              "focus": "Conventions, capitalization/punctuation, word meanings"
+            }
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Cannot recognize letters/sounds", "No phonemic awareness", "Cannot decode CVC words", "Limited sight words", "Cannot retell stories", "Writing limited to scribbles"],
+              "supports": ["Intensive phonics", "Small group instruction", "Multi-sensory approaches", "Decodable texts", "Explicit vocabulary"]
+            },
+            "at": {
+              "signs": ["Knows letter names/sounds", "Decodes grade-level words", "Recognizes sight words", "Reads with comprehension", "Writes simple sentences", "Participates in discussions"]
+            },
+            "above": {
+              "signs": ["Reads above grade level", "Strong vocabulary", "Makes inferences", "Writes with detail", "Asks higher-order questions"],
+              "extensions": ["Independent reading", "Literature circles", "Research projects", "Creative writing", "Peer tutoring"]
+            }
+          }
+        },
+        "3-5": {
+          "focus": "Reading to learn; developing analytical skills",
+          "key_domains": {
+            "reading_literature": {
+              "description": "Theme, character development, point of view, text comparison",
+              "progression": "Determine message/moral > Determine theme > Compare/contrast across texts"
+            },
+            "reading_informational": {
+              "description": "Main idea, text structure, author's purpose, multiple sources",
+              "progression": "Main idea with details > Text structure > Author's evidence and reasoning"
+            },
+            "writing": {
+              "description": "Opinion/argument, informative/explanatory, narrative with development",
+              "progression": "Introduce topic/state opinion > Organize with logic > Clear, coherent writing"
+            },
+            "speaking_listening": {
+              "description": "Discussion preparation, summarizing, formal presentations",
+              "focus": "Collaborative discussions, report on topics, recount experiences"
+            },
+            "language": {
+              "description": "Complex sentences, word relationships, academic vocabulary",
+              "focus": "Conventions, context clues, affixes/roots, word nuances"
+            }
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Reads 1-2 grades below", "Struggles with multi-syllable words", "Cannot identify main idea", "Limited inference", "Disorganized writing", "Limited vocabulary"],
+              "supports": ["Fluency practice", "Comprehension strategies", "Graphic organizers", "Word study/morphology", "Text-dependent questioning"]
+            },
+            "at": {
+              "signs": ["Reads grade-level texts", "Identifies theme/main idea", "Makes inferences", "Organized writing", "Grade-level vocabulary", "Meaningful discussions"]
+            },
+            "above": {
+              "signs": ["Complex text comprehension", "Analyzes craft/structure", "Cross-text connections", "Voice and complexity in writing", "Advanced vocabulary", "Leads discussions"],
+              "extensions": ["Book clubs", "Primary source research", "Literary analysis", "Debate", "Cross-curricular connections"]
+            }
+          }
+        },
+        "6-8": {
+          "focus": "Literary analysis; argument and evidence; discipline-specific literacy",
+          "key_domains": {
+            "reading_literature": {
+              "description": "Theme development, figurative language, point of view, comparing versions",
+              "key_standards": ["Cite textual evidence", "Analyze theme development", "Analyze story elements", "Figurative/connotative meaning", "Point of view development"]
+            },
+            "reading_informational": {
+              "description": "Central idea, text structure, argument evaluation, source comparison",
+              "key_standards": ["Cite evidence", "Central idea analysis", "Text structure", "Author purpose", "Evaluate argument/claims"]
+            },
+            "writing": {
+              "description": "Argument, informative/explanatory, narrative; research",
+              "key_standards": ["Arguments with claims/evidence", "Informative texts", "Narratives with technique", "Short research projects"]
+            },
+            "literacy_disciplines": {
+              "description": "Reading/writing in History/Social Science and Science/Technical subjects",
+              "focus": "Discipline-specific reading strategies and writing expectations"
+            }
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Reads 2+ grades below", "Cannot cite evidence", "Struggles with central idea", "Cannot analyze craft", "Writing lacks claims/evidence", "Limited academic vocabulary"],
+              "supports": ["Close reading scaffolds", "Writing templates (RACE, TREES)", "Vocabulary with morphology", "Audio support", "Collaborative annotation"]
+            },
+            "at": {
+              "signs": ["Grade-level comprehension", "Cites relevant evidence", "Analyzes theme/central idea", "Understands author craft", "Arguments with claims/evidence", "Appropriate vocabulary"]
+            },
+            "above": {
+              "signs": ["Complex text analysis", "Sophisticated inferences", "Evaluates reasoning quality", "Nuanced arguments", "Precise vocabulary", "Critical engagement"],
+              "extensions": ["Socratic seminars", "Primary source research", "Literary criticism", "Debate", "Peer mentorship"]
+            }
+          }
+        },
+        "9-12": {
+          "focus": "College and career readiness; advanced analysis; research",
+          "key_domains": {
+            "reading_literature": {
+              "description": "Complex theme analysis, multiple interpretations, foundational texts",
+              "key_standards": ["Strong/thorough evidence", "Theme over course of text", "Complex character analysis", "Cumulative impact of word choice", "Cultural experience analysis"]
+            },
+            "reading_informational": {
+              "description": "Analysis of seminal documents, rhetoric, multiple sources",
+              "key_standards": ["Thorough evidence", "Central idea development", "Claim development/refinement", "Rhetoric analysis", "Argument evaluation"]
+            },
+            "writing": {
+              "description": "Argument, research, narrative; style and voice",
+              "key_standards": ["Valid reasoning/relevant evidence", "Complex ideas conveyance", "Clear coherent writing", "Sustained research"]
+            }
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Cannot read grade-level texts", "Cannot analyze complex themes", "Cannot construct arguments", "Unaware of rhetoric", "Incoherent writing", "Limited vocabulary"],
+              "supports": ["Reading intervention", "Sentence/paragraph instruction", "Explicit vocabulary", "Annotation protocols", "Argument organizers"]
+            },
+            "at": {
+              "signs": ["Complex text comprehension", "Analyzes theme/structure/rhetoric", "Coherent arguments", "Synthesizes sources", "College-ready writing", "Appropriate vocabulary"]
+            },
+            "above": {
+              "signs": ["Highly complex texts", "Sophisticated analysis", "Distinctive voice/style", "College-level research", "Exceptional thinking", "AP/honors ready"],
+              "extensions": ["AP coursework", "Dual enrollment", "Independent study", "Publication", "Academic competitions"]
+            }
+          }
+        }
+      }
+    },
+    "mathematics": {
+      "full_name": "Mathematics",
+      "standards_source": "CA Common Core State Standards for Mathematics (CA CCSSM)",
+      "domains_by_level": {
+        "K-5": ["Counting and Cardinality (K)", "Operations and Algebraic Thinking", "Number and Operations in Base Ten", "Number and Operations—Fractions (3-5)", "Measurement and Data", "Geometry"],
+        "6-8": ["Ratios and Proportional Relationships", "The Number System", "Expressions and Equations", "Functions (8)", "Geometry", "Statistics and Probability"],
+        "high_school": ["Number and Quantity", "Algebra", "Functions", "Modeling", "Geometry", "Statistics and Probability"]
+      },
+      "mathematical_practices": [
+        "MP1: Make sense of problems and persevere",
+        "MP2: Reason abstractly and quantitatively",
+        "MP3: Construct arguments and critique reasoning",
+        "MP4: Model with mathematics",
+        "MP5: Use appropriate tools strategically",
+        "MP6: Attend to precision",
+        "MP7: Look for and use structure",
+        "MP8: Look for and express regularity"
+      ],
+      "grade_bands": {
+        "K-2": {
+          "focus": "Number sense, operations foundations, measurement basics",
+          "critical_areas": {
+            "K": ["Represent/compare whole numbers", "Describe shapes/spatial relations", "Add/subtract"],
+            "1": ["Add/subtract within 20", "Understand place value", "Measure lengths", "Reason about shapes"],
+            "2": ["Base-ten notation", "Fluent add/subtract", "Linear measurement", "Analyze shapes"]
+          },
+          "key_standards": {
+            "counting_cardinality": "Count to 100, count objects, compare numbers",
+            "operations": "Add/subtract within 20, fact fluency within 10",
+            "place_value": "Understand tens and ones, add/subtract within 100",
+            "measurement": "Compare lengths, tell time, count money",
+            "geometry": "Identify/describe 2D and 3D shapes"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["No 1-1 correspondence", "Can't recognize numbers", "Can't add/subtract within 10", "No place value understanding", "Can't solve word problems"],
+              "supports": ["Manipulatives", "Number lines", "Strategy instruction", "Fact fluency practice", "Real-world contexts"]
+            },
+            "at": {
+              "signs": ["Fluent counting", "Understands place value", "Uses strategies", "Solves word problems", "Fact fluency", "Reasons about shapes"]
+            },
+            "above": {
+              "signs": ["Operations beyond grade", "Multi-step problems", "Strong mental math", "Mathematical connections", "Clear reasoning"],
+              "extensions": ["Problem challenges", "Advanced games", "Next-grade concepts", "Application projects", "Discussions/justifications"]
+            }
+          }
+        },
+        "3-5": {
+          "focus": "Multiplication/division fluency, fractions, decimals, area/perimeter",
+          "critical_areas": {
+            "3": ["Multiplication/division", "Fractions as numbers", "Area and perimeter"],
+            "4": ["Multi-digit arithmetic", "Fraction equivalence/operations", "Angle measurement"],
+            "5": ["Fluent multi-digit operations", "Fraction operations", "Volume", "Coordinate plane"]
+          },
+          "key_standards": {
+            "operations": "Multiply/divide within 100, multi-digit operations, order of operations",
+            "fractions": "Unit fractions, equivalence, add/subtract/multiply fractions",
+            "decimals": "Decimal notation, decimal operations",
+            "measurement": "Area, perimeter, volume, unit conversions",
+            "geometry": "Properties of shapes, classify figures, coordinate graphing"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Not fluent with facts", "Struggles with multi-digit", "Limited fraction understanding", "Can't apply to problems", "Weak place value"],
+              "supports": ["Fact fluency intervention", "Visual fraction models", "Algorithm with place value", "Problem-solving with manipulatives", "Strategy instruction"]
+            },
+            "at": {
+              "signs": ["Fluent with facts", "Multi-digit accuracy", "Fraction operations", "Multi-step problems", "Measurement application", "Shape classification"]
+            },
+            "above": {
+              "signs": ["Beyond-grade operations", "Strong fraction reasoning", "Complex problems", "Generalizations", "Pre-algebra concepts", "Algebraic thinking"],
+              "extensions": ["Math Olympiad", "Pre-algebra introduction", "Investigations", "Application projects", "Peer tutoring"]
+            }
+          }
+        },
+        "6-8": {
+          "focus": "Ratios and proportional reasoning, expressions and equations, functions, geometry",
+          "critical_areas": {
+            "6": ["Ratios", "Division of fractions", "Negative numbers", "Variables", "Statistics"],
+            "7": ["Proportional relationships", "Rational numbers", "Expressions/equations", "Geometry", "Probability"],
+            "8": ["Linear equations", "Functions", "Pythagorean theorem", "Volume", "Bivariate data"]
+          },
+          "key_standards": {
+            "ratios": "Ratio concepts, unit rates, proportional relationships, percent",
+            "number_system": "Rational number operations, integers",
+            "expressions_equations": "Algebraic expressions, linear equations, systems",
+            "functions": "Function concept, linear functions, function comparison",
+            "geometry": "Area, volume, surface area, transformations, Pythagorean theorem",
+            "statistics": "Statistical variability, distributions, probability, sampling"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Struggles with fractions/decimals", "Can't solve proportions", "Limited variable understanding", "Can't solve equations", "Weak geometry", "Can't interpret data"],
+              "supports": ["Prerequisite remediation", "Visual algebra", "Concrete proportional reasoning", "Equation procedures", "Real-world connections"]
+            },
+            "at": {
+              "signs": ["Solves proportional problems", "Writes/evaluates expressions", "Solves equations", "Applies geometry", "Understands functions", "Analyzes data"]
+            },
+            "above": {
+              "signs": ["Ready for algebra", "Mathematical reasoning", "Cross-domain connections", "Clear communication", "Accelerated pathway ready", "Algebraic fluency"],
+              "extensions": ["Accelerated pathway", "Competitions", "Investigation projects", "Cross-curricular applications", "Mentorship"]
+            }
+          }
+        },
+        "9-12": {
+          "focus": "Advanced algebra, functions, geometry, statistics; college and career readiness",
+          "course_pathways": {
+            "traditional": ["Algebra 1", "Geometry", "Algebra 2"],
+            "integrated": ["Math 1", "Math 2", "Math 3"],
+            "advanced": ["Precalculus", "Calculus", "Statistics"]
+          },
+          "conceptual_categories": {
+            "number_quantity": "Real/complex numbers, vectors, matrices",
+            "algebra": "Expressions, polynomials, equations, inequalities",
+            "functions": "Interpreting, building, modeling, trigonometry",
+            "geometry": "Congruence, similarity, circles, measurement, modeling",
+            "statistics": "Data interpretation, inference, probability, decisions"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't solve multi-step equations", "Struggles with functions", "Limited geometry reasoning", "Can't apply algebra", "Weak statistics", "Not course-ready"],
+              "supports": ["Strategic placement", "Prerequisite intervention", "Tutoring", "Visual/concrete representations", "Technology assistance"]
+            },
+            "at": {
+              "signs": ["Course-level success", "Algebraic reasoning", "Geometric proofs", "Function analysis", "Statistical reasoning", "On track for college"]
+            },
+            "above": {
+              "signs": ["Honors/AP ready", "Mathematical sophistication", "Cross-domain connections", "Clear reasoning communication", "College math ready", "Pursues beyond requirements"],
+              "extensions": ["AP Calculus/Statistics", "Dual enrollment", "AMC/MATHCOUNTS", "Research projects", "Summer programs"]
+            }
+          }
+        }
+      }
+    },
+    "science": {
+      "full_name": "Science",
+      "standards_source": "California Next Generation Science Standards (CA NGSS)",
+      "three_dimensions": {
+        "practices": ["Asking Questions", "Developing Models", "Planning Investigations", "Analyzing Data", "Using Math", "Constructing Explanations", "Engaging in Argument", "Communicating Information"],
+        "crosscutting_concepts": ["Patterns", "Cause and Effect", "Scale/Proportion/Quantity", "Systems", "Energy and Matter", "Structure and Function", "Stability and Change"],
+        "disciplinary_core_ideas": {
+          "life_science": ["Molecules to Organisms", "Ecosystems", "Heredity", "Evolution"],
+          "earth_space": ["Earth in Universe", "Earth Systems", "Earth and Human Activity"],
+          "physical_science": ["Matter", "Motion/Stability", "Energy", "Waves"],
+          "engineering": ["Engineering Design"]
+        }
+      },
+      "grade_bands": {
+        "K-2": {
+          "focus": "Observable patterns, basic needs, weather, pushes and pulls",
+          "performance_expectations_sampling": {
+            "life": "Plant/animal needs, external parts, inheritance, habitats",
+            "earth": "Weather patterns, forecasting, sun/moon/stars, Earth changes",
+            "physical": "Pushes and pulls, speed/direction, vibrations/sound, material properties"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't make observations", "Can't identify patterns", "Can't compare/classify", "Limited questioning", "Can't investigate"],
+              "supports": ["Hands-on with scaffolding", "Visual supports", "Observation think-alouds", "Structured protocols", "Partner work"]
+            },
+            "at": {
+              "signs": ["Makes/records observations", "Identifies patterns", "Asks questions", "Participates in investigations", "Describes similarities/differences"]
+            },
+            "above": {
+              "signs": ["Sophisticated questions", "Predictions from patterns", "Designs investigations", "Explains cause/effect", "Real-world connections"],
+              "extensions": ["Independent investigations", "STEM challenges", "Nature journals", "Citizen science", "Peer teaching"]
+            }
+          }
+        },
+        "3-5": {
+          "focus": "Organism structures/function, Earth systems, forces/interactions, energy, matter",
+          "performance_expectations_sampling": {
+            "life": "Life cycles, group survival, inherited traits, adaptations, food chains",
+            "earth": "Weather/climate, fossils, Earth systems, natural hazards, star distances",
+            "physical": "Forces and motion, magnetism, energy and speed, waves, matter/particles"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't design investigations", "Can't analyze data", "Can't construct arguments", "Limited systems thinking", "Can't apply concepts"],
+              "supports": ["Investigation templates", "Data organizers", "CER frameworks", "Vocabulary development", "Models and simulations"]
+            },
+            "at": {
+              "signs": ["Plans/conducts investigations", "Analyzes data", "Constructs explanations", "Uses models", "Applies crosscutting concepts"]
+            },
+            "above": {
+              "signs": ["Complex investigations", "Sophisticated interpretations", "Compelling arguments", "Systems thinking", "Engineering design"],
+              "extensions": ["Science fair", "STEM competitions", "Engineering challenges", "Environmental projects", "Professional mentorship"]
+            }
+          }
+        },
+        "6-8": {
+          "focus": "Cell biology, genetics, Earth systems, chemistry, physics, engineering design",
+          "course_models": {
+            "integrated_preferred": {"6": "Earth/Space focus", "7": "Life Science focus", "8": "Physical Science focus"},
+            "discipline_specific": "Alternative by discipline"
+          },
+          "performance_expectations_sampling": {
+            "life": "Cells, genetic factors, ecosystem cycling, DNA/proteins, natural selection",
+            "earth": "Earth-sun-moon, rock cycling, water cycling, human impact",
+            "physical": "Atomic models, chemical reactions, forces and motion, energy relationships, waves"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't use models effectively", "Can't analyze/interpret data", "Can't construct explanations", "Limited cause/effect", "Can't apply to problems"],
+              "supports": ["Modeling scaffolds", "Data literacy", "CER practice", "Phenomenon-based instruction", "Collaborative labs"]
+            },
+            "at": {
+              "signs": ["Develops/uses models", "Plans investigations", "Analyzes data", "Constructs explanations", "Argues from evidence"]
+            },
+            "above": {
+              "signs": ["Sophisticated reasoning", "Complex independent investigations", "Nuanced interpretations", "Novel applications", "Advanced coursework ready"],
+              "extensions": ["Science Olympiad", "Research projects", "Scientist mentorship", "Honors preparation", "Community science"]
+            }
+          }
+        },
+        "9-12": {
+          "focus": "Disciplinary depth; college and career readiness; course-based",
+          "typical_courses": {
+            "required": ["Biology", "Chemistry or Physics", "plus one additional"],
+            "electives": ["Earth Science", "AP courses", "Environmental Science", "Anatomy"]
+          },
+          "performance_expectations_sampling": {
+            "life": "DNA structure, hierarchical organization, ecosystem complexity, population variation, speciation",
+            "earth": "Sun lifespan/fusion, Earth processes/timescales, human impact reduction",
+            "physical": "Periodic table patterns, atom conservation, Newton's laws, energy calculations, wave relationships"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't apply math to science", "Struggles with complex models", "Can't evaluate claims", "Limited lab skills", "Not course-ready"],
+              "supports": ["Prerequisite intervention", "Lab skill development", "Math integration", "Model-based reasoning", "Peer collaboration"]
+            },
+            "at": {
+              "signs": ["Course-level success", "Math in science contexts", "Complex models", "Evaluates arguments", "Engineering design"]
+            },
+            "above": {
+              "signs": ["AP ready", "Sophisticated research", "College-level reasoning", "Independent inquiry", "Science competitions"],
+              "extensions": ["AP Science courses", "Research programs", "Science Olympiad", "Internships", "Summer programs"]
+            }
+          }
+        }
+      }
+    },
+    "history_social_science": {
+      "full_name": "History-Social Science",
+      "standards_source": "California History-Social Science Framework (2016)",
+      "framework_shifts": ["Content (new scholarship, FAIR Act)", "Literacy (ELA integration)", "Inquiry (historical thinking)", "Citizenship (civic engagement)"],
+      "thinking_skills": ["Chronological and Spatial Thinking", "Historical Research/Evidence/Point of View", "Historical Interpretation"],
+      "grade_bands": {
+        "K-2": {
+          "focus": "Self, family, community, American symbols",
+          "courses": {
+            "K": "Learning and Working Now and Long Ago - citizenship, rules, symbols, community",
+            "1": "A Child's Place in Time and Space - family, community, maps, historical figures",
+            "2": "People Who Make a Difference - geography, important people, symbols, government"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't sequence events", "Limited citizenship understanding", "Can't use maps", "Struggles with cause/effect", "Limited vocabulary"],
+              "supports": ["Visual timelines", "Hands-on maps", "Role-playing", "Picture books", "Family connections"]
+            },
+            "at": {
+              "signs": ["Understands past/present/future", "Identifies rules/responsibilities", "Uses simple maps", "Recognizes historical figures", "Basic economic concepts"]
+            },
+            "above": {
+              "signs": ["Connections across time", "Sophisticated questions", "Compares communities", "Strong geography", "Beyond-grade citizenship"],
+              "extensions": ["Community service", "Independent research", "Map-making", "Oral histories", "Cross-cultural comparisons"]
+            }
+          }
+        },
+        "3-5": {
+          "focus": "California, American, and world communities; early American history",
+          "courses": {
+            "3": "Continuity and Change - local geography, American Indians, local history, migration",
+            "4": "California: A Changing State - CA geography, Indians, missions, Gold Rush, government",
+            "5": "Making a New Nation - land, exploration, colonization, Revolution, Constitution"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't use maps", "Limited cause/effect", "Can't analyze sources", "Can't identify key events", "Limited comparisons"],
+              "supports": ["Historical thinking organizers", "Simplified sources", "Timeline activities", "Map skills", "Vocabulary development"]
+            },
+            "at": {
+              "signs": ["Uses geographic tools", "Understands cause/effect", "Analyzes sources", "Explains event significance", "Past-present connections"]
+            },
+            "above": {
+              "signs": ["Independent research", "Multiple perspectives", "Sophisticated arguments", "Deep geography", "Local-state-national connections"],
+              "extensions": ["Primary source research", "National History Day", "Community history", "Historical fiction", "Virtual museums"]
+            }
+          }
+        },
+        "6-8": {
+          "focus": "World history (ancient through early modern) and U.S. history (growth and conflict)",
+          "courses": {
+            "6": "Ancient Civilizations - early humans, river civilizations, Hebrews, Greeks, Rome",
+            "7": "Medieval and Early Modern Times - Rome/Byzantium, Islam, Medieval Europe, Renaissance",
+            "8": "Growth and Conflict - Constitution, democracy, expansion, Civil War, Reconstruction"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't analyze documents", "Struggles with chronology", "Limited causation", "Can't compare contexts", "Weak map skills"],
+              "supports": ["Document scaffolds", "Visual timelines", "Cause/effect organizers", "Comparison matrices", "Map integration"]
+            },
+            "at": {
+              "signs": ["Analyzes sources", "Understands chronology", "Explains causation", "Cross-cultural comparisons", "Geographic reasoning"]
+            },
+            "above": {
+              "signs": ["Sophisticated source analysis", "Historical arguments", "Historiographical awareness", "Cross-cultural comparisons", "Advanced ready"],
+              "extensions": ["National History Day", "DBQ practice", "Research projects", "Model UN", "Advanced reading"]
+            }
+          }
+        },
+        "9-12": {
+          "focus": "Modern world history, U.S. history, American government, economics",
+          "courses": {
+            "10": "The Modern World - democratic revolutions, Industrial Revolution, imperialism, world wars",
+            "11": "U.S. in 20th Century - Progressive Era, world wars, Depression, Cold War to present",
+            "12": "Government and Economics - Constitution, federalism, civil rights, micro/macro economics"
+          },
+          "readiness_indicators": {
+            "below": {
+              "signs": ["Can't construct arguments", "Struggles with complex texts", "Limited context", "Can't evaluate interpretations", "Weak history writing"],
+              "supports": ["Writing scaffolds", "Close reading protocols", "Contextualization", "Historiography intro", "DBQ preparation"]
+            },
+            "at": {
+              "signs": ["Evidence-based arguments", "Complex text analysis", "Context/perspective", "Evaluates interpretations", "Effective writing"]
+            },
+            "above": {
+              "signs": ["AP ready", "Historiographical sophistication", "Independent research", "Sophisticated comparisons", "College-ready thinking"],
+              "extensions": ["AP History", "National History Day", "Mock Trial", "Model UN", "Research projects"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "special_populations": {
+    "english_learners": {
+      "framework": "CA English Language Development Standards",
+      "levels": ["Emerging", "Expanding", "Bridging"],
+      "approach": "Integrated and designated ELD with content standards"
+    },
+    "students_with_disabilities": {
+      "framework": "Universal Design for Learning (UDL)",
+      "principles": ["Multiple engagement", "Multiple representation", "Multiple action/expression"],
+      "accommodations": "IEP-specified"
+    },
+    "gifted_advanced": {
+      "identification": "Multiple measures",
+      "services": ["Acceleration", "Enrichment", "Cluster grouping", "Independent study"]
+    }
+  },
+  "assessment_alignment": {
+    "caaspp_ela_math": {
+      "assessment": "Smarter Balanced",
+      "grades": [3, 4, 5, 6, 7, 8, 11],
+      "levels": ["Standard Not Met", "Standard Nearly Met", "Standard Met", "Standard Exceeded"]
+    },
+    "caaspp_science": {
+      "assessment": "California Science Test (CAST)",
+      "grades": [5, 8, "once in high school"]
+    }
+  },
+  "agent_usage_guidance": {
+    "determining_readiness": "Use readiness_indicators to identify student level based on observed behaviors/skills",
+    "selecting_content": "Match content difficulty to readiness level - below gets scaffolded prerequisite focus, at gets grade-level, above gets extension",
+    "adapting_instruction": "Use supports array for below-level students, extensions array for above-level students",
+    "tracking_progression": "Standards build vertically - use prior grade band as foundation for current grade"
+  }
+}
