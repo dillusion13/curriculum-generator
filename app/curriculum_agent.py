@@ -27,7 +27,7 @@ AVAILABLE_MODELS = {
     },
 }
 
-DEFAULT_MODEL = "claude-sonnet-4.5"
+DEFAULT_MODEL = "gemini-3-pro"
 
 
 @lru_cache(maxsize=1)
