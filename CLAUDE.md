@@ -25,6 +25,12 @@ docker compose exec web python test_curriculum.py --approach 5e_lessons
 docker compose exec web python test_curriculum.py --compare-models
 ```
 
+### After Code Changes
+**Always restart Docker after editing Python files** - the server doesn't auto-reload:
+```bash
+docker compose restart
+```
+
 ## Architecture
 - **Backend**: FastAPI + LiteLLM for multi-provider LLM support
 - **PDF Generation**: ReportLab

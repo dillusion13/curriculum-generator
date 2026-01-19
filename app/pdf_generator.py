@@ -359,7 +359,11 @@ def create_quick_reference_box(meta: dict, data: dict) -> Table:
     """
     # Gather info
     duration = meta.get("duration_minutes", "")
-    approach = meta.get("pedagogical_approach", "")
+    approach_data = meta.get("pedagogical_approach", "")
+    if isinstance(approach_data, dict):
+        approach = approach_data.get("name", approach_data.get("id", ""))
+    else:
+        approach = approach_data
     grouping = meta.get("grouping", "")
     standards = meta.get("standards_addressed", [])
     key_standard = standards[0] if standards else ""
