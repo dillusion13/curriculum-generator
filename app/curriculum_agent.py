@@ -2,8 +2,8 @@
 Curriculum Agent - LLM integration for curriculum generation.
 Supports multiple providers via LiteLLM.
 """
+import asyncio
 import json
-import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -150,27 +150,49 @@ def load_pedagogical_approaches_json() -> str:
     return "{}"
 
 
-@lru_cache(maxsize=1)
-def _load_base_prompt() -> str:
-    """Load the base curriculum prompt template (cached)."""
-    prompt_path = Path(__file__).parent.parent / "files" / "curriculum_agent_prompt.md"
+@lru_cache(maxsize=3)
+def _load_prompt_template(filename: str) -> str:
+    """Load a prompt template file (cached)."""
+    prompt_path = Path(__file__).parent.parent / "files" / filename
     with open(prompt_path, "r") as f:
         return f.read()
 
 
+def _inject_prompt_data(base_prompt: str, grade: int = None, subject: str = None) -> str:
+    """Inject standards and pedagogical data into a prompt template."""
+    standards_json = load_standards_json(grade, subject)
+    pedagogical_json = load_pedagogical_approaches_json()
+
+    return (base_prompt
+            .replace("{{STANDARDS_JSON}}", standards_json)
+            .replace("{{PEDAGOGICAL_APPROACHES_JSON}}", pedagogical_json))
+
+
 def load_curriculum_prompt(grade: int = None, subject: str = None) -> str:
     """Load the curriculum agent system prompt with filtered standards."""
-    prompt = _load_base_prompt()
+    return _inject_prompt_data(_load_prompt_template("curriculum_agent_prompt.md"), grade, subject)
 
-    # Inject filtered standards JSON into the prompt
-    standards_json = load_standards_json(grade, subject)
-    prompt = prompt.replace("{{STANDARDS_JSON}}", standards_json)
 
-    # Inject pedagogical approaches JSON into the prompt
-    pedagogical_json = load_pedagogical_approaches_json()
-    prompt = prompt.replace("{{PEDAGOGICAL_APPROACHES_JSON}}", pedagogical_json)
+def load_teacher_guide_prompt(grade: int = None, subject: str = None) -> str:
+    """Load the teacher guide prompt with filtered standards."""
+    return _inject_prompt_data(_load_prompt_template("teacher_guide_prompt.md"), grade, subject)
 
-    return prompt
+
+def load_student_materials_prompt(grade: int = None, subject: str = None) -> str:
+    """Load the student materials prompt with filtered standards."""
+    return _inject_prompt_data(_load_prompt_template("student_materials_prompt.md"), grade, subject)
+
+
+def _get_model_id(model_key: str = None) -> str:
+    """Get the LiteLLM model ID from a model key, with validation."""
+    if model_key is None:
+        model_key = DEFAULT_MODEL
+
+    model_config = AVAILABLE_MODELS.get(model_key)
+    if not model_config:
+        raise ValueError(f"Unknown model: {model_key}. Available: {list(AVAILABLE_MODELS.keys())}")
+
+    return model_config["id"]
 
 
 def generate_curriculum(teacher_input: dict[str, Any], model_key: str = None) -> dict[str, Any]:
@@ -184,55 +206,24 @@ def generate_curriculum(teacher_input: dict[str, Any], model_key: str = None) ->
     Returns:
         Dictionary containing teacher_guide and student_materials
     """
-    # Get model configuration
-    if model_key is None:
-        model_key = DEFAULT_MODEL
-
-    model_config = AVAILABLE_MODELS.get(model_key)
-    if not model_config:
-        raise ValueError(f"Unknown model: {model_key}. Available: {list(AVAILABLE_MODELS.keys())}")
-
-    model_id = model_config["id"]
-
-    # Extract grade and subject for filtered standards (reduces token usage)
+    model_id = _get_model_id(model_key)
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
 
     system_prompt = load_curriculum_prompt(grade=grade, subject=subject)
     user_message = json.dumps(teacher_input, indent=2)
 
-    # Use LiteLLM for unified API across providers
     response = litellm.completion(
         model=model_id,
         max_tokens=16000,
         messages=[
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": f"Generate curriculum for this class:\n\n```json\n{user_message}\n```"
-            }
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Generate curriculum for this class:\n\n```json\n{user_message}\n```"}
         ]
     )
 
-    # Extract the response text
     response_text = response.choices[0].message.content
-
-    # Parse JSON from response (handle potential markdown code blocks)
-    if "```json" in response_text:
-        json_start = response_text.find("```json") + 7
-        json_end = response_text.find("```", json_start)
-        response_text = response_text[json_start:json_end].strip()
-    elif "```" in response_text:
-        json_start = response_text.find("```") + 3
-        json_end = response_text.find("```", json_start)
-        response_text = response_text[json_start:json_end].strip()
-
-    curriculum = json.loads(response_text)
-
-    return curriculum
+    return _parse_json_response(response_text)
 
 
 def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str = None):
@@ -242,17 +233,7 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
     Yields:
         dict: Progress updates with type and data fields
     """
-    # Get model configuration
-    if model_key is None:
-        model_key = DEFAULT_MODEL
-
-    model_config = AVAILABLE_MODELS.get(model_key)
-    if not model_config:
-        raise ValueError(f"Unknown model: {model_key}. Available: {list(AVAILABLE_MODELS.keys())}")
-
-    model_id = model_config["id"]
-
-    # Extract grade and subject for filtered standards
+    model_id = _get_model_id(model_key)
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
 
@@ -263,20 +244,13 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
 
     yield {"type": "progress", "stage": "generating", "message": "Generating curriculum..."}
 
-    # Stream the response from LLM
     response = litellm.completion(
         model=model_id,
         max_tokens=16000,
         stream=True,
         messages=[
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": f"Generate curriculum for this class:\n\n```json\n{user_message}\n```"
-            }
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Generate curriculum for this class:\n\n```json\n{user_message}\n```"}
         ]
     )
 
@@ -287,13 +261,17 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
         if chunk.choices and chunk.choices[0].delta.content:
             response_text += chunk.choices[0].delta.content
             chunk_count += 1
-            # Send periodic progress updates
             if chunk_count % 50 == 0:
                 yield {"type": "progress", "stage": "generating", "message": f"Generating curriculum... ({len(response_text)} chars)"}
 
     yield {"type": "progress", "stage": "parsing", "message": "Parsing response..."}
 
-    # Parse JSON from response
+    curriculum = _parse_json_response(response_text)
+    yield {"type": "curriculum", "data": curriculum}
+
+
+def _parse_json_response(response_text: str) -> dict:
+    """Parse JSON from LLM response, handling markdown code blocks."""
     if "```json" in response_text:
         json_start = response_text.find("```json") + 7
         json_end = response_text.find("```", json_start)
@@ -303,6 +281,118 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
         json_end = response_text.find("```", json_start)
         response_text = response_text[json_start:json_end].strip()
 
-    curriculum = json.loads(response_text)
+    return json.loads(response_text)
 
-    yield {"type": "curriculum", "data": curriculum}
+
+async def generate_teacher_guide_async(
+    teacher_input: dict[str, Any],
+    model_id: str
+) -> dict[str, Any]:
+    """Async generation of teacher guide only."""
+    grade = teacher_input.get("grade")
+    subject = teacher_input.get("subject")
+
+    system_prompt = load_teacher_guide_prompt(grade=grade, subject=subject)
+    user_message = json.dumps(teacher_input, indent=2)
+
+    response = await litellm.acompletion(
+        model=model_id,
+        max_tokens=8000,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Generate the teacher guide for this class:\n\n```json\n{user_message}\n```"}
+        ]
+    )
+
+    return _parse_json_response(response.choices[0].message.content)
+
+
+async def generate_student_materials_async(
+    teacher_input: dict[str, Any],
+    model_id: str
+) -> dict[str, Any]:
+    """Async generation of student materials only."""
+    grade = teacher_input.get("grade")
+    subject = teacher_input.get("subject")
+
+    system_prompt = load_student_materials_prompt(grade=grade, subject=subject)
+    user_message = json.dumps(teacher_input, indent=2)
+
+    response = await litellm.acompletion(
+        model=model_id,
+        max_tokens=10000,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": f"Generate the four differentiated student handouts for this class:\n\n```json\n{user_message}\n```"}
+        ]
+    )
+
+    return _parse_json_response(response.choices[0].message.content)
+
+
+def _merge_parallel_results(teacher_result: dict, student_result: dict) -> dict:
+    """Merge teacher guide and student materials results into a single curriculum object."""
+    return {
+        "teacher_guide": teacher_result.get("teacher_guide", teacher_result),
+        "student_materials": student_result.get("student_materials", student_result),
+    }
+
+
+async def generate_curriculum_parallel(
+    teacher_input: dict[str, Any],
+    model_key: str = None
+) -> dict[str, Any]:
+    """
+    Generate curriculum using parallel LLM calls for teacher guide and student materials.
+
+    This is faster than the single-call approach because both generations run concurrently.
+    """
+    model_id = _get_model_id(model_key)
+
+    teacher_result, student_result = await asyncio.gather(
+        generate_teacher_guide_async(teacher_input, model_id),
+        generate_student_materials_async(teacher_input, model_id)
+    )
+
+    return _merge_parallel_results(teacher_result, student_result)
+
+
+async def generate_curriculum_parallel_streaming(
+    teacher_input: dict[str, Any],
+    model_key: str = None
+):
+    """
+    Generate curriculum with parallel LLM calls and streaming progress updates.
+
+    Yields progress updates while running teacher guide and student materials
+    generation in parallel.
+    """
+    model_id = _get_model_id(model_key)
+
+    yield {"type": "progress", "stage": "loading", "message": "Loading standards..."}
+    yield {"type": "progress", "stage": "generating", "message": "Generating curriculum (parallel)..."}
+
+    teacher_task = asyncio.create_task(generate_teacher_guide_async(teacher_input, model_id))
+    student_task = asyncio.create_task(generate_student_materials_async(teacher_input, model_id))
+
+    teacher_done = False
+    student_done = False
+    teacher_result = None
+    student_result = None
+
+    while not (teacher_done and student_done):
+        await asyncio.sleep(0.5)
+
+        if not teacher_done and teacher_task.done():
+            teacher_done = True
+            teacher_result = teacher_task.result()
+            yield {"type": "progress", "stage": "generating", "message": "Teacher guide complete, waiting for student materials..."}
+
+        if not student_done and student_task.done():
+            student_done = True
+            student_result = student_task.result()
+            message = "Student materials complete!" if teacher_done else "Student materials complete, waiting for teacher guide..."
+            yield {"type": "progress", "stage": "generating", "message": message}
+
+    yield {"type": "progress", "stage": "parsing", "message": "Merging results..."}
+    yield {"type": "curriculum", "data": _merge_parallel_results(teacher_result, student_result)}
