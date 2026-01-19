@@ -288,7 +288,7 @@ async def generate_teacher_guide_async(
     teacher_input: dict[str, Any],
     model_id: str
 ) -> dict[str, Any]:
-    """Async generation of teacher guide only."""
+    """Async generation of teacher guide only with streaming."""
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
 
@@ -298,20 +298,27 @@ async def generate_teacher_guide_async(
     response = await litellm.acompletion(
         model=model_id,
         max_tokens=8000,
+        stream=True,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Generate the teacher guide for this class:\n\n```json\n{user_message}\n```"}
         ]
     )
 
-    return _parse_json_response(response.choices[0].message.content)
+    # Collect streamed chunks
+    full_response = ""
+    async for chunk in response:
+        if chunk.choices and chunk.choices[0].delta.content:
+            full_response += chunk.choices[0].delta.content
+
+    return _parse_json_response(full_response)
 
 
 async def generate_student_materials_async(
     teacher_input: dict[str, Any],
     model_id: str
 ) -> dict[str, Any]:
-    """Async generation of student materials only."""
+    """Async generation of student materials only with streaming."""
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
 
@@ -321,13 +328,20 @@ async def generate_student_materials_async(
     response = await litellm.acompletion(
         model=model_id,
         max_tokens=10000,
+        stream=True,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Generate the four differentiated student handouts for this class:\n\n```json\n{user_message}\n```"}
         ]
     )
 
-    return _parse_json_response(response.choices[0].message.content)
+    # Collect streamed chunks
+    full_response = ""
+    async for chunk in response:
+        if chunk.choices and chunk.choices[0].delta.content:
+            full_response += chunk.choices[0].delta.content
+
+    return _parse_json_response(full_response)
 
 
 def _merge_parallel_results(teacher_result: dict, student_result: dict) -> dict:
