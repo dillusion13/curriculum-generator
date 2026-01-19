@@ -273,7 +273,10 @@
                 <span class="spinner"></span>
                 <div class="progress-text">
                     <span id="progress-message">Starting...</span>
-                    <span id="elapsed-timer" class="elapsed-timer">0:00</span>
+                    <span id="elapsed-timer" class="elapsed-timer">
+                        <span class="material-symbols-outlined">timer</span>
+                        <span id="timer-value">0:00</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -351,6 +354,7 @@
         const progressDisplay = document.getElementById('progress-display');
         const progressMessage = document.getElementById('progress-message');
         const elapsedTimer = document.getElementById('elapsed-timer');
+        const timerValue = document.getElementById('timer-value');
 
         // Timer state
         let timerInterval = null;
@@ -364,10 +368,10 @@
 
         function startTimer() {
             elapsedSeconds = 0;
-            elapsedTimer.textContent = formatTime(elapsedSeconds);
+            timerValue.textContent = formatTime(elapsedSeconds);
             timerInterval = setInterval(() => {
                 elapsedSeconds++;
-                elapsedTimer.textContent = formatTime(elapsedSeconds);
+                timerValue.textContent = formatTime(elapsedSeconds);
             }, 1000);
         }
 
