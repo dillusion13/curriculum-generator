@@ -267,28 +267,37 @@ def create_section_header(title: str, accent_color) -> Table:
 
 
 def create_workspace_box(lines: int = 4, accent_color=None) -> Table:
-    """Create a styled workspace box for student work."""
+    """Create a styled workspace box for student work with dotted writing lines."""
     if accent_color is None:
         accent_color = COLORS["ink_300"]
 
-    # Create dotted lines for writing
-    line_content = []
-    for _ in range(lines):
-        line_content.append("")
+    # Create rows for each line - each row is a writing area
+    rows = [[""] for _ in range(lines)]
+    row_height = 0.28 * inch
 
     workspace = Table(
-        [["\n".join(line_content)]],
+        rows,
         colWidths=[7.5 * inch],
-        rowHeights=[lines * 0.3 * inch]
+        rowHeights=[row_height] * lines
     )
-    workspace.setStyle(TableStyle([
+
+    # Build style with dotted lines between rows
+    style_commands = [
         ("BOX", (0, 0), (-1, -1), 1.5, COLORS["ink_200"]),
         ("BACKGROUND", (0, 0), (-1, -1), COLORS["white"]),
-        ("TOPPADDING", (0, 0), (-1, -1), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+        ("TOPPADDING", (0, 0), (-1, -1), 2),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
         ("LEFTPADDING", (0, 0), (-1, -1), 10),
         ("LINEBEFORE", (0, 0), (0, -1), 3, accent_color),
-    ]))
+    ]
+
+    # Add dotted lines between rows (writing guides)
+    for i in range(lines - 1):
+        style_commands.append(
+            ("LINEBELOW", (0, i), (-1, i), 0.5, COLORS["ink_200"], 1, None, None, 2, 2)
+        )
+
+    workspace.setStyle(TableStyle(style_commands))
     return workspace
 
 
@@ -338,6 +347,248 @@ def create_divider() -> HRFlowable:
     )
 
 
+def create_quick_reference_box(meta: dict, data: dict) -> Table:
+    """Create a compact quick reference box with key lesson info.
+
+    ┌─────────────────────────────────────────────────┐
+    │ QUICK REFERENCE                                 │
+    │ Duration: 20 min │ Format: Small Group          │
+    │ Approach: 5E Lesson │ Goal: Introduce           │
+    │ Key Standard: 6.RP.A.3a                         │
+    └─────────────────────────────────────────────────┘
+    """
+    # Gather info
+    duration = meta.get("duration_minutes", "")
+    approach = meta.get("pedagogical_approach", "")
+    grouping = meta.get("grouping", "")
+    standards = meta.get("standards_addressed", [])
+    key_standard = standards[0] if standards else ""
+
+    # Build info items
+    info_items = []
+    if duration:
+        info_items.append(f"<b>Duration:</b> {duration} min")
+    if grouping:
+        info_items.append(f"<b>Format:</b> {grouping}")
+    if approach:
+        info_items.append(f"<b>Approach:</b> {approach}")
+    if key_standard:
+        info_items.append(f"<b>Standard:</b> {key_standard}")
+
+    # Create two-column layout
+    row1_items = info_items[:2]
+    row2_items = info_items[2:4]
+
+    row1_text = "  │  ".join(row1_items) if row1_items else ""
+    row2_text = "  │  ".join(row2_items) if row2_items else ""
+
+    rows = [[Paragraph("<b>QUICK REFERENCE</b>", ParagraphStyle(
+        name="qrheader", fontSize=9, textColor=COLORS["navy_700"]
+    ))]]
+
+    if row1_text:
+        rows.append([Paragraph(row1_text, ParagraphStyle(
+            name="qrrow1", fontSize=9, textColor=COLORS["ink_600"]
+        ))])
+    if row2_text:
+        rows.append([Paragraph(row2_text, ParagraphStyle(
+            name="qrrow2", fontSize=9, textColor=COLORS["ink_600"]
+        ))])
+
+    box = Table(rows, colWidths=[7.5 * inch])
+    box.setStyle(TableStyle([
+        ("BOX", (0, 0), (-1, -1), 1.5, COLORS["navy_700"]),
+        ("BACKGROUND", (0, 0), (-1, -1), COLORS["navy_100"]),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING", (0, 0), (-1, -1), 12),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+        ("LINEBELOW", (0, 0), (-1, 0), 0.5, COLORS["navy_500"]),
+    ]))
+    return box
+
+
+def create_differentiation_at_a_glance(diff: dict) -> Table:
+    """Create a compact differentiation summary view."""
+    level_info = [
+        ("below_level", "Below", COLORS["below"], COLORS["below_light"]),
+        ("approaching_level", "Approaching", COLORS["approaching"], COLORS["approaching_light"]),
+        ("at_level", "At Level", COLORS["at"], COLORS["at_light"]),
+        ("above_level", "Above", COLORS["above"], COLORS["above_light"]),
+    ]
+
+    # Header row
+    headers = [Paragraph(f"<b>{name}</b>", ParagraphStyle(
+        name=f"dh_{key}", fontSize=8, textColor=color, alignment=TA_CENTER
+    )) for key, name, color, _ in level_info]
+
+    # Focus row - extract key focus for each level
+    focus_cells = []
+    for key, _, color, bg_color in level_info:
+        level_data = diff.get(key, {})
+        focus = level_data.get("focus", "")
+        # Truncate if too long
+        if len(focus) > 60:
+            focus = focus[:57] + "..."
+        focus_cells.append(Paragraph(focus, ParagraphStyle(
+            name=f"df_{key}", fontSize=8, textColor=COLORS["ink_700"], leading=10
+        )))
+
+    table = Table([headers, focus_cells], colWidths=[1.875 * inch] * 4)
+    table.setStyle(TableStyle([
+        ("ALIGN", (0, 0), (-1, 0), "CENTER"),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("BACKGROUND", (0, 0), (0, -1), COLORS["below_light"]),
+        ("BACKGROUND", (1, 0), (1, -1), COLORS["approaching_light"]),
+        ("BACKGROUND", (2, 0), (2, -1), COLORS["at_light"]),
+        ("BACKGROUND", (3, 0), (3, -1), COLORS["above_light"]),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("BOX", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
+        ("LINEBELOW", (0, 0), (-1, 0), 1, COLORS["ink_200"]),
+        ("LINEBEFORE", (1, 0), (1, -1), 0.5, COLORS["ink_200"]),
+        ("LINEBEFORE", (2, 0), (2, -1), 0.5, COLORS["ink_200"]),
+        ("LINEBEFORE", (3, 0), (3, -1), 0.5, COLORS["ink_200"]),
+    ]))
+    return table
+
+
+def render_graphic_organizer(go_data: dict, accent_color, styles) -> list:
+    """Render a graphic organizer based on type.
+
+    Returns a list of flowable elements to add to the document.
+    """
+    elements = []
+    go_type = go_data.get("type", "").lower()
+    title = go_data.get("title", "Graphic Organizer")
+
+    # Header
+    elements.append(Paragraph(f"<b>■ {title.upper()}</b>", ParagraphStyle(
+        name="goheader", fontSize=10, textColor=accent_color, spaceAfter=6
+    )))
+
+    if go_type in ("ratio_table", "table"):
+        # Ratio table / generic table
+        headers = go_data.get("headers", go_data.get("columns", []))
+        rows_data = go_data.get("rows", [])
+
+        if headers:
+            # Header row
+            header_cells = [Paragraph(f"<b>{h}</b>", ParagraphStyle(
+                name="goth", fontSize=9, textColor=COLORS["ink_700"], alignment=TA_CENTER
+            )) for h in headers]
+
+            all_rows = [header_cells]
+
+            # Data rows (or empty rows for student fill-in)
+            num_rows = len(rows_data) if rows_data else go_data.get("num_rows", 4)
+            for i in range(num_rows):
+                if rows_data and i < len(rows_data):
+                    row = rows_data[i]
+                    cells = [Paragraph(str(cell), styles["SmallText"]) for cell in row]
+                else:
+                    cells = ["" for _ in headers]
+                all_rows.append(cells)
+
+            col_width = 7.5 * inch / len(headers)
+            table = Table(all_rows, colWidths=[col_width] * len(headers))
+            table.setStyle(TableStyle([
+                ("BOX", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
+                ("INNERGRID", (0, 0), (-1, -1), 0.5, COLORS["ink_200"]),
+                ("BACKGROUND", (0, 0), (-1, 0), accent_color),
+                ("TEXTCOLOR", (0, 0), (-1, 0), COLORS["white"]),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("TOPPADDING", (0, 0), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ]))
+            elements.append(table)
+
+    elif go_type in ("vocabulary_four_square", "four_square"):
+        # Four-square vocabulary organizer
+        word = go_data.get("word", go_data.get("term", ""))
+        quadrants = go_data.get("quadrants", ["Definition", "Example", "Non-Example", "Picture/Drawing"])
+
+        # Center word
+        center_text = Paragraph(f"<b>{word}</b>", ParagraphStyle(
+            name="gocenter", fontSize=12, textColor=accent_color, alignment=TA_CENTER
+        ))
+
+        # Four quadrants - ensure exactly 4 cells
+        quad_cells = [
+            Paragraph(f"<b>{q}</b>", ParagraphStyle(
+                name="goquad", fontSize=9, textColor=COLORS["ink_600"]
+            )) for q in quadrants[:4]
+        ]
+        while len(quad_cells) < 4:
+            quad_cells.append("")
+
+        four_square = Table([
+            [quad_cells[0], quad_cells[1]],
+            [center_text, center_text],
+            [quad_cells[2], quad_cells[3]],
+        ], colWidths=[3.75 * inch, 3.75 * inch], rowHeights=[0.8 * inch, 0.4 * inch, 0.8 * inch])
+        four_square.setStyle(TableStyle([
+            ("BOX", (0, 0), (-1, -1), 1.5, accent_color),
+            ("INNERGRID", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
+            ("SPAN", (0, 1), (1, 1)),
+            ("BACKGROUND", (0, 1), (1, 1), accent_color),
+            ("TEXTCOLOR", (0, 1), (1, 1), COLORS["white"]),
+            ("ALIGN", (0, 1), (1, 1), "CENTER"),
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING", (0, 0), (-1, -1), 6),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ("LEFTPADDING", (0, 0), (-1, -1), 8),
+        ]))
+        elements.append(four_square)
+
+    elif go_type in ("t_chart", "comparison"):
+        # T-Chart for comparisons
+        left_header = go_data.get("left_header", "Side A")
+        right_header = go_data.get("right_header", "Side B")
+        num_rows = go_data.get("num_rows", 4)
+
+        header_row = [
+            Paragraph(f"<b>{left_header}</b>", ParagraphStyle(
+                name="gothl", fontSize=10, textColor=COLORS["white"], alignment=TA_CENTER
+            )),
+            Paragraph(f"<b>{right_header}</b>", ParagraphStyle(
+                name="gothr", fontSize=10, textColor=COLORS["white"], alignment=TA_CENTER
+            )),
+        ]
+
+        rows = [header_row]
+        for _ in range(num_rows):
+            rows.append(["", ""])
+
+        t_chart = Table(rows, colWidths=[3.75 * inch, 3.75 * inch], rowHeights=[0.35 * inch] + [0.5 * inch] * num_rows)
+        t_chart.setStyle(TableStyle([
+            ("BOX", (0, 0), (-1, -1), 1.5, accent_color),
+            ("LINEBEFORE", (1, 0), (1, -1), 1.5, accent_color),
+            ("LINEBELOW", (0, 0), (-1, 0), 1.5, accent_color),
+            ("BACKGROUND", (0, 0), (-1, 0), accent_color),
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("TOPPADDING", (0, 0), (-1, -1), 6),
+            ("LEFTPADDING", (0, 0), (-1, -1), 8),
+        ]))
+        elements.append(t_chart)
+
+    else:
+        # Generic fallback - simple labeled box
+        description = go_data.get("description", go_data.get("instructions", ""))
+        if description:
+            elements.append(Paragraph(description, styles["SmallText"]))
+            elements.append(Spacer(1, 6))
+
+        # Add an empty workspace
+        elements.append(create_workspace_box(4, accent_color))
+
+    elements.append(Spacer(1, 12))
+    return elements
+
+
 # ============================================================================
 # TEACHER GUIDE PDF
 # ============================================================================
@@ -381,58 +632,18 @@ def create_teacher_guide(data: dict[str, Any], output_path: str, include_udl_doc
         standards_text = "  ".join([f"<font color='#{COLORS['gold_600'].hexval()[2:]}' size='9'><b>[{s}]</b></font>" for s in standards])
         elements.append(Paragraph(standards_text, styles["BodyText"]))
 
+    elements.append(Spacer(1, 8))
+
+    # ===== QUICK REFERENCE BOX =====
+    elements.append(create_quick_reference_box(meta, data))
     elements.append(Spacer(1, 12))
-    elements.append(HRFlowable(width="100%", thickness=2, color=COLORS["navy_700"], spaceBefore=0, spaceAfter=16))
 
-    # ===== CLASS COMPOSITION =====
-    comp = meta.get("class_composition", {})
-    if comp:
-        elements.append(create_section_header("CLASS COMPOSITION", COLORS["ink_600"]))
-        elements.append(Spacer(1, 8))
-
-        # Readiness levels table with colors
-        readiness_data = [
-            [
-                Paragraph("<b>Below Level</b>", ParagraphStyle(name="t1", fontSize=9, textColor=COLORS["below"])),
-                Paragraph("<b>Approaching</b>", ParagraphStyle(name="t2", fontSize=9, textColor=COLORS["approaching"])),
-                Paragraph("<b>At Level</b>", ParagraphStyle(name="t3", fontSize=9, textColor=COLORS["at"])),
-                Paragraph("<b>Above Level</b>", ParagraphStyle(name="t4", fontSize=9, textColor=COLORS["above"])),
-            ],
-            [
-                str(comp.get("below_level", 0)),
-                str(comp.get("approaching_level", 0)),
-                str(comp.get("at_level", 0)),
-                str(comp.get("above_level", 0)),
-            ]
-        ]
-
-        t1 = Table(readiness_data, colWidths=[1.75 * inch] * 4)
-        t1.setStyle(TableStyle([
-            ("ALIGN", (0, 0), (-1, -1), "CENTER"),
-            ("FONTNAME", (0, 1), (-1, 1), "Helvetica-Bold"),
-            ("FONTSIZE", (0, 1), (-1, 1), 14),
-            ("BACKGROUND", (0, 1), (0, 1), COLORS["below_light"]),
-            ("BACKGROUND", (1, 1), (1, 1), COLORS["approaching_light"]),
-            ("BACKGROUND", (2, 1), (2, 1), COLORS["at_light"]),
-            ("BACKGROUND", (3, 1), (3, 1), COLORS["above_light"]),
-            ("TEXTCOLOR", (0, 1), (0, 1), COLORS["below"]),
-            ("TEXTCOLOR", (1, 1), (1, 1), COLORS["approaching"]),
-            ("TEXTCOLOR", (2, 1), (2, 1), COLORS["at"]),
-            ("TEXTCOLOR", (3, 1), (3, 1), COLORS["above"]),
-            ("TOPPADDING", (0, 0), (-1, -1), 8),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-            ("BOX", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
-            ("LINEBELOW", (0, 0), (-1, 0), 1, COLORS["ink_200"]),
-        ]))
-        elements.append(t1)
-
-        # EL levels if present
-        el_total = comp.get("el_emerging", 0) + comp.get("el_expanding", 0) + comp.get("el_bridging", 0)
-        if el_total > 0:
-            elements.append(Spacer(1, 8))
-            el_text = f"<b>English Learners:</b> Emerging ({comp.get('el_emerging', 0)}) \u2022 Expanding ({comp.get('el_expanding', 0)}) \u2022 Bridging ({comp.get('el_bridging', 0)})"
-            elements.append(Paragraph(el_text, styles["SmallText"]))
-
+    # ===== MATERIALS (moved up for teacher prep) =====
+    materials = data.get("materials_list", [])
+    if materials:
+        elements.append(create_section_header("MATERIALS NEEDED", COLORS["gold_600"]))
+        elements.append(Spacer(1, 6))
+        add_bullet_list(elements, materials, styles["BodyText"], COLORS["gold_600"])
         elements.append(Spacer(1, 12))
 
     # ===== LEARNING OBJECTIVES =====
@@ -457,57 +668,134 @@ def create_teacher_guide(data: dict[str, Any], output_path: str, include_udl_doc
             elements.append(obj_box)
         elements.append(Spacer(1, 12))
 
+    # ===== DIFFERENTIATION AT-A-GLANCE =====
+    diff = data.get("differentiation_overview", {})
+    if diff:
+        elements.append(Paragraph("<b>DIFFERENTIATION AT-A-GLANCE</b>", ParagraphStyle(
+            name="diffglance", fontSize=10, textColor=COLORS["ink_700"], spaceAfter=6
+        )))
+        elements.append(create_differentiation_at_a_glance(diff))
+        elements.append(Spacer(1, 12))
+
     # ===== SESSION STRUCTURE =====
     structure = data.get("session_structure", {})
     if structure:
         elements.append(create_section_header("SESSION STRUCTURE", COLORS["navy_700"]))
         elements.append(Spacer(1, 8))
 
-        section_labels = {"hook": "HOOK", "instruction": "INSTRUCTION", "practice": "PRACTICE", "closure": "CLOSURE"}
-        section_colors = {
-            "hook": COLORS["gold_600"],
-            "instruction": COLORS["navy_600"],
-            "practice": COLORS["at"],
-            "closure": COLORS["above"],
-        }
+        # Check for pedagogical approach phases (new format) first
+        phases = structure.get("phases", [])
+        if phases:
+            # Use the phases array from pedagogical approaches
+            phase_color_cycle = [COLORS["gold_600"], COLORS["navy_600"], COLORS["at"], COLORS["above"], COLORS["emerging"]]
+            for idx, phase in enumerate(phases):
+                phase_name = phase.get("name", phase.get("phase", f"Phase {idx + 1}"))
+                duration = phase.get("duration_minutes", phase.get("duration", ""))
+                color = phase_color_cycle[idx % len(phase_color_cycle)]
 
-        for section_name in ["hook", "instruction", "practice", "closure"]:
-            section = structure.get(section_name, {})
-            if section:
-                duration = section.get("duration_minutes", "")
-                label = section_labels.get(section_name, section_name.upper())
-                color = section_colors.get(section_name, COLORS["ink_600"])
-
-                # Section header row
-                section_header = Table([[
-                    Paragraph(f"<font color='#{color.hexval()[2:]}'>&#9632;</font> <b>{label}</b>",
-                             ParagraphStyle(name="sh", fontSize=10, textColor=color)),
-                    Paragraph(f"<b>{duration} min</b>",
+                # Phase header row
+                phase_header = Table([[
+                    Paragraph(f"<font color='#{color.hexval()[2:]}'>■</font> <b>{phase_name.upper()}</b>",
+                             ParagraphStyle(name="ph", fontSize=10, textColor=color)),
+                    Paragraph(f"<b>{duration} min</b>" if duration else "",
                              ParagraphStyle(name="dur", fontSize=10, textColor=COLORS["ink_500"], alignment=2)),
                 ]], colWidths=[6 * inch, 1.5 * inch])
-                section_header.setStyle(TableStyle([
+                phase_header.setStyle(TableStyle([
                     ("BACKGROUND", (0, 0), (-1, -1), COLORS["ink_50"]),
                     ("TOPPADDING", (0, 0), (-1, -1), 6),
                     ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
                     ("LEFTPADDING", (0, 0), (-1, -1), 8),
                 ]))
-                elements.append(section_header)
+                elements.append(phase_header)
 
-                # Section content
-                elements.append(Paragraph(section.get("description", ""), styles["BodyText"]))
+                # Phase content - handle various field names
+                description = phase.get("description", phase.get("activities", ""))
+                if description:
+                    elements.append(Paragraph(description, styles["BodyText"]))
 
-                if section.get("teacher_actions"):
-                    elements.append(Paragraph(f"<b>Teacher:</b> {section['teacher_actions']}", styles["SmallText"]))
-                if section.get("student_actions"):
-                    elements.append(Paragraph(f"<b>Students:</b> {section['student_actions']}", styles["SmallText"]))
-                if section.get("key_points"):
+                if phase.get("teacher_actions"):
+                    elements.append(Paragraph(f"<b>Teacher:</b> {phase['teacher_actions']}", styles["SmallText"]))
+                if phase.get("student_actions"):
+                    elements.append(Paragraph(f"<b>Students:</b> {phase['student_actions']}", styles["SmallText"]))
+                if phase.get("key_points"):
                     elements.append(Paragraph("<b>Key Points:</b>", styles["SmallText"]))
-                    add_bullet_list(elements, section["key_points"], styles["SmallText"], color)
+                    add_bullet_list(elements, phase["key_points"], styles["SmallText"], color)
+                if phase.get("key_questions"):
+                    elements.append(Paragraph("<b>Key Questions:</b>", styles["SmallText"]))
+                    add_bullet_list(elements, phase["key_questions"], styles["SmallText"], color)
 
                 elements.append(Spacer(1, 10))
+        else:
+            # Legacy fallback: hook/instruction/practice/closure
+            section_labels = {"hook": "HOOK", "instruction": "INSTRUCTION", "practice": "PRACTICE", "closure": "CLOSURE"}
+            section_colors = {
+                "hook": COLORS["gold_600"],
+                "instruction": COLORS["navy_600"],
+                "practice": COLORS["at"],
+                "closure": COLORS["above"],
+            }
 
-    # ===== DIFFERENTIATION GUIDE =====
-    diff = data.get("differentiation_overview", {})
+            for section_name in ["hook", "instruction", "practice", "closure"]:
+                section = structure.get(section_name, {})
+                if section:
+                    duration = section.get("duration_minutes", "")
+                    label = section_labels.get(section_name, section_name.upper())
+                    color = section_colors.get(section_name, COLORS["ink_600"])
+
+                    # Section header row
+                    section_header = Table([[
+                        Paragraph(f"<font color='#{color.hexval()[2:]}'>■</font> <b>{label}</b>",
+                                 ParagraphStyle(name="sh", fontSize=10, textColor=color)),
+                        Paragraph(f"<b>{duration} min</b>",
+                                 ParagraphStyle(name="dur", fontSize=10, textColor=COLORS["ink_500"], alignment=2)),
+                    ]], colWidths=[6 * inch, 1.5 * inch])
+                    section_header.setStyle(TableStyle([
+                        ("BACKGROUND", (0, 0), (-1, -1), COLORS["ink_50"]),
+                        ("TOPPADDING", (0, 0), (-1, -1), 6),
+                        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+                        ("LEFTPADDING", (0, 0), (-1, -1), 8),
+                    ]))
+                    elements.append(section_header)
+
+                    # Section content
+                    elements.append(Paragraph(section.get("description", ""), styles["BodyText"]))
+
+                    if section.get("teacher_actions"):
+                        elements.append(Paragraph(f"<b>Teacher:</b> {section['teacher_actions']}", styles["SmallText"]))
+                    if section.get("student_actions"):
+                        elements.append(Paragraph(f"<b>Students:</b> {section['student_actions']}", styles["SmallText"]))
+                    if section.get("key_points"):
+                        elements.append(Paragraph("<b>Key Points:</b>", styles["SmallText"]))
+                        add_bullet_list(elements, section["key_points"], styles["SmallText"], color)
+
+                    elements.append(Spacer(1, 10))
+
+    # ===== COMMON MISCONCEPTIONS (moved up - teachers need this before teaching) =====
+    misconceptions = data.get("common_misconceptions", [])
+    if misconceptions:
+        elements.append(create_section_header("COMMON MISCONCEPTIONS", COLORS["below"]))
+        elements.append(Spacer(1, 6))
+
+        for m in misconceptions:
+            misc_box = Table([[
+                Paragraph(f"<b>■ Misconception:</b> {m.get('misconception', '')}", styles["BodyText"]),
+            ], [
+                Paragraph(f"<b>→ Address by:</b> {m.get('how_to_address', '')}", styles["SmallText"]),
+            ]], colWidths=[7.5 * inch])
+            misc_box.setStyle(TableStyle([
+                ("BACKGROUND", (0, 0), (-1, 0), COLORS["below_light"]),
+                ("BACKGROUND", (0, 1), (-1, 1), COLORS["at_light"]),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+                ("LEFTPADDING", (0, 0), (-1, -1), 10),
+                ("BOX", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
+            ]))
+            elements.append(misc_box)
+            elements.append(Spacer(1, 6))
+        elements.append(Spacer(1, 6))
+
+    # ===== DETAILED DIFFERENTIATION GUIDE (Page 2) =====
+    # Note: diff was already loaded earlier for At-A-Glance section
     if diff:
         elements.append(PageBreak())
         elements.append(create_section_header("DIFFERENTIATION GUIDE", COLORS["navy_700"]))
@@ -523,13 +811,14 @@ def create_teacher_guide(data: dict[str, Any], output_path: str, include_udl_doc
         for level_key, level_name, color, bg_color in level_info:
             level_data = diff.get(level_key, {})
             if level_data:
-                # Level header
+                # Level header - uses border for print-friendliness, text label is primary
                 level_header = Table([[
-                    Paragraph(f"<b>{level_name}</b>", ParagraphStyle(name="lh", fontSize=11, textColor=color)),
+                    Paragraph(f"<b>■ {level_name}</b>", ParagraphStyle(name="lh", fontSize=11, textColor=color)),
                 ]], colWidths=[7.5 * inch])
                 level_header.setStyle(TableStyle([
-                    ("BACKGROUND", (0, 0), (-1, -1), bg_color),
+                    ("BACKGROUND", (0, 0), (-1, -1), COLORS["white"]),
                     ("LINEBEFORE", (0, 0), (0, -1), 4, color),
+                    ("BOX", (0, 0), (-1, -1), 1, color),
                     ("TOPPADDING", (0, 0), (-1, -1), 8),
                     ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
                     ("LEFTPADDING", (0, 0), (-1, -1), 12),
@@ -605,36 +894,6 @@ def create_teacher_guide(data: dict[str, Any], output_path: str, include_udl_doc
 
         elements.append(Spacer(1, 4))
 
-    # ===== MATERIALS =====
-    materials = data.get("materials_list", [])
-    if materials:
-        elements.append(create_section_header("MATERIALS NEEDED", COLORS["ink_600"]))
-        elements.append(Spacer(1, 6))
-        add_bullet_list(elements, materials, styles["BodyText"], COLORS["gold_600"])
-        elements.append(Spacer(1, 12))
-
-    # ===== MISCONCEPTIONS =====
-    misconceptions = data.get("common_misconceptions", [])
-    if misconceptions:
-        elements.append(create_section_header("COMMON MISCONCEPTIONS", COLORS["below"]))
-        elements.append(Spacer(1, 6))
-
-        for m in misconceptions:
-            misc_box = Table([[
-                Paragraph(f"<font color='#{COLORS['below'].hexval()[2:]}'>&#9632;&#9632;</font> <b>Misconception:</b> {m.get('misconception', '')}", styles["BodyText"]),
-            ], [
-                Paragraph(f"<font color='#{COLORS['at'].hexval()[2:]}'>\u2713</font> <b>Address by:</b> {m.get('how_to_address', '')}", styles["SmallText"]),
-            ]], colWidths=[7.5 * inch])
-            misc_box.setStyle(TableStyle([
-                ("BACKGROUND", (0, 0), (-1, 0), COLORS["below_light"]),
-                ("BACKGROUND", (0, 1), (-1, 1), COLORS["at_light"]),
-                ("TOPPADDING", (0, 0), (-1, -1), 6),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-                ("LEFTPADDING", (0, 0), (-1, -1), 10),
-            ]))
-            elements.append(misc_box)
-            elements.append(Spacer(1, 6))
-
     doc.build(elements)
     return output_path
 
@@ -707,7 +966,49 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
             ("RIGHTPADDING", (0, 0), (-1, -1), 12),
         ]))
         elements.append(goal_box)
-        elements.append(Spacer(1, 16))
+        elements.append(Spacer(1, 12))
+
+    # ===== WORD BANK (moved up - students need while working) =====
+    word_bank = data.get("word_bank", [])
+    if word_bank:
+        words_text = "   •   ".join(word_bank)
+        word_box = Table([[
+            Paragraph(f"<b>■ WORD BANK:</b>  {words_text}", ParagraphStyle(
+                name="wordbank", fontSize=10, textColor=accent
+            ))
+        ]], colWidths=[7.5 * inch])
+        word_box.setStyle(TableStyle([
+            ("BOX", (0, 0), (-1, -1), 1.5, accent),
+            ("BACKGROUND", (0, 0), (-1, -1), accent_light),
+            ("TOPPADDING", (0, 0), (-1, -1), 8),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ("LEFTPADDING", (0, 0), (-1, -1), 10),
+        ]))
+        elements.append(word_box)
+        elements.append(Spacer(1, 10))
+
+    # ===== SENTENCE FRAMES (moved up - students need while working) =====
+    frames = data.get("sentence_frames", [])
+    if frames:
+        frames_content = []
+        frames_content.append([Paragraph("<b>■ SENTENCE FRAMES</b>", ParagraphStyle(
+            name="sfheader", fontSize=10, textColor=COLORS["ink_700"]
+        ))])
+        for frame in frames:
+            frames_content.append([Paragraph(f"• {frame}", ParagraphStyle(
+                name="sfitem", fontSize=9, textColor=COLORS["ink_600"], leftIndent=8
+            ))])
+
+        frames_table = Table(frames_content, colWidths=[7.5 * inch])
+        frames_table.setStyle(TableStyle([
+            ("BACKGROUND", (0, 0), (-1, -1), COLORS["ink_50"]),
+            ("BOX", (0, 0), (-1, -1), 1, COLORS["ink_200"]),
+            ("TOPPADDING", (0, 0), (-1, -1), 4),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+            ("LEFTPADDING", (0, 0), (-1, -1), 10),
+        ]))
+        elements.append(frames_table)
+        elements.append(Spacer(1, 12))
 
     # ===== VOCABULARY =====
     vocab = data.get("vocabulary", [])
@@ -743,6 +1044,12 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
         ]))
         elements.append(vocab_table)
         elements.append(Spacer(1, 14))
+
+    # ===== GRAPHIC ORGANIZER (if present) =====
+    graphic_organizer = data.get("graphic_organizer", {})
+    if graphic_organizer:
+        go_elements = render_graphic_organizer(graphic_organizer, accent, styles)
+        elements.extend(go_elements)
 
     # ===== WORKED EXAMPLE =====
     worked = data.get("worked_example", {})
@@ -838,7 +1145,7 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
     # ===== INDEPENDENT PRACTICE =====
     independent = data.get("independent_practice", data.get("practice_problems", []))
     if independent:
-        elements.append(Paragraph(f"<font color='#{accent.hexval()[2:]}'>&#9866;&#9632;</font> <b>YOUR TURN</b>", ParagraphStyle(
+        elements.append(Paragraph(f"<font color='#{accent.hexval()[2:]}'>■</font> <b>YOUR TURN</b>", ParagraphStyle(
             name="ipheader", fontSize=11, textColor=COLORS["ink_800"], spaceAfter=8
         )))
 
@@ -852,7 +1159,7 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
     # ===== APPLICATION PROBLEM =====
     application = data.get("application_problem", {})
     if application:
-        elements.append(Paragraph(f"<font color='#{COLORS['gold_600'].hexval()[2:]}'>&#9733;</font> <b>APPLY IT</b>", ParagraphStyle(
+        elements.append(Paragraph(f"<font color='#{COLORS['gold_600'].hexval()[2:]}'>■</font> <b>APPLY IT</b>", ParagraphStyle(
             name="apheader", fontSize=11, textColor=COLORS["ink_800"], spaceAfter=6
         )))
 
@@ -870,7 +1177,7 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
     extension = data.get("extension_challenge", {})
     if extension:
         ext_header = Table([[
-            Paragraph(f"<font color='#{COLORS['above'].hexval()[2:]}'>&#9650;</font> <b>EXTENSION CHALLENGE: {extension.get('title', '')}</b>", ParagraphStyle(
+            Paragraph(f"<font color='#{COLORS['above'].hexval()[2:]}'>■</font> <b>EXTENSION CHALLENGE: {extension.get('title', '')}</b>", ParagraphStyle(
                 name="extheader", fontSize=11, textColor=COLORS["above"]
             ))
         ]], colWidths=[7.5 * inch])
@@ -894,44 +1201,6 @@ def create_student_handout(data: dict[str, Any], level: str, output_path: str) -
         elements.append(Spacer(1, 6))
         elements.append(create_workspace_box(6, COLORS["above"]))
         elements.append(Spacer(1, 12))
-
-    # ===== SENTENCE FRAMES =====
-    frames = data.get("sentence_frames", [])
-    if frames:
-        frames_header = Table([[
-            Paragraph(f"<font color='#{COLORS['ink_600'].hexval()[2:]}'>&#9632;</font> <b>SENTENCE FRAMES</b>", ParagraphStyle(
-                name="sfheader", fontSize=10, textColor=COLORS["ink_700"]
-            ))
-        ]], colWidths=[7.5 * inch])
-        frames_header.setStyle(TableStyle([
-            ("BACKGROUND", (0, 0), (-1, -1), COLORS["ink_100"]),
-            ("TOPPADDING", (0, 0), (-1, -1), 6),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-            ("LEFTPADDING", (0, 0), (-1, -1), 10),
-        ]))
-        elements.append(frames_header)
-
-        for frame in frames:
-            elements.append(Paragraph(f"\u2022 {frame}", styles["SmallText"]))
-        elements.append(Spacer(1, 12))
-
-    # ===== WORD BANK =====
-    word_bank = data.get("word_bank", [])
-    if word_bank:
-        words_text = "   \u2022   ".join(word_bank)
-        word_box = Table([[
-            Paragraph(f"<b>WORD BANK:</b>  {words_text}", ParagraphStyle(
-                name="wordbank", fontSize=10, textColor=accent, alignment=TA_CENTER
-            ))
-        ]], colWidths=[7.5 * inch])
-        word_box.setStyle(TableStyle([
-            ("BOX", (0, 0), (-1, -1), 2, accent),
-            ("BACKGROUND", (0, 0), (-1, -1), accent_light),
-            ("TOPPADDING", (0, 0), (-1, -1), 10),
-            ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
-        ]))
-        elements.append(word_box)
-        elements.append(Spacer(1, 14))
 
     # ===== REFLECTION =====
     reflection = data.get("reflection", {})
