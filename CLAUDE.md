@@ -2,6 +2,9 @@
 
 California K-12 curriculum generation tool with differentiated lesson plans.
 
+**Live:** https://curriculum-generator-iuxx.onrender.com
+**Repo:** https://github.com/dillusion13/curriculum-generator
+
 ## Quick Start
 ```bash
 docker compose up --build
@@ -29,10 +32,10 @@ docker compose exec web python test_curriculum.py --compare-models
 
 ### Multi-Model Support
 Models configured in `app/curriculum_agent.py`:
-- `claude-sonnet-4.5` (default) - Anthropic
-- `gemini-3-pro` - Google
+- `gemini-3-pro` (default) - Google
+- `claude-sonnet-4.5` - Anthropic
 
-Add new models to `AVAILABLE_MODELS` dict.
+Add new models to `AVAILABLE_MODELS` dict. Change default via `DEFAULT_MODEL`.
 
 ## Key Files
 
@@ -81,8 +84,13 @@ GEMINI_API_KEY=your-key      # Required for Gemini
 
 ## API Endpoints
 - `GET /` - Teacher input form
-- `POST /generate` - Generate curriculum and PDFs
+- `POST /generate` - Generate curriculum and PDFs (blocking)
+- `POST /generate-stream` - Generate with SSE progress updates (used by frontend)
 - `GET /download/{filename}` - Download generated PDF
+- `GET /health` - Health check
+
+## Deployment
+Hosted on Render with auto-deploy from `main` branch. Config in `render.yaml`.
 
 ## Conventions
 - Use type hints in Python

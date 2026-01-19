@@ -41,8 +41,8 @@ docker compose up --build
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `ANTHROPIC_API_KEY` | Yes | For Claude models |
-| `GEMINI_API_KEY` | Optional | For Gemini models |
+| `GEMINI_API_KEY` | Yes | For Gemini models (default) |
+| `ANTHROPIC_API_KEY` | Optional | For Claude models |
 
 ## License
 
