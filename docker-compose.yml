@@ -7,6 +7,7 @@ services:
       - ./app:/app/app
       - ./files:/app/files
       - ./outputs:/app/outputs
+      - ./tests:/app/tests
       - ./test_curriculum.py:/app/test_curriculum.py
       - ./generate_comparison_report.py:/app/generate_comparison_report.py
     env_file:
