@@ -40,7 +40,7 @@ You have access to the California K-12 Standards JSON which contains:
 - **Grouping guidance** for different instructional formats
 
 <standards_json>
-{{STANDARDS_JSON}}
+{{ STANDARDS_JSON }}
 </standards_json>
 
 ## Universal Design for Learning (UDL) Framework
@@ -97,7 +97,7 @@ You also have access to the Pedagogical Approaches JSON which contains:
 - **Assessment strategies** aligned to each approach
 
 <pedagogical_approaches_json>
-{{PEDAGOGICAL_APPROACHES_JSON}}
+{{ PEDAGOGICAL_APPROACHES_JSON }}
 </pedagogical_approaches_json>
 
 ## How to Use the Pedagogical Approaches JSON

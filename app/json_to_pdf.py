@@ -3,35 +3,16 @@ JSON to PDF Converter - Creates readable PDFs from standards JSON files.
 """
 import json
 from pathlib import Path
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    PageBreak, ListFlowable, ListItem, KeepTogether
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 )
-from reportlab.lib.enums import TA_LEFT, TA_CENTER
+from reportlab.lib.enums import TA_CENTER
 
-# Color palette matching the app design
-COLORS = {
-    "ink_900": colors.HexColor("#1a1a2e"),
-    "ink_700": colors.HexColor("#2d2d44"),
-    "ink_500": colors.HexColor("#4a4a68"),
-    "ink_300": colors.HexColor("#8e8ea0"),
-    "ink_100": colors.HexColor("#f4f4f6"),
-    "navy_700": colors.HexColor("#1e3a5f"),
-    "navy_500": colors.HexColor("#2c5282"),
-    "navy_100": colors.HexColor("#e8f0f8"),
-    "gold_600": colors.HexColor("#b8860b"),
-    "gold_100": colors.HexColor("#fdf6eb"),
-    "white": colors.white,
-    "red_500": colors.HexColor("#dc2626"),
-    "orange_500": colors.HexColor("#ea580c"),
-    "green_500": colors.HexColor("#16a34a"),
-    "purple_500": colors.HexColor("#7c3aed"),
-    "teal_500": colors.HexColor("#0d9488"),
-}
+# Import shared color palette
+from .pdf_styles import COLORS
 
 
 def create_styles():
@@ -231,16 +212,13 @@ def render_metadata(metadata, styles):
         elements.append(Spacer(1, 20))
 
     # Add a divider line
-    elements.append(Table(
-        [[""]],
-        colWidths=[6.5*inch],
-        rowHeights=[2]
+    elements.append(HRFlowable(
+        width="100%",
+        thickness=2,
+        color=COLORS["gold_600"],
+        spaceBefore=0,
+        spaceAfter=10,
     ))
-    table_style = TableStyle([
-        ('BACKGROUND', (0, 0), (-1, -1), COLORS["gold_600"]),
-    ])
-    elements[-1].setStyle(table_style)
-    elements.append(Spacer(1, 10))
 
     return elements
 

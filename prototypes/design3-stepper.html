@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 3: Card-Based Stepper - Curriculum Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+    <style>
+        :root {
+            --ink-900: #1a1a2e;
+            --ink-800: #2d2d44;
+            --ink-700: #404058;
+            --ink-600: #5c5c73;
+            --ink-500: #7a7a8c;
+            --ink-400: #9e9eab;
+            --ink-300: #c4c4cd;
+            --ink-200: #e0e0e6;
+            --ink-100: #f0f0f3;
+            --ink-50: #f8f8fa;
+            --paper: #fdfcfa;
+            --paper-warm: #faf8f5;
+            --paper-grid: #e8e6e1;
+            --gold-600: #b8860b;
+            --gold-500: #d4a574;
+            --gold-400: #e4bb84;
+            --gold-300: #f0d4a8;
+            --gold-100: #fdf6eb;
+            --navy-700: #1e3a5f;
+            --navy-600: #2c4a6e;
+            --navy-500: #3d5a80;
+            --success: #059669;
+            --shadow-sm: 0 1px 2px rgba(26, 26, 46, 0.04);
+            --shadow-md: 0 4px 12px rgba(26, 26, 46, 0.08);
+            --shadow-lg: 0 8px 24px rgba(26, 26, 46, 0.12);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--paper-warm);
+            color: var(--ink-800);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--paper-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, var(--navy-600) 0%, var(--navy-700) 100%);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo-mark .material-symbols-outlined {
+            font-size: 28px;
+            color: var(--gold-400);
+            font-variation-settings: 'FILL' 1, 'wght' 400;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 0.375rem;
+        }
+
+        .subtitle {
+            font-size: 0.9375rem;
+            color: var(--ink-500);
+            font-weight: 500;
+        }
+
+        /* Container */
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        /* Stepper */
+        .stepper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--ink-200);
+            color: var(--ink-500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .step.active .step-circle {
+            background: var(--navy-700);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+        }
+
+        .step.completed .step-circle {
+            background: var(--success);
+            color: white;
+        }
+
+        .step.completed .step-circle::after {
+            content: '✓';
+        }
+
+        .step.completed .step-number {
+            display: none;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--ink-400);
+        }
+
+        .step.active .step-label {
+            color: var(--navy-700);
+        }
+
+        .step.completed .step-label {
+            color: var(--success);
+        }
+
+        .step-connector {
+            width: 60px;
+            height: 2px;
+            background: var(--ink-200);
+            margin: 0 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-connector.completed {
+            background: var(--success);
+        }
+
+        /* Step Card */
+        .step-card {
+            background: var(--paper);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--ink-200);
+            overflow: hidden;
+            display: none;
+        }
+
+        .step-card.active {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(180deg, var(--ink-50) 0%, var(--paper) 100%);
+            border-bottom: 1px solid var(--ink-200);
+        }
+
+        .card-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--ink-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header h2 .material-symbols-outlined {
+            font-size: 22px;
+            color: var(--gold-600);
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Form Elements */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ink-600);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1.5px solid var(--ink-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--ink-800);
+            background: var(--paper);
+            transition: all 0.2s;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235c5c73' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.875rem center;
+            padding-right: 2.75rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--navy-600);
+            box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: var(--ink-400);
+        }
+
+        /* Card Actions */
+        .card-actions {
+            padding: 1.25rem 1.5rem;
+            background: var(--ink-50);
+            border-top: 1px solid var(--ink-200);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink-600);
+            border: 1.5px solid var(--ink-200);
+        }
+
+        .btn-secondary:hover {
+            background: var(--ink-50);
+            border-color: var(--ink-300);
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, var(--navy-600) 0%, var(--navy-700) 100%);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow-sm), 0 2px 0 #152942;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, var(--navy-500) 0%, var(--navy-600) 100%);
+        }
+
+        .btn-primary .material-symbols-outlined {
+            color: var(--gold-400);
+            font-size: 18px;
+        }
+
+        .btn-success {
+            background: linear-gradient(145deg, var(--success) 0%, #047857 100%);
+            color: white;
+            border: none;
+            box-shadow: var(--shadow-sm), 0 2px 0 #065f46;
+        }
+
+        /* Preview Section (Step 3) */
+        .preview-summary {
+            background: var(--gold-100);
+            border: 1px solid var(--gold-300);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .preview-summary h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gold-600);
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.375rem 0;
+            font-size: 0.875rem;
+        }
+
+        .preview-item span:first-child {
+            color: var(--ink-500);
+        }
+
+        .preview-item span:last-child {
+            font-weight: 600;
+            color: var(--ink-800);
+        }
+
+        .output-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .output-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--paper);
+            border: 1px solid var(--ink-200);
+            border-radius: 10px;
+        }
+
+        .output-item .material-symbols-outlined {
+            font-size: 20px;
+            color: var(--navy-600);
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .output-item span {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--ink-700);
+        }
+
+        /* Responsive */
+        @media (max-width: 540px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stepper {
+                gap: 0;
+            }
+
+            .step-connector {
+                width: 40px;
+            }
+
+            .step-label {
+                font-size: 0.625rem;
+            }
+
+            .card-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-mark">
+            <span class="material-symbols-outlined">auto_stories</span>
+        </div>
+        <h1>Curriculum Generator</h1>
+        <p class="subtitle">Create differentiated lesson plans in 3 easy steps</p>
+    </header>
+
+    <main class="container">
+        <!-- Stepper -->
+        <div class="stepper">
+            <div class="step active" data-step="1">
+                <div class="step-circle"><span class="step-number">1</span></div>
+                <span class="step-label">Lesson</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="2">
+                <div class="step-circle"><span class="step-number">2</span></div>
+                <span class="step-label">Settings</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" data-step="3">
+                <div class="step-circle"><span class="step-number">3</span></div>
+                <span class="step-label">Generate</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Lesson Basics -->
+        <div class="step-card active" data-card="1">
+            <div class="card-header">
+                <h2>
+                    <span class="material-symbols-outlined">edit_note</span>
+                    Lesson Basics
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Grade Level</label>
+                        <select>
+                            <option value="">Select grade...</option>
+                            <option value="K">Kindergarten</option>
+                            <option value="1">1st Grade</option>
+                            <option value="2">2nd Grade</option>
+                            <option value="3">3rd Grade</option>
+                            <option value="4">4th Grade</option>
+                            <option value="5">5th Grade</option>
+                            <option value="6">6th Grade</option>
+                            <option value="7">7th Grade</option>
+                            <option value="8">8th Grade</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select>
+                            <option value="">Select subject...</option>
+                            <option value="Math">Math</option>
+                            <option value="ELA">ELA</option>
+                            <option value="Science">Science</option>
+                            <option value="History">History</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>What topic are you covering?</label>
+                        <input type="text" placeholder="e.g., equivalent ratios, theme analysis, cell division">
+                    </div>
+                </div>
+            </div>
+            <div class="card-actions">
+                <div></div>
+                <button class="btn btn-primary" onclick="nextStep(1)">
+                    Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Session Settings -->
+        <div class="step-card" data-card="2">
+            <div class="card-header">
+                <h2>
+                    <span class="material-symbols-outlined">tune</span>
+                    Session Settings
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <select>
+                            <option value="5">5 minutes</option>
+                            <option value="10">10 minutes</option>
+                            <option value="15" selected>15 minutes</option>
+                            <option value="20">20 minutes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Learning Goal</label>
+                        <select>
+                            <option value="introduce">Introduce</option>
+                            <option value="practice" selected>Practice</option>
+                            <option value="assess">Assess</option>
+                            <option value="remediate">Remediate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Group Format</label>
+                        <select>
+                            <option value="individual">Individual</option>
+                            <option value="small_group" selected>Small Group</option>
+                            <option value="whole_class">Whole Class</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Teaching Approach</label>
+                        <select>
+                            <option value="">Auto-select</option>
+                            <option value="5e_lessons">5E Lesson Model</option>
+                            <option value="3_act_math">3 Act Math Tasks</option>
+                            <option value="project_based_learning">Project-Based Learning</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-secondary" onclick="prevStep(2)">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <button class="btn btn-primary" onclick="nextStep(2)">
+                    Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Review & Generate -->
+        <div class="step-card" data-card="3">
+            <div class="card-header">
+                <h2>
+                    <span class="material-symbols-outlined">checklist</span>
+                    Review & Generate
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="preview-summary">
+                    <h4>Your Selections</h4>
+                    <div class="preview-item">
+                        <span>Grade & Subject</span>
+                        <span>6th Grade Math</span>
+                    </div>
+                    <div class="preview-item">
+                        <span>Topic</span>
+                        <span>Equivalent Ratios</span>
+                    </div>
+                    <div class="preview-item">
+                        <span>Session</span>
+                        <span>15 min Practice (Small Group)</span>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-600); margin-bottom: 0.75rem;">What You'll Receive</h4>
+                <div class="output-list">
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">school</span>
+                        <span>Teacher Guide with lesson phases & discussion prompts</span>
+                    </div>
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">groups</span>
+                        <span>4 Differentiated Student Handouts</span>
+                    </div>
+                    <div class="output-item">
+                        <span class="material-symbols-outlined">translate</span>
+                        <span>EL Scaffolding Strategies</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="btn btn-secondary" onclick="prevStep(3)">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Back
+                </button>
+                <button class="btn btn-success">
+                    <span class="material-symbols-outlined" style="color: white;">auto_awesome</span>
+                    Generate Curriculum
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function nextStep(currentStep) {
+            // Update stepper
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('completed');
+            document.querySelector(`.step[data-step="${currentStep + 1}"]`).classList.add('active');
+
+            // Update connector
+            document.querySelectorAll('.step-connector')[currentStep - 1].classList.add('completed');
+
+            // Update cards
+            document.querySelector(`.step-card[data-card="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step-card[data-card="${currentStep + 1}"]`).classList.add('active');
+        }
+
+        function prevStep(currentStep) {
+            // Update stepper
+            document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step[data-step="${currentStep - 1}"]`).classList.remove('completed');
+            document.querySelector(`.step[data-step="${currentStep - 1}"]`).classList.add('active');
+
+            // Update connector
+            document.querySelectorAll('.step-connector')[currentStep - 2].classList.remove('completed');
+
+            // Update cards
+            document.querySelector(`.step-card[data-card="${currentStep}"]`).classList.remove('active');
+            document.querySelector(`.step-card[data-card="${currentStep - 1}"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

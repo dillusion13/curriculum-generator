@@ -3,26 +3,15 @@ Generate a PDF comparison report of Claude vs Gemini curriculum outputs.
 """
 import json
 from pathlib import Path
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 )
 
-# Colors
-COLORS = {
-    "ink_900": colors.HexColor("#1a1a2e"),
-    "ink_700": colors.HexColor("#404058"),
-    "ink_500": colors.HexColor("#7a7a8c"),
-    "ink_200": colors.HexColor("#e0e0e6"),
-    "ink_50": colors.HexColor("#f8f8fa"),
-    "navy_700": colors.HexColor("#1e3a5f"),
-    "gold_600": colors.HexColor("#b8860b"),
-    "claude": colors.HexColor("#d97706"),  # Anthropic orange
-    "gemini": colors.HexColor("#4285f4"),  # Google blue
-}
+# Import shared color palette
+from app.pdf_styles import COLORS
 
 def create_comparison_report(claude_data: dict, gemini_data: dict, output_path: str):
     """Generate comparison report PDF."""
@@ -35,7 +24,6 @@ def create_comparison_report(claude_data: dict, gemini_data: dict, output_path: 
         bottomMargin=0.5 * inch,
     )
     
-    styles = getSampleStyleSheet()
     elements = []
     
     # Title

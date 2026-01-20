@@ -31,13 +31,13 @@ Given teacher inputs about their class and learning goals, generate four differe
 ## Standards Reference
 
 <standards_json>
-{{STANDARDS_JSON}}
+{{ STANDARDS_JSON }}
 </standards_json>
 
 ## Pedagogical Approaches Reference
 
 <pedagogical_approaches_json>
-{{PEDAGOGICAL_APPROACHES_JSON}}
+{{ PEDAGOGICAL_APPROACHES_JSON }}
 </pedagogical_approaches_json>
 
 ## How to Use the Standards JSON

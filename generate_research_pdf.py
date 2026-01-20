@@ -3,11 +3,10 @@ Generate Pedagogical Approaches Research PDF
 Uses the project's existing ReportLab styling for consistency.
 """
 from pathlib import Path
-from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
@@ -16,38 +15,10 @@ from reportlab.platypus import (
     TableStyle,
     PageBreak,
     HRFlowable,
-    ListFlowable,
-    ListItem,
 )
 
-# Color palette matching project design
-COLORS = {
-    "ink_900": colors.HexColor("#1a1a2e"),
-    "ink_800": colors.HexColor("#2d2d44"),
-    "ink_700": colors.HexColor("#404058"),
-    "ink_600": colors.HexColor("#5c5c73"),
-    "ink_500": colors.HexColor("#7a7a8c"),
-    "ink_400": colors.HexColor("#9e9eab"),
-    "ink_300": colors.HexColor("#c4c4cd"),
-    "ink_200": colors.HexColor("#e0e0e6"),
-    "ink_100": colors.HexColor("#f0f0f3"),
-    "ink_50": colors.HexColor("#f8f8fa"),
-    "paper": colors.HexColor("#fdfcfa"),
-    "navy_700": colors.HexColor("#1e3a5f"),
-    "navy_600": colors.HexColor("#2c4a6e"),
-    "navy_500": colors.HexColor("#3d5a80"),
-    "navy_100": colors.HexColor("#e8eef4"),
-    "gold_600": colors.HexColor("#b8860b"),
-    "gold_500": colors.HexColor("#d4a574"),
-    "gold_100": colors.HexColor("#fdf6eb"),
-    "teal_600": colors.HexColor("#0d9488"),
-    "teal_100": colors.HexColor("#f0fdfa"),
-    "purple_600": colors.HexColor("#7c3aed"),
-    "purple_100": colors.HexColor("#f5f3ff"),
-    "green_600": colors.HexColor("#16a34a"),
-    "green_100": colors.HexColor("#f0fdf4"),
-    "white": colors.white,
-}
+# Import shared color palette
+from app.pdf_styles import COLORS
 
 # Comprehensive pedagogical approaches data
 APPROACHES = [

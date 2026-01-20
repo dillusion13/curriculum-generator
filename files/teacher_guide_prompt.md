@@ -32,7 +32,7 @@ Given teacher inputs about their class and learning goals, generate a comprehens
 ## Standards Reference
 
 <standards_json>
-{{STANDARDS_JSON}}
+{{ STANDARDS_JSON }}
 </standards_json>
 
 ## Universal Design for Learning (UDL) Framework
@@ -65,7 +65,7 @@ All lessons must be designed with UDL principles in mind. UDL is a framework dev
 ## Pedagogical Approaches Reference
 
 <pedagogical_approaches_json>
-{{PEDAGOGICAL_APPROACHES_JSON}}
+{{ PEDAGOGICAL_APPROACHES_JSON }}
 </pedagogical_approaches_json>
 
 ## How to Use the Pedagogical Approaches JSON

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 1: Two-Column Dashboard - Curriculum Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+    <style>
+        :root {
+            --ink-900: #1a1a2e;
+            --ink-800: #2d2d44;
+            --ink-700: #404058;
+            --ink-600: #5c5c73;
+            --ink-500: #7a7a8c;
+            --ink-400: #9e9eab;
+            --ink-300: #c4c4cd;
+            --ink-200: #e0e0e6;
+            --ink-100: #f0f0f3;
+            --ink-50: #f8f8fa;
+            --paper: #fdfcfa;
+            --paper-warm: #faf8f5;
+            --paper-grid: #e8e6e1;
+            --gold-600: #b8860b;
+            --gold-500: #d4a574;
+            --gold-400: #e4bb84;
+            --gold-300: #f0d4a8;
+            --gold-100: #fdf6eb;
+            --navy-700: #1e3a5f;
+            --navy-600: #2c4a6e;
+            --navy-500: #3d5a80;
+            --level-below: #dc2626;
+            --level-approaching: #ea580c;
+            --level-at: #16a34a;
+            --level-above: #7c3aed;
+            --shadow-sm: 0 1px 2px rgba(26, 26, 46, 0.04);
+            --shadow-md: 0 4px 12px rgba(26, 26, 46, 0.08);
+            --shadow-lg: 0 8px 24px rgba(26, 26, 46, 0.12);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--paper-warm);
+            color: var(--ink-800);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--paper-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--paper-grid) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, var(--navy-600) 0%, var(--navy-700) 100%);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo-mark .material-symbols-outlined {
+            font-size: 28px;
+            color: var(--gold-400);
+            font-variation-settings: 'FILL' 1, 'wght' 400;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 0.375rem;
+        }
+
+        .subtitle {
+            font-size: 0.9375rem;
+            color: var(--ink-500);
+            font-weight: 500;
+        }
+
+        /* Main Layout */
+        .dashboard {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* Form Panel */
+        .form-panel {
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--ink-200);
+            overflow: hidden;
+        }
+
+        .form-header {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(180deg, var(--ink-50) 0%, var(--paper) 100%);
+            border-bottom: 1px solid var(--ink-200);
+        }
+
+        .form-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--ink-900);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .section-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--navy-700);
+            border-radius: 8px;
+            color: var(--gold-400);
+            font-size: 18px;
+            font-variation-settings: 'FILL' 1, 'wght' 500;
+        }
+
+        .form-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        /* Form Groups */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row.triple {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ink-600);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--ink-200);
+            border-radius: 10px;
+            font-size: 0.9375rem;
+            font-family: inherit;
+            color: var(--ink-800);
+            background: var(--paper);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235c5c73' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.875rem center;
+            padding-right: 2.75rem;
+        }
+
+        .form-group input::placeholder {
+            color: var(--ink-400);
+        }
+
+        /* Divider */
+        .section-divider {
+            height: 1px;
+            background: var(--ink-200);
+            margin: 1.25rem 0;
+        }
+
+        /* Advanced Toggle */
+        .advanced-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--ink-50);
+            border: 1px solid var(--ink-200);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--ink-600);
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .advanced-toggle:hover {
+            background: var(--paper-warm);
+            color: var(--ink-700);
+        }
+
+        .advanced-toggle .material-symbols-outlined {
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+
+        .advanced-toggle.open .material-symbols-outlined {
+            transform: rotate(90deg);
+        }
+
+        .advanced-options {
+            display: none;
+            padding-top: 0.5rem;
+        }
+
+        .advanced-options.open {
+            display: block;
+        }
+
+        .optional-badge {
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold-600);
+            background: var(--gold-100);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--gold-300);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(145deg, var(--navy-600) 0%, var(--navy-700) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow-md), 0 4px 0 #152942;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.625rem;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(145deg, var(--navy-500) 0%, var(--navy-600) 100%);
+        }
+
+        .submit-btn .material-symbols-outlined {
+            color: var(--gold-400);
+            font-variation-settings: 'FILL' 1;
+        }
+
+        /* Preview Panel (Sidebar) */
+        .preview-panel {
+            position: sticky;
+            top: 1.5rem;
+        }
+
+        .preview-card {
+            background: linear-gradient(135deg, var(--navy-700) 0%, var(--ink-900) 100%);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .preview-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold-400);
+            margin-bottom: 1.25rem;
+        }
+
+        .preview-card h3 .material-symbols-outlined {
+            font-size: 18px;
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .preview-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.125rem;
+        }
+
+        .preview-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .preview-item .material-symbols-outlined {
+            font-size: 22px;
+            color: var(--gold-400);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .preview-item strong {
+            display: block;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-bottom: 0.125rem;
+        }
+
+        .preview-item span {
+            font-size: 0.8125rem;
+            color: var(--ink-300);
+            line-height: 1.4;
+        }
+
+        .level-indicators {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .level-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .level-dot.below { background: var(--level-below); }
+        .level-dot.approaching { background: var(--level-approaching); }
+        .level-dot.at { background: var(--level-at); }
+        .level-dot.above { background: var(--level-above); }
+
+        .estimate {
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.8125rem;
+            color: var(--ink-300);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .estimate .material-symbols-outlined {
+            font-size: 16px;
+            color: var(--gold-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-panel {
+                position: static;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-row,
+            .form-row.triple {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-mark">
+            <span class="material-symbols-outlined">auto_stories</span>
+        </div>
+        <h1>Curriculum Generator</h1>
+        <p class="subtitle">Create differentiated, standards-aligned K-12 lesson plans</p>
+    </header>
+
+    <main class="dashboard">
+        <div class="form-panel">
+            <div class="form-header">
+                <h2>
+                    <span class="section-icon material-symbols-outlined">edit_note</span>
+                    Your Curriculum
+                </h2>
+            </div>
+
+            <form class="form-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="grade">Grade Level</label>
+                        <select id="grade" name="grade">
+                            <option value="">Select grade...</option>
+                            <option value="K">Kindergarten</option>
+                            <option value="1">1st Grade</option>
+                            <option value="2">2nd Grade</option>
+                            <option value="3">3rd Grade</option>
+                            <option value="4">4th Grade</option>
+                            <option value="5">5th Grade</option>
+                            <option value="6">6th Grade</option>
+                            <option value="7">7th Grade</option>
+                            <option value="8">8th Grade</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select subject...</option>
+                            <option value="Math">Math</option>
+                            <option value="ELA">ELA</option>
+                            <option value="Science">Science</option>
+                            <option value="History">History</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="topic">Topic</label>
+                    <input type="text" id="topic" name="topic" placeholder="e.g., equivalent ratios, theme analysis, cell division">
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="form-row triple">
+                    <div class="form-group">
+                        <label for="duration">Duration</label>
+                        <select id="duration" name="duration">
+                            <option value="5">5 min</option>
+                            <option value="10">10 min</option>
+                            <option value="15">15 min</option>
+                            <option value="20">20 min</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal">Goal</label>
+                        <select id="goal" name="goal">
+                            <option value="introduce">Introduce</option>
+                            <option value="practice">Practice</option>
+                            <option value="assess">Assess</option>
+                            <option value="remediate">Remediate</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="format">Format</label>
+                        <select id="format" name="format">
+                            <option value="individual">Individual</option>
+                            <option value="small_group">Small Group</option>
+                            <option value="whole_class">Whole Class</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <button type="button" class="advanced-toggle" onclick="this.classList.toggle('open'); document.getElementById('advanced-options').classList.toggle('open')">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                    Advanced Options
+                </button>
+
+                <div id="advanced-options" class="advanced-options">
+                    <div class="form-group full-width" style="margin-bottom: 1rem;">
+                        <label for="approach">
+                            Teaching Approach
+                            <span class="optional-badge">Optional</span>
+                        </label>
+                        <select id="approach" name="approach">
+                            <option value="">Auto-select based on subject & goal</option>
+                            <optgroup label="Inquiry & Problem-Based">
+                                <option value="5e_lessons">5E Lesson Model</option>
+                                <option value="3_act_math">3 Act Math Tasks</option>
+                            </optgroup>
+                            <optgroup label="Project & Passion-Driven">
+                                <option value="project_based_learning">Project-Based Learning</option>
+                                <option value="genius_hour">Genius Hour</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-bottom: 1rem;">
+                        <label for="model">
+                            AI Model
+                            <span class="optional-badge">Advanced</span>
+                        </label>
+                        <select id="model" name="model">
+                            <option value="gemini-3-pro">Gemini 3.0 Pro (Google)</option>
+                            <option value="claude-sonnet-4.5">Claude Sonnet 4.5 (Anthropic)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    Generate Curriculum
+                </button>
+            </form>
+        </div>
+
+        <aside class="preview-panel">
+            <div class="preview-card">
+                <h3>
+                    <span class="material-symbols-outlined">description</span>
+                    What You'll Get
+                </h3>
+
+                <div class="preview-item">
+                    <span class="material-symbols-outlined">school</span>
+                    <div>
+                        <strong>Teacher Guide</strong>
+                        <span>Lesson phases, discussion prompts, common misconceptions</span>
+                    </div>
+                </div>
+
+                <div class="preview-item">
+                    <span class="material-symbols-outlined">groups</span>
+                    <div>
+                        <strong>4 Student Handouts</strong>
+                        <span>Differentiated by readiness level</span>
+                        <div class="level-indicators">
+                            <span class="level-dot below" title="Below Level"></span>
+                            <span class="level-dot approaching" title="Approaching"></span>
+                            <span class="level-dot at" title="At Level"></span>
+                            <span class="level-dot above" title="Above Level"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-item">
+                    <span class="material-symbols-outlined">translate</span>
+                    <div>
+                        <strong>EL Scaffolding</strong>
+                        <span>Emerging, Expanding, Bridging supports</span>
+                    </div>
+                </div>
+
+                <div class="preview-item">
+                    <span class="material-symbols-outlined">accessibility_new</span>
+                    <div>
+                        <strong>UDL Framework</strong>
+                        <span>Built-in universal design principles</span>
+                    </div>
+                </div>
+
+                <div class="estimate">
+                    <span class="material-symbols-outlined">schedule</span>
+                    Generation takes ~60 seconds
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        // Simple toggle functionality for prototype
+        document.querySelector('.advanced-toggle').addEventListener('click', function() {
+            this.classList.toggle('open');
+            document.getElementById('advanced-options').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
