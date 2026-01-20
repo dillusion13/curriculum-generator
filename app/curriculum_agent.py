@@ -34,6 +34,11 @@ AVAILABLE_MODELS = {
         "name": "Claude Sonnet 4.5",
         "provider": "Anthropic",
     },
+    "claude-haiku": {
+        "id": "claude-haiku-4-5-20251001",
+        "name": "Claude Haiku 4.5",
+        "provider": "Anthropic",
+    },
     "gemini-2.5-flash": {
         "id": "gemini/gemini-2.5-flash",
         "name": "Gemini 2.5 Flash",
