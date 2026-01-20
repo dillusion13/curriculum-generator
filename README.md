@@ -10,7 +10,7 @@ California K-12 curriculum generation tool with differentiated lesson plans.
 - 4 differentiated student handouts (Below, Approaching, At, Above Level)
 - 20 pedagogical approaches across 6 categories
 - UDL (Universal Design for Learning) integration
-- Multi-model support (Gemini 3 Flash, Gemini 3 Pro, Claude Sonnet 4.5)
+- Multi-model support (Gemini 2.5 Flash default, Gemini 3 Preview, Claude Sonnet 4.5)
 - Real-time progress streaming during generation
 
 ## Quick Start

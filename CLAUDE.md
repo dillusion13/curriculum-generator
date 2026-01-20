@@ -38,11 +38,13 @@ docker compose restart
 
 ### Multi-Model Support
 Models configured in `app/curriculum_agent.py`:
-- `gemini-3-flash` (default) - Google Gemini 3 Flash (fast)
-- `gemini-3-pro` - Google Gemini 3 Pro (more capable)
-- `claude-sonnet-4.5` - Anthropic Claude
+- `gemini-2.5-flash` (default) - Google Gemini 2.5 Flash (stable, fast)
+- `gemini-3-flash` - Google Gemini 3 Flash (preview)
+- `gemini-3-pro` - Google Gemini 3 Pro (preview)
+- `claude-sonnet-4.5` - Anthropic Claude (fallback)
 
 Add new models to `AVAILABLE_MODELS` dict. Change default via `DEFAULT_MODEL`.
+Automatic fallback to Claude if primary model fails.
 
 ## Key Files
 
