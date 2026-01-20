@@ -91,7 +91,9 @@ class CurriculumRequest(BaseModel):
     @classmethod
     def validate_pedagogical_approach(cls, v: Optional[str]) -> Optional[str]:
         """Validate against available pedagogical approaches."""
-        if v is not None and v not in VALID_APPROACHES:
+        if v is None or v == "":
+            return None
+        if v not in VALID_APPROACHES:
             raise ValueError(f"Unknown pedagogical approach: {v}")
         return v
 
