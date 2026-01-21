@@ -2,7 +2,6 @@
 Curriculum Agent - LLM integration for curriculum generation.
 Supports multiple providers via LiteLLM.
 """
-import asyncio
 import json
 import logging
 import re
@@ -299,28 +298,15 @@ def _call_llm_sync(
     )
 
 
-@retry(
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
-    retry=retry_if_exception_type(RETRY_EXCEPTIONS),
-    before_sleep=lambda retry_state: logger.warning(
-        f"Async LLM call failed, retrying ({retry_state.attempt_number}/3)..."
-    )
-)
-async def _call_llm_async(
-    model_id: str,
-    messages: list,
-    max_tokens: int,
-    stream: bool = False
-):
-    """Async LLM call with automatic retry on transient failures."""
-    return await litellm.acompletion(
-        model=model_id,
-        messages=messages,
-        max_tokens=max_tokens,
-        stream=stream,
-        timeout=300  # 5 minute timeout
-    )
+def _calculate_max_tokens(num_days: int) -> int:
+    """Calculate max tokens based on number of days.
+
+    More days = more content = more tokens needed.
+    Base: 16000 tokens for single day, +8000 per additional day.
+    """
+    base_tokens = 16000
+    additional_per_day = 8000
+    return base_tokens + (num_days - 1) * additional_per_day
 
 
 def generate_curriculum(teacher_input: dict[str, Any], model_key: str = None) -> dict[str, Any]:
@@ -338,6 +324,8 @@ def generate_curriculum(teacher_input: dict[str, Any], model_key: str = None) ->
     model_id = _get_model_id(current_model)
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
+    num_days = teacher_input.get("num_days", 1)
+    max_tokens = _calculate_max_tokens(num_days)
 
     system_prompt = load_curriculum_prompt(grade=grade, subject=subject)
     user_message = json.dumps(teacher_input, indent=2)
@@ -351,7 +339,7 @@ def generate_curriculum(teacher_input: dict[str, Any], model_key: str = None) ->
         response = _call_llm_sync(
             model_id=model_id,
             messages=messages,
-            max_tokens=16000
+            max_tokens=max_tokens
         )
         response_text = response.choices[0].message.content
         return _parse_json_response(response_text)
@@ -377,13 +365,16 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
     model_id = _get_model_id(current_model)
     grade = teacher_input.get("grade")
     subject = teacher_input.get("subject")
+    num_days = teacher_input.get("num_days", 1)
+    max_tokens = _calculate_max_tokens(num_days)
 
     yield {"type": "progress", "stage": "loading", "message": "Loading standards..."}
 
     system_prompt = load_curriculum_prompt(grade=grade, subject=subject)
     user_message = json.dumps(teacher_input, indent=2)
 
-    yield {"type": "progress", "stage": "generating", "message": "Generating curriculum..."}
+    days_msg = f" ({num_days}-day lesson)" if num_days > 1 else ""
+    yield {"type": "progress", "stage": "generating", "message": f"Generating curriculum{days_msg}..."}
 
     messages = [
         {"role": "system", "content": system_prompt},
@@ -394,7 +385,7 @@ def generate_curriculum_streaming(teacher_input: dict[str, Any], model_key: str 
         response = _call_llm_sync(
             model_id=model_id,
             messages=messages,
-            max_tokens=16000,
+            max_tokens=max_tokens,
             stream=True
         )
 
@@ -450,186 +441,3 @@ def _parse_json_response(response_text: str) -> dict:
     except JSONDecodeError as e:
         logger.error(f"JSON parse failed: {e}\nResponse preview: {original[:500]}")
         raise ValueError(f"Failed to parse LLM response as JSON: {e}")
-
-
-async def generate_teacher_guide_async(
-    teacher_input: dict[str, Any],
-    model_id: str
-) -> dict[str, Any]:
-    """Async generation of teacher guide only with retry logic."""
-    grade = teacher_input.get("grade")
-    subject = teacher_input.get("subject")
-
-    system_prompt = load_teacher_guide_prompt(grade=grade, subject=subject)
-    user_message = json.dumps(teacher_input, indent=2)
-
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": f"Generate the teacher guide for this class:\n\n```json\n{user_message}\n```"}
-    ]
-
-    response = await _call_llm_async(
-        model_id=model_id,
-        messages=messages,
-        max_tokens=8000
-    )
-
-    return _parse_json_response(response.choices[0].message.content)
-
-
-async def generate_student_materials_async(
-    teacher_input: dict[str, Any],
-    model_id: str
-) -> dict[str, Any]:
-    """Async generation of student materials only with retry logic."""
-    grade = teacher_input.get("grade")
-    subject = teacher_input.get("subject")
-
-    system_prompt = load_student_materials_prompt(grade=grade, subject=subject)
-    user_message = json.dumps(teacher_input, indent=2)
-
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": f"Generate the four differentiated student handouts for this class:\n\n```json\n{user_message}\n```"}
-    ]
-
-    response = await _call_llm_async(
-        model_id=model_id,
-        messages=messages,
-        max_tokens=10000
-    )
-
-    return _parse_json_response(response.choices[0].message.content)
-
-
-def _merge_parallel_results(teacher_result: dict, student_result: dict) -> dict:
-    """Merge teacher guide and student materials results into a single curriculum object."""
-    return {
-        "teacher_guide": teacher_result.get("teacher_guide", teacher_result),
-        "student_materials": student_result.get("student_materials", student_result),
-    }
-
-
-def _get_merge_message(teacher_error: Exception | None, student_error: Exception | None) -> str:
-    """Get the appropriate progress message for merging results."""
-    if teacher_error:
-        return "Merging partial results (teacher guide unavailable)..."
-    if student_error:
-        return "Merging partial results (student materials unavailable)..."
-    return "Merging results..."
-
-
-def _build_curriculum_result(
-    teacher_result: dict | None,
-    student_result: dict | None,
-    teacher_error: Exception | None,
-    student_error: Exception | None
-) -> dict:
-    """Build the final curriculum result, handling partial failures."""
-    if teacher_error:
-        logger.warning("Returning partial results (teacher guide failed)")
-        return {
-            "teacher_guide": {},
-            "student_materials": student_result.get("student_materials", student_result),
-        }
-    if student_error:
-        logger.warning("Returning partial results (student materials failed)")
-        return {
-            "teacher_guide": teacher_result.get("teacher_guide", teacher_result),
-            "student_materials": {},
-        }
-    return _merge_parallel_results(teacher_result, student_result)
-
-
-async def generate_curriculum_parallel(
-    teacher_input: dict[str, Any],
-    model_key: str = None
-) -> dict[str, Any]:
-    """
-    Generate curriculum using parallel LLM calls for teacher guide and student materials.
-
-    This is faster than the single-call approach because both generations run concurrently.
-    """
-    model_id = _get_model_id(model_key)
-
-    teacher_result, student_result = await asyncio.gather(
-        generate_teacher_guide_async(teacher_input, model_id),
-        generate_student_materials_async(teacher_input, model_id)
-    )
-
-    return _merge_parallel_results(teacher_result, student_result)
-
-
-async def generate_curriculum_parallel_streaming(
-    teacher_input: dict[str, Any],
-    model_key: str = None
-):
-    """
-    Generate curriculum with parallel LLM calls and streaming progress updates.
-
-    Yields progress updates while running teacher guide and student materials
-    generation in parallel. Handles partial failures gracefully.
-    Falls back to alternate model if primary fails completely.
-    """
-    current_model = model_key or DEFAULT_MODEL
-    model_id = _get_model_id(current_model)
-
-    yield {"type": "progress", "stage": "loading", "message": "Loading standards..."}
-    yield {"type": "progress", "stage": "generating", "message": "Generating curriculum (parallel)..."}
-
-    teacher_task = asyncio.create_task(generate_teacher_guide_async(teacher_input, model_id))
-    student_task = asyncio.create_task(generate_student_materials_async(teacher_input, model_id))
-
-    teacher_result = None
-    student_result = None
-    teacher_error = None
-    student_error = None
-
-    # Poll tasks until both complete
-    pending_tasks = {teacher_task, student_task}
-    while pending_tasks:
-        await asyncio.sleep(0.5)
-
-        for task in list(pending_tasks):
-            if not task.done():
-                continue
-
-            pending_tasks.discard(task)
-            is_teacher = task is teacher_task
-
-            try:
-                result = task.result()
-                if is_teacher:
-                    teacher_result = result
-                    msg = "Teacher guide complete, waiting for student materials..."
-                else:
-                    student_result = result
-                    msg = "Student materials complete!" if not pending_tasks else "Student materials complete, waiting for teacher guide..."
-                yield {"type": "progress", "stage": "generating", "message": msg}
-            except Exception as e:
-                if is_teacher:
-                    teacher_error = e
-                    logger.error(f"Teacher guide generation failed: {e}")
-                    yield {"type": "progress", "stage": "generating", "message": "Teacher guide failed, waiting for student materials..."}
-                else:
-                    student_error = e
-                    logger.error(f"Student materials generation failed: {e}")
-                    yield {"type": "progress", "stage": "generating", "message": "Student materials failed."}
-
-    # If both failed, attempt fallback to alternate model
-    if teacher_error and student_error:
-        if _should_fallback(current_model):
-            primary_name = _get_model_display_name(current_model)
-            fallback_name = _get_model_display_name(FALLBACK_MODEL)
-            logger.warning(f"{primary_name} failed, falling back to {fallback_name}")
-            yield {"type": "progress", "stage": "fallback", "message": f"{primary_name} unavailable, trying {fallback_name}..."}
-
-            async for update in generate_curriculum_parallel_streaming(teacher_input, model_key=FALLBACK_MODEL):
-                yield update
-            return
-
-        raise ValueError(f"Both generations failed. Teacher: {teacher_error}, Student: {student_error}")
-
-    # Handle partial results or success
-    yield {"type": "progress", "stage": "parsing", "message": _get_merge_message(teacher_error, student_error)}
-    yield {"type": "curriculum", "data": _build_curriculum_result(teacher_result, student_result, teacher_error, student_error)}

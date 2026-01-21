@@ -21,10 +21,9 @@ from .curriculum_agent import (
     AVAILABLE_MODELS,
     generate_curriculum,
     generate_curriculum_streaming,
-    generate_curriculum_parallel_streaming,
     load_pedagogical_approaches_json,
 )
-from .pdf_generator import generate_all_pdfs
+from .docx_generator import save_combined_document
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -72,7 +71,8 @@ class CurriculumRequest(BaseModel):
     grade: int = Field(..., ge=0, le=12, description="Grade level (K=0, 1-12)")
     subject: str = Field(..., pattern="^(Math|ELA|Science|History)$", description="Subject area")
     topic: str = Field(..., max_length=500, description="Topic to teach")
-    session_length: int = Field(15, ge=5, le=120, description="Session length in minutes")
+    session_length: int = Field(45, ge=5, le=120, description="Session length in minutes")
+    num_days: int = Field(1, ge=1, le=3, description="Number of days for the lesson")
     learning_goal_type: str = Field("practice", pattern="^(introduce|practice|assess|remediate)$")
     group_format: str = Field("small_group", pattern="^(individual|small_group|whole_class)$")
     pedagogical_approach: Optional[str] = None
@@ -122,6 +122,7 @@ def _build_teacher_input(
     subject: str,
     topic: str,
     session_length: int,
+    num_days: int,
     learning_goal_type: str,
     group_format: str,
     pedagogical_approach: str = None
@@ -132,6 +133,7 @@ def _build_teacher_input(
         "subject": subject,
         "topic": topic,
         "session_length_minutes": session_length,
+        "num_days": num_days,
         "learning_goal_type": learning_goal_type,
         "group_format": group_format,
     }
@@ -153,7 +155,8 @@ async def generate(
     grade: int = Form(...),
     subject: str = Form(...),
     topic: str = Form(...),
-    session_length: int = Form(15),
+    session_length: int = Form(45),
+    num_days: int = Form(1),
     learning_goal_type: str = Form("practice"),
     group_format: str = Form("small_group"),
     pedagogical_approach: str = Form(None),
@@ -168,6 +171,7 @@ async def generate(
             subject=subject,
             topic=topic,
             session_length=session_length,
+            num_days=num_days,
             learning_goal_type=learning_goal_type,
             group_format=group_format,
             pedagogical_approach=pedagogical_approach,
@@ -179,18 +183,24 @@ async def generate(
 
     teacher_input = _build_teacher_input(
         validated.grade, validated.subject, validated.topic, validated.session_length,
-        validated.learning_goal_type, validated.group_format, validated.pedagogical_approach
+        validated.num_days, validated.learning_goal_type, validated.group_format, validated.pedagogical_approach
     )
 
     try:
         curriculum = generate_curriculum(teacher_input, model_key=validated.model)
         session_id = str(uuid.uuid4())  # Full UUID for security
-        pdf_files = generate_all_pdfs(curriculum, session_id, str(outputs_dir), validated.include_udl_docs)
+
+        # Generate combined DOCX document
+        docx_filename = save_combined_document(
+            curriculum,
+            str(outputs_dir),
+            include_udl=validated.include_udl_docs
+        )
 
         return {
             "success": True,
             "session_id": session_id,
-            "files": pdf_files,
+            "document": docx_filename,
             "curriculum": curriculum,
         }
 
@@ -211,19 +221,15 @@ async def generate_stream(
     grade: int = Form(...),
     subject: str = Form(...),
     topic: str = Form(...),
-    session_length: int = Form(15),
+    session_length: int = Form(45),
+    num_days: int = Form(1),
     learning_goal_type: str = Form("practice"),
     group_format: str = Form("small_group"),
     pedagogical_approach: str = Form(None),
     include_udl_docs: bool = Form(False),
     model: str = Form(None),
-    parallel: bool = Form(True),
 ):
-    """Generate curriculum with streaming progress updates via SSE.
-
-    Uses parallel generation by default (2 concurrent LLM calls) for faster response.
-    Set parallel=False to use the original single-call approach.
-    """
+    """Generate curriculum with streaming progress updates via SSE."""
     # Validate input using Pydantic model
     try:
         validated = CurriculumRequest(
@@ -231,6 +237,7 @@ async def generate_stream(
             subject=subject,
             topic=topic,
             session_length=session_length,
+            num_days=num_days,
             learning_goal_type=learning_goal_type,
             group_format=group_format,
             pedagogical_approach=pedagogical_approach,
@@ -242,7 +249,7 @@ async def generate_stream(
 
     teacher_input = _build_teacher_input(
         validated.grade, validated.subject, validated.topic, validated.session_length,
-        validated.learning_goal_type, validated.group_format, validated.pedagogical_approach
+        validated.num_days, validated.learning_goal_type, validated.group_format, validated.pedagogical_approach
     )
     session_id = str(uuid.uuid4())  # Full UUID for security
 
@@ -250,32 +257,26 @@ async def generate_stream(
         try:
             curriculum = None
 
-            # Choose generator based on parallel flag
-            # Parallel uses async generator, non-parallel uses sync generator
-            if parallel:
-                async for update in generate_curriculum_parallel_streaming(teacher_input, model_key=validated.model):
-                    if update["type"] == "curriculum":
-                        curriculum = update["data"]
-                        yield _format_sse({"type": "progress", "stage": "curriculum_complete", "message": "Curriculum generated!"})
-                    else:
-                        yield _format_sse(update)
-            else:
-                for update in generate_curriculum_streaming(teacher_input, model_key=validated.model):
-                    if update["type"] == "curriculum":
-                        curriculum = update["data"]
-                        yield _format_sse({"type": "progress", "stage": "curriculum_complete", "message": "Curriculum generated!"})
-                    else:
-                        yield _format_sse(update)
+            for update in generate_curriculum_streaming(teacher_input, model_key=validated.model):
+                if update["type"] == "curriculum":
+                    curriculum = update["data"]
+                    yield _format_sse({"type": "progress", "stage": "curriculum_complete", "message": "Curriculum generated!"})
+                else:
+                    yield _format_sse(update)
 
             if curriculum:
-                yield _format_sse({"type": "progress", "stage": "pdf", "message": "Generating PDFs..."})
-                pdf_files = generate_all_pdfs(curriculum, session_id, str(outputs_dir), validated.include_udl_docs)
+                yield _format_sse({"type": "progress", "stage": "docx", "message": "Generating document..."})
+                docx_filename = save_combined_document(
+                    curriculum,
+                    str(outputs_dir),
+                    include_udl=validated.include_udl_docs
+                )
                 yield _format_sse({"type": "progress", "stage": "complete", "message": "Complete!"})
                 yield _format_sse({
                     "type": "result",
                     "success": True,
                     "session_id": session_id,
-                    "files": pdf_files,
+                    "document": docx_filename,
                     "curriculum": curriculum,
                 })
 
@@ -291,8 +292,8 @@ async def generate_stream(
 
 
 @app.get("/download/{filename}")
-async def download_pdf(filename: str):
-    """Download a generated PDF file."""
+async def download_file(filename: str):
+    """Download a generated file (DOCX or PDF)."""
     # Resolve to absolute path to prevent path traversal attacks
     file_path = (outputs_dir / filename).resolve()
 
@@ -304,10 +305,18 @@ async def download_pdf(filename: str):
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="File not found")
 
+    # Determine media type based on file extension
+    if filename.endswith(".docx"):
+        media_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    elif filename.endswith(".pdf"):
+        media_type = "application/pdf"
+    else:
+        media_type = "application/octet-stream"
+
     return FileResponse(
         path=str(file_path),
         filename=filename,
-        media_type="application/pdf"
+        media_type=media_type
     )
 
 
