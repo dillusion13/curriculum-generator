@@ -282,6 +282,10 @@ header h1 {
     grid-template-columns: repeat(3, 1fr);
 }
 
+.form-row.quad {
+    grid-template-columns: repeat(4, 1fr);
+}
+
 .form-group {
     margin-bottom: 0;
 }
@@ -936,7 +940,8 @@ button[type="submit"]:disabled {
     }
 
     .form-row,
-    .form-row.triple {
+    .form-row.triple,
+    .form-row.quad {
         grid-template-columns: 1fr;
         gap: 0;
     }

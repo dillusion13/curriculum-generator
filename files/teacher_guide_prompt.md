@@ -22,12 +22,31 @@ Given teacher inputs about their class and learning goals, generate a comprehens
   "grade": "number (K-12)",
   "subject": "string (Math | ELA | Science | History)",
   "topic": "string (e.g., 'equivalent ratios', 'theme analysis', 'cell division')",
-  "session_length_minutes": "number (5 | 10 | 15 | 20 | extended)",
+  "session_length_minutes": "number (10-120 minutes per day)",
+  "num_days": "number (1-3, default 1)",
   "learning_goal_type": "string (introduce | practice | assess | remediate)",
   "group_format": "string (individual | small_group | whole_class)",
   "pedagogical_approach": "string (optional - see Pedagogical Approaches JSON for options)"
 }
 ```
+
+## Multi-Day Lesson Handling
+
+When `num_days` is greater than 1, generate a multi-day lesson plan:
+
+1. **Learning Progression**: Design a coherent arc across days:
+   - **Day 1**: Focus on introduction, activation of prior knowledge, initial exploration
+   - **Day 2**: Deepen understanding, practice, address misconceptions
+   - **Day 3**: Consolidation, assessment, extension/application
+
+2. **Session Structure Per Day**: Each day should have its own complete session structure with phases appropriate to that day's focus
+
+3. **Cross-Day Continuity**:
+   - Reference previous day's learning in warm-ups
+   - Build vocabulary progressively
+   - Use consistent formative assessment strategies to track progress
+
+4. **Output Format for Multi-Day**: When `num_days > 1`, wrap the response in a `days` array (see Output Format below)
 
 ## Standards Reference
 
@@ -196,6 +215,65 @@ Return a single JSON object with this exact structure:
   }
 }
 ```
+
+### Multi-Day Output Format
+
+When `num_days > 1`, wrap the teacher guide in a `days` array structure:
+
+```json
+{
+  "teacher_guide": {
+    "metadata": {
+      "title": "string - descriptive unit title",
+      "grade": "number",
+      "subject": "string",
+      "topic": "string",
+      "total_days": "number",
+      "duration_minutes_per_day": "number",
+      "standards_addressed": ["array of standard codes"],
+      "learning_goal_type": "string",
+      "group_format": "string",
+      "pedagogical_approach": { "id": "...", "name": "...", "rationale": "..." }
+    },
+    "unit_overview": {
+      "learning_arc": "string - describe progression across days",
+      "essential_questions": ["array - overarching questions for the unit"]
+    },
+    "days": [
+      {
+        "day": 1,
+        "title": "string - Day 1 title (e.g., 'Exploring Ratios')",
+        "focus": "string - main learning focus for this day",
+        "learning_objectives": [{ "objective": "...", "success_criteria": "..." }],
+        "session_structure": {
+          "phases": [{ "name": "...", "duration_minutes": "...", ... }],
+          "exit_assessment": { "type": "...", "description": "..." }
+        },
+        "materials_list": ["array"],
+        "discussion_prompts": ["array"],
+        "formative_assessment_ideas": ["array"]
+      },
+      {
+        "day": 2,
+        "title": "string - Day 2 title",
+        "focus": "string",
+        "connection_to_previous": "string - how this builds on Day 1",
+        "learning_objectives": [...],
+        "session_structure": {...},
+        "materials_list": [...],
+        "discussion_prompts": [...],
+        "formative_assessment_ideas": [...]
+      }
+    ],
+    "differentiation_overview": { ... },
+    "el_support_summary": { ... },
+    "common_misconceptions": [...],
+    "udl_alignment": { ... }
+  }
+}
+```
+
+**Note**: For single-day lessons (`num_days = 1`), use the standard format without the `days` array wrapper.
 
 ## Content Generation Guidelines
 

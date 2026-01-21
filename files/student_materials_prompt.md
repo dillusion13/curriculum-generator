@@ -21,12 +21,28 @@ Given teacher inputs about their class and learning goals, generate four differe
   "grade": "number (K-12)",
   "subject": "string (Math | ELA | Science | History)",
   "topic": "string (e.g., 'equivalent ratios', 'theme analysis', 'cell division')",
-  "session_length_minutes": "number (5 | 10 | 15 | 20 | extended)",
+  "session_length_minutes": "number (10-120 minutes per day)",
+  "num_days": "number (1-3, default 1)",
   "learning_goal_type": "string (introduce | practice | assess | remediate)",
   "group_format": "string (individual | small_group | whole_class)",
   "pedagogical_approach": "string (optional - pedagogical approach being used)"
 }
 ```
+
+## Multi-Day Lesson Handling
+
+When `num_days` is greater than 1, generate student materials for each day:
+
+1. **Progressive Complexity**: Activities should build across days
+   - **Day 1**: More scaffolded, foundational activities
+   - **Day 2**: Moderate complexity, building on Day 1
+   - **Day 3**: Application, synthesis, or assessment
+
+2. **Consistent Structure**: Each day should follow the same format per level but with content appropriate to that day's focus
+
+3. **Vocabulary Progression**: Introduce vocabulary on Day 1, reinforce and expand on subsequent days
+
+4. **Output Format for Multi-Day**: When `num_days > 1`, wrap each level in a `days` array (see Output Format below)
 
 ## Standards Reference
 
@@ -227,6 +243,56 @@ Return a single JSON object with this exact structure:
   }
 }
 ```
+
+### Multi-Day Output Format
+
+When `num_days > 1`, each level should contain a `days` array:
+
+```json
+{
+  "student_materials": {
+    "below_level": {
+      "days": [
+        {
+          "day": 1,
+          "title": "Day 1 - Exploring the Topic",
+          "header": {
+            "title": "string",
+            "student_objective": "string",
+            "i_can_statement": "string"
+          },
+          "vocabulary": [...],
+          "worked_example": {...},
+          "guided_practice": [...],
+          "independent_practice": [...],
+          "reflection": {...}
+        },
+        {
+          "day": 2,
+          "title": "Day 2 - Building Understanding",
+          "header": {...},
+          "review_connection": "string - brief reminder of Day 1 learning",
+          "vocabulary": [...],
+          "guided_practice": [...],
+          "independent_practice": [...],
+          "reflection": {...}
+        }
+      ]
+    },
+    "approaching_level": {
+      "days": [...]
+    },
+    "at_level": {
+      "days": [...]
+    },
+    "above_level": {
+      "days": [...]
+    }
+  }
+}
+```
+
+**Note**: For single-day lessons (`num_days = 1`), use the standard format without the `days` array wrapper.
 
 ## Content Generation Guidelines
 
