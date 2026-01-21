@@ -117,6 +117,51 @@
                             </div>
                         </div>
 
+                        <!-- Teaching Approach -->
+                        <div class="form-group full-width approach-selector">
+                            <label for="pedagogical_approach">
+                                <span class="material-symbols-outlined approach-icon">psychology</span>
+                                Teaching Approach
+                                <span class="optional-badge">Optional</span>
+                            </label>
+                            <select id="pedagogical_approach" name="pedagogical_approach">
+                                <option value="">Auto-select based on subject & goal</option>
+                                <optgroup label="Inquiry & Problem-Based">
+                                    <option value="5e_lessons">5E Lesson Model (Engage, Explore, Explain...)</option>
+                                    <option value="3_act_math">3 Act Math Tasks</option>
+                                    <option value="inquiry_based_learning">Inquiry-Based Learning</option>
+                                    <option value="design_thinking">Design-Based Thinking</option>
+                                </optgroup>
+                                <optgroup label="Project & Passion-Driven">
+                                    <option value="project_based_learning">Project-Based Learning (PBL)</option>
+                                    <option value="place_based_learning">Place-Based Learning</option>
+                                    <option value="passion_based_learning">Passion-Based Learning</option>
+                                    <option value="genius_hour">Genius Hour</option>
+                                </optgroup>
+                                <optgroup label="Collaborative Learning">
+                                    <option value="peer_teaching">Peer Teaching</option>
+                                    <option value="cross_age_peer_teaching">Cross-Age Peer Teaching</option>
+                                    <option value="socratic_seminar">Socratic Seminar</option>
+                                </optgroup>
+                                <optgroup label="Creative & Performance">
+                                    <option value="readers_theatre">Readers Theatre</option>
+                                    <option value="role_play">Role Play Scenarios</option>
+                                    <option value="unboxing_video">Unboxing Video</option>
+                                    <option value="makerspace">Makerspace</option>
+                                </optgroup>
+                                <optgroup label="Engagement & Skills">
+                                    <option value="gamification">Gamification-Based Learning</option>
+                                    <option value="flipped_learning">Flipped Learning</option>
+                                    <option value="4c_lessons">4C Lessons (Critical Thinking, Creativity...)</option>
+                                </optgroup>
+                                <optgroup label="Civic & Cultural">
+                                    <option value="action_civics">Action Civics</option>
+                                    <option value="culturally_responsive_literacy">Culturally Responsive Literacy</option>
+                                </optgroup>
+                            </select>
+                            <p class="approach-hint">Choose a specific teaching methodology or let the system recommend one</p>
+                        </div>
+
                         <div class="section-divider"></div>
 
                         <!-- Advanced Options Toggle -->
@@ -126,51 +171,6 @@
                         </button>
 
                         <div id="advanced-options" class="advanced-options">
-                            <!-- Pedagogical Approach -->
-                            <div class="form-group full-width approach-selector">
-                                <label for="pedagogical_approach">
-                                    <span class="material-symbols-outlined approach-icon">psychology</span>
-                                    Teaching Approach
-                                    <span class="optional-badge">Optional</span>
-                                </label>
-                                <select id="pedagogical_approach" name="pedagogical_approach">
-                                    <option value="">Auto-select based on subject & goal</option>
-                                    <optgroup label="Inquiry & Problem-Based">
-                                        <option value="5e_lessons">5E Lesson Model (Engage, Explore, Explain...)</option>
-                                        <option value="3_act_math">3 Act Math Tasks</option>
-                                        <option value="inquiry_based_learning">Inquiry-Based Learning</option>
-                                        <option value="design_thinking">Design-Based Thinking</option>
-                                    </optgroup>
-                                    <optgroup label="Project & Passion-Driven">
-                                        <option value="project_based_learning">Project-Based Learning (PBL)</option>
-                                        <option value="place_based_learning">Place-Based Learning</option>
-                                        <option value="passion_based_learning">Passion-Based Learning</option>
-                                        <option value="genius_hour">Genius Hour</option>
-                                    </optgroup>
-                                    <optgroup label="Collaborative Learning">
-                                        <option value="peer_teaching">Peer Teaching</option>
-                                        <option value="cross_age_peer_teaching">Cross-Age Peer Teaching</option>
-                                        <option value="socratic_seminar">Socratic Seminar</option>
-                                    </optgroup>
-                                    <optgroup label="Creative & Performance">
-                                        <option value="readers_theatre">Readers Theatre</option>
-                                        <option value="role_play">Role Play Scenarios</option>
-                                        <option value="unboxing_video">Unboxing Video</option>
-                                        <option value="makerspace">Makerspace</option>
-                                    </optgroup>
-                                    <optgroup label="Engagement & Skills">
-                                        <option value="gamification">Gamification-Based Learning</option>
-                                        <option value="flipped_learning">Flipped Learning</option>
-                                        <option value="4c_lessons">4C Lessons (Critical Thinking, Creativity...)</option>
-                                    </optgroup>
-                                    <optgroup label="Civic & Cultural">
-                                        <option value="action_civics">Action Civics</option>
-                                        <option value="culturally_responsive_literacy">Culturally Responsive Literacy</option>
-                                    </optgroup>
-                                </select>
-                                <p class="approach-hint">Choose a specific teaching methodology or let the system recommend one</p>
-                            </div>
-
                             <!-- UDL Toggle -->
                             <div class="form-group full-width udl-toggle">
                                 <label class="checkbox-label">
