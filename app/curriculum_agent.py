@@ -294,7 +294,7 @@ def _call_llm_sync(
         messages=messages,
         max_tokens=max_tokens,
         stream=stream,
-        timeout=300  # 5 minute timeout
+        timeout=240  # 4 minute timeout
     )
 
 

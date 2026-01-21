@@ -16,6 +16,7 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from starlette.middleware.base import BaseHTTPMiddleware
+import litellm.exceptions
 
 from .curriculum_agent import (
     AVAILABLE_MODELS,
@@ -280,6 +281,9 @@ async def generate_stream(
                     "curriculum": curriculum,
                 })
 
+        except litellm.exceptions.Timeout:
+            logger.warning("Generation timed out after 4 minutes")
+            yield _format_sse({"type": "error", "message": "Generation timed out. Try again or select a different model."})
         except Exception as e:
             logger.exception("Streaming generation failed")
             yield _format_sse({"type": "error", "message": "Generation failed. Please try again."})
