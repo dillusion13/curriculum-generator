@@ -29,8 +29,10 @@
                     </div>
 
                     <div class="form-body">
-                        <!-- Essential Fields -->
-                        <div class="form-row">
+                        <!-- Essential Information Section -->
+                        <div class="form-section">
+                            <div class="section-label">Essential Information</div>
+                            <div class="form-row">
                             <div class="form-group">
                                 <label for="grade">Grade Level</label>
                                 <select id="grade" name="grade" required>
@@ -63,17 +65,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group full-width">
-                            <label for="topic">Topic</label>
-                            <input type="text" id="topic" name="topic"
-                                   placeholder="e.g., equivalent ratios, theme analysis, cell division"
-                                   required>
+                            <div class="form-group full-width">
+                                <label for="topic">Topic</label>
+                                <input type="text" id="topic" name="topic"
+                                       placeholder="e.g., equivalent ratios, theme analysis, cell division"
+                                       required>
+                            </div>
                         </div>
 
-                        <div class="section-divider"></div>
-
-                        <!-- Session Settings -->
-                        <div class="form-row quad">
+                        <!-- Session Settings Section -->
+                        <div class="form-section">
+                            <div class="section-label">Session Settings</div>
+                            <div class="form-row quad">
                             <div class="form-group">
                                 <label for="session_length">Duration</label>
                                 <select id="session_length" name="session_length">
@@ -115,15 +118,18 @@
                                     <option value="whole_class">Whole Class</option>
                                 </select>
                             </div>
+                            </div>
                         </div>
 
-                        <!-- Teaching Approach -->
-                        <div class="form-group full-width approach-selector">
-                            <label for="pedagogical_approach">
-                                <span class="material-symbols-outlined approach-icon">psychology</span>
-                                Teaching Approach
-                                <span class="optional-badge">Optional</span>
-                            </label>
+                        <!-- Teaching Approach Section -->
+                        <div class="form-section">
+                            <div class="section-label">Teaching Approach</div>
+                            <div class="form-group full-width approach-selector">
+                                <label for="pedagogical_approach">
+                                    <span class="material-symbols-outlined approach-icon">psychology</span>
+                                    Methodology
+                                    <span class="optional-hint">Optional</span>
+                                </label>
                             <select id="pedagogical_approach" name="pedagogical_approach">
                                 <option value="">Auto-select based on subject & goal</option>
                                 <optgroup label="Inquiry & Problem-Based">
@@ -158,11 +164,12 @@
                                     <option value="action_civics">Action Civics</option>
                                     <option value="culturally_responsive_literacy">Culturally Responsive Literacy</option>
                                 </optgroup>
-                            </select>
-                            <p class="approach-hint">Choose a specific teaching methodology or let the system recommend one</p>
+                                </select>
+                                <p class="approach-hint">Choose a specific approach or let the system recommend one</p>
+                            </div>
                         </div>
 
-                        <div class="section-divider"></div>
+                        <div class="divider"></div>
 
                         <!-- Advanced Options Toggle -->
                         <button type="button" class="advanced-toggle" id="advanced-toggle">
