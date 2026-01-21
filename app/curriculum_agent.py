@@ -56,7 +56,7 @@ AVAILABLE_MODELS = {
 }
 
 DEFAULT_MODEL = "gemini-2.5-flash"
-FALLBACK_MODEL = "claude-sonnet-4.5"
+FALLBACK_MODEL = "claude-haiku"
 
 
 def _get_model_display_name(model_key: str) -> str:
